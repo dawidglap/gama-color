@@ -5,13 +5,29 @@ import Link from 'next/link'
 import heroData from '../data/home/hero.json'
 import { WavyBackground } from './ui/wavy-background'
 import HeroImage from '../../public/images/hero.webp' // Adjust the path as necessary
+import {  Navbar, NavbarButton, NavbarLogo, NavBody, NavItems } from './ui/resizable-navbar'
 
 export default function Hero() {
   const { subtitle, ctaText, ctaLink } = heroData
 
   return (
-   // Hero.tsx
+   <>
+    <Navbar>
+  <NavBody>
+    <NavbarLogo />
+    <NavItems
+      items={[
+        { name: "O nas", link: "#about" },
+        { name: "Produkty", link: "#products" },
+        { name: "Realizacje", link: "#realizacje" },
+        { name: "Kontakt", link: "#contact" },
+      ]}
+    />
+    <NavbarButton href="#contact">Kontakt</NavbarButton>
+  </NavBody>
+</Navbar>
 <WavyBackground containerClassName="py-16 px-4 lg:px-8">
+
   <section className=" w-full flex flex-col lg:flex-row items-center justify-between gap-12">
 
       <div className="max-w-7xl xl:max-w-[1600px] mx-auto w-full flex flex-col lg:flex-row items-center justify-between gap-12 px-0">
@@ -69,5 +85,6 @@ export default function Hero() {
       </div>
     </section>
     </WavyBackground>
+    </>
   )
 }

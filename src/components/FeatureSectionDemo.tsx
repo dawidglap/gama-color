@@ -6,12 +6,15 @@ export function FeaturesSectionDemo() {
     <div className="py-20 lg:py-40">
 
       <div className="max-w-7xl xl:max-w-[1600px] mx-auto  px-4 lg:px-8">
-           <div className="text-center mb-16">
+           <div className="max-w-4xl text-center mx-auto mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900">
-            Ponad 30 lat doświadczenia. <br /> Fachowość, terminowość, jakość.
+            Ponad <span className="font-extrabold">30 lat</span> doświadczenia w montażu <span className="text-yellow-400">rolet</span>, <span className="text-red-500">żaluzji </span>i <span className="text-blue-500">plis</span> w Słupsku.
           </h2>
           <p className="mt-4 text-lg text-gray-600">
-            Jesteśmy zaufanym partnerem w zakresie osłon okiennych od 1994 roku.
+            Od 1994 roku dostarczamy wysokiej jakości osłony okienne – fachowo, terminowo i z gwarancją zadowolenia.
+Zaufaj lokalnej firmie z tradycją – wybierz sprawdzone rozwiązania dla Twojego domu i biura.
+
+
           </p>
         </div>
   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
