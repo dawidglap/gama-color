@@ -1,5 +1,7 @@
 import { FeaturesSectionDemo } from "@/components/FeatureSectionDemo";
 import Hero from "@/components/Hero";
+import  { AppleCardsCarouselDemo }  from "@/components/AppleCardsCarouselDemo";
+
 
 
 export default function HomePage() {
@@ -7,6 +9,7 @@ export default function HomePage() {
     <main>
       <Hero />
       <FeaturesSectionDemo />
+      <AppleCardsCarouselDemo />
     </main>
   )
 }
