@@ -15,7 +15,7 @@ const parentVariants = {
     y: 0,
     transition: {
       duration: 1.4,
-      ease: [0.33, 1, 0.68, 1],
+      ease: [0.33, 1, 0.68, 1] as [number, number, number, number],
       when: 'beforeChildren',
       staggerChildren: 0.2,
     },
