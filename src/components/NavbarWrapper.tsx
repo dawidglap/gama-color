@@ -21,7 +21,7 @@ export default function NavbarWrapper() {
     { name: "O nas", link: "#about" },
     { name: "Produkty", link: "#products" },
     { name: "Realizacje", link: "#realizacje" },
-    { name: "Kontakt", link: "#contact" },
+    // { name: "Kontakt", link: "#contact" },
   ];
 
   return (
@@ -51,7 +51,7 @@ export default function NavbarWrapper() {
               key={idx}
               href={item.link}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-neutral-600 text-xl font-bold"
+              className="text-neutral-600 text-xl  font-bold"
             >
               {item.name}
             </a>
