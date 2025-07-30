@@ -17,7 +17,7 @@ import Zew from "../../public/images/zew.webp";
 
 export function AppleCardsCarouselDemo() {
   const cards = data.map((card, index) => (
-    <Card key={card.src} card={card} index={index} />
+    <Card key={card.title} card={card} index={index} />
   ));
 
   return (
