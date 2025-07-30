@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { FaUserCircle } from 'react-icons/fa'
+
 import Image from 'next/image'
 import stef from '../../public/images/stef.png' // Sostituisci con il tuo path effettivo
 
