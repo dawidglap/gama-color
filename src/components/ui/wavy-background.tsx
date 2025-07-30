@@ -135,3 +135,5 @@ const waveColors = colors ?? [
     </div>
   );
 };
+
+// removed any warning 
