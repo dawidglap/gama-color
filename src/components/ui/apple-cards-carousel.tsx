@@ -19,7 +19,8 @@ import type { StaticImageData } from 'next/image';
 
 
 interface CarouselProps {
-  items: JSX.Element[];
+  items: React.ReactElement[];
+
   initialScroll?: number;
 }
 
