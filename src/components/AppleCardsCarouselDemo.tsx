@@ -4,8 +4,15 @@ import React from "react";
 import { Carousel, Card } from "./ui/apple-cards-carousel";
 import Image from "next/image";
 import logoGama from "../../public/images/gama-color-logo.png";
-import Rolety from "../../public/images/rolety.webp";
+import Roleta from "../../public/images/roleta.webp";
 import Fotorolety from "../../public/images/fotorolety.webp";
+import Zaluzje from "../../public/images/zaluzje.webp";
+import Plisy from "../../public/images/plisy.webp";
+import Rzymskie from "../../public/images/rzymskie.webp";
+import Moskitiery from "../../public/images/moskitiery.webp";
+import Markizy from "../../public/images/markizy.webp";
+import Zew from "../../public/images/zew.webp";
+
 
 
 export function AppleCardsCarouselDemo() {
@@ -64,43 +71,43 @@ const data = [
   {
     category: "Rolety",
     title: "Rolety materiałowe",
-    src: Rolety,
+    src: Roleta,
     content: <DummyContent title="Rolety materiałowe" />,
   },
   {
     category: "Żaluzje",
     title: "Żaluzje drewniane i aluminiowe",
-    src: "/images/zaluzje.jpg",
+    src: Zaluzje,
     content: <DummyContent title="Żaluzje" />,
   },
   {
     category: "Plisy",
     title: "Plisy na wymiar",
-    src: "/images/plisy.jpg",
+    src: Plisy,
     content: <DummyContent title="Plisy" />,
   },
   {
-    category: "Rolety rzymskie",
+    category: "Rolety",
     title: "Rolety Rzymskie i Austriackie",
-    src: "/images/rolety-rzymskie.jpg",
+    src: Rzymskie,
     content: <DummyContent title="Rolety Rzymskie i Austriackie" />,
   },
   {
     category: "Moskitiery",
     title: "Moskitiery okienne i drzwiowe",
-    src: "/images/moskitiery.jpg",
+    src: Moskitiery,
     content: <DummyContent title="Moskitiery" />,
   },
   {
     category: "Markizy",
     title: "Markizy tarasowe i balkonowe",
-    src: "/images/markizy.jpg",
+    src: Markizy,
     content: <DummyContent title="Markizy" />,
   },
   {
     category: "Rolety zewnętrzne",
     title: "Rolety zewnętrzne",
-    src: "/images/rolety-zewnetrzne.jpg",
+    src: Zew,
     content: <DummyContent title="Rolety zewnętrzne" />,
   },
 ];
