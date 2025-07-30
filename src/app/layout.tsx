@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
+import NavbarWrapper from "@/components/NavbarWrapper";
 
-// Importa Montserrat con pesi e subset desiderati
 const montserrat = Montserrat({
   subsets: ["latin"],
-  
   display: "swap",
 });
 
@@ -16,12 +15,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="pl" className={montserrat.className}>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <NavbarWrapper />
+        {children}
+      </body>
     </html>
   );
 }

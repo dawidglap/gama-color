@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 import heroData from '../data/home/hero.json'
 import { WavyBackground } from './ui/wavy-background'
 import HeroImage from '../../public/images/hero.webp'
-import { Navbar, NavbarButton, NavbarLogo, NavBody, NavItems } from './ui/resizable-navbar'
+
 
 const parentVariants = {
   hidden: { opacity: 0, y: '100%' },
@@ -32,20 +32,7 @@ export default function Hero() {
 
   return (
     <>
-      <Navbar>
-        <NavBody>
-          <NavbarLogo />
-          <NavItems
-            items={[
-              { name: "O nas", link: "#about" },
-              { name: "Produkty", link: "#products" },
-              { name: "Realizacje", link: "#realizacje" },
-              { name: "Kontakt", link: "#contact" },
-            ]}
-          />
-          <NavbarButton href="#contact">Kontakt</NavbarButton>
-        </NavBody>
-      </Navbar>
+    
 
 
   {/* Hero Content */}

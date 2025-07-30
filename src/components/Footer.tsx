@@ -13,12 +13,17 @@ import logoGama from '../../public/images/gama-color-logo.png';
 
 const Footer = () => {
   return (
-    <footer className='bg-background-secondary py-10 text-primary border-t border-gray-400'>
+    <>
+    <div className='h-2 bg-yellow-400'></div>
+  <div className='h-2 bg-red-500'></div>
+  <div className='h-2 bg-blue-400'></div>
+    
+    <footer className='py-10 text-primary'>
       {/* Logo */}
       <div className='mb-8 flex justify-center'>
         <Link href='/'>
         <div className='flex cursor-pointer items-center gap-4'>
-  <div className='relative h-16 w-16 md:h-32 md:w-64'>
+  <div className='relative h-24 w-48 md:h-32 md:w-64'>
     <Image
       src={logoGama}
       alt='Logo Gama Color'
@@ -104,6 +109,7 @@ const Footer = () => {
         <p>&copy; {new Date().getFullYear()} Gama Color. Wszelkie prawa zastrzeżone.</p>
       </div>
     </footer>
+    </>
   )
 }
 

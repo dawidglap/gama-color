@@ -13,12 +13,14 @@ const CallToAction = () => {
       <div className='mx-auto max-w-4xl px-8'>
         {/* Tytuł */}
         <h2 className='text-4xl font-bold text-primary md:text-5xl'>
-          Masz pytania? Chętnie doradzimy!
+          Rolety i żaluzje szyte na miarę Twojego wnętrza
         </h2>
+
         {/* Podtytuł */}
         <p className='mt-4 text-lg text-secondary md:text-xl'>
-          Skontaktuj się z nami już teraz i umów bezpłatny pomiar lub konsultację.
+          Skontaktuj się z nami i zamów bezpłatny pomiar rolet, plis, moskitier lub żaluzji w Słupsku i okolicach. Doradzimy najlepsze rozwiązanie do Twojego domu lub biura.
         </p>
+
         {/* Przycisk */}
         <div className='mt-8'>
           <a href='tel:+48598423534'>
@@ -27,7 +29,7 @@ const CallToAction = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              📞 Zadzwoń: +48 59 842 35 34
+              Zadzwoń do nas
             </motion.button>
           </a>
         </div>
