@@ -1,21 +1,30 @@
-// app/produkty/rolety/[slug]/page.tsx
-import { notFound } from "next/navigation";
-import Link from "next/link";
+// app/produkty/rolety-materialowe/[slug]/page.tsx
 import Image from "next/image";
-import ProductHeader from "@/components/ProductHeader";
-import { ROLETY } from "@/data/rolety";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
+import { ROLETY } from "@/data/rolety";
+import ProductHeader from "@/components/ProductHeader";
+import ProductExplainer from "@/components/ProductExplainer";
+
+// Slug statici dalle varianti
 export function generateStaticParams() {
   return Object.keys(ROLETY).map((slug) => ({ slug }));
 }
 
-export default function RoletyVariantPage({ params }: { params: { slug: string } }) {
-  const data = ROLETY[params.slug];
+// Next 15: params è Promise
+export default async function RoletyVariantPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const data = ROLETY[slug];
   if (!data) notFound();
 
   return (
     <main className="relative">
-      {/* strisce brand a destra */}
+      {/* Strisce fisse lato destro (desktop) */}
       <div
         aria-hidden
         className="pointer-events-none fixed inset-y-0 right-[-12px] z-0 hidden translate-x-4 sm:block"
@@ -27,6 +36,7 @@ export default function RoletyVariantPage({ params }: { params: { slug: string }
         </div>
       </div>
 
+      {/* Container */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-12">
         {/* breadcrumb */}
         <nav aria-label="Breadcrumb" className="mb-6 text-sm text-neutral-500">
@@ -34,14 +44,12 @@ export default function RoletyVariantPage({ params }: { params: { slug: string }
           <span className="mx-2">/</span>
           <Link href="/produkty" className="hover:underline">Produkty</Link>
           <span className="mx-2">/</span>
-           <Link href="/produkty/rolety-materialowe" className="hover:underline">
-            Rolety materiałowe
-          </Link>
+          <Link href="/produkty/rolety-materialowe" className="hover:underline">Rolety materiałowe</Link>
           <span className="mx-2">/</span>
           <span aria-current="page" className="text-neutral-700">{data.title}</span>
         </nav>
 
-        {/* header mobile */}
+        {/* Header mobile */}
         <div className="md:hidden">
           <ProductHeader
             category={data.category}
@@ -51,7 +59,7 @@ export default function RoletyVariantPage({ params }: { params: { slug: string }
           />
         </div>
 
-        {/* hero con overlay header su desktop */}
+        {/* Hero + overlay header (desktop) */}
         <div className="relative mb-10 aspect-[16/9] w-full overflow-hidden rounded-3xl bg-neutral-100 ring-1 ring-neutral-200/60">
           <Image src={data.image} alt={data.title} fill className="object-cover" priority />
           <div className="absolute inset-0 hidden md:block">
@@ -74,39 +82,42 @@ export default function RoletyVariantPage({ params }: { params: { slug: string }
           <div className="h-1 w-1/3 bg-blue-400" />
         </div>
 
-        {/* contenuto semplice + aside (con immagine che riempie la colonna su desktop) */}
+        {/* Contenuti + aside */}
         <section className="grid gap-8 md:grid-cols-3">
-          <div className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-neutral-100 md:col-span-2">
-            <h2 className="text-xl font-semibold text-neutral-900">Opis produktu</h2>
-            <p className="mt-3 text-neutral-700">{data.description}</p>
-          </div>
+          <ProductExplainer slug={slug} />
 
           <aside className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-neutral-100 md:flex md:h-full md:flex-col">
             <h3 className="text-lg font-semibold text-neutral-900">Umów pomiar*</h3>
-            <p className="mt-2 text-neutral-600">Zadzwoń lub napisz — doradzimy i zaplanujemy montaż.</p>
+            <p className="mt-2 text-neutral-600">
+              Zadzwoń lub napisz — doradzimy i zaplanujemy montaż.
+            </p>
 
             <div className="mt-4 space-y-2">
               <a href="tel:+48598423534" className="block rounded-xl bg-gradient-to-r from-yellow-400 via-red-500 to-blue-400 px-4 py-3 text-center font-medium text-white transition hover:opacity-90">
                 +48 59 842 35 34
               </a>
               <a href="tel:+48603380709" className="block rounded-xl bg-gradient-to-r from-yellow-400 via-red-500 to-blue-400 px-4 py-3 text-center font-medium text-white transition hover:opacity-90">
-                603 380 709
+                +48 603 380 709
               </a>
               <a href="mailto:biuro@gamacolor.pl" className="block rounded-xl border border-transparent bg-neutral-100 px-4 py-3 text-center font-medium text-neutral-900 ring-1 ring-neutral-200 transition hover:bg-neutral-200">
                 biuro@gamacolor.pl
               </a>
             </div>
 
-            <div className="mt-4 text-center text-sm text-neutral-500">ul. Morcinka 21, 76-200 Słupsk</div>
+            <div className="mt-4 text-center text-sm text-neutral-500">
+              ul. Morcinka 21, 76-200 Słupsk
+            </div>
+
             <p className="mt-4 text-[10px] leading-relaxed text-neutral-400">
-              * Pomiar na miejscu jest bezpłatny w przypadku złożenia zamówienia. Wizyta pomiarowa bez dalszego zamówienia może wiązać się z opłatą serwisową.
+              * Pomiar na miejscu jest bezpłatny w przypadku złożenia zamówienia.
+              Wizyta pomiarowa bez dalszego zamówienia może wiązać się z opłatą serwisową.
             </p>
 
-            {data.asideImage && (
+            {ROLETY[slug].asideImage && (
               <div className="mt-6 hidden md:block md:flex-1">
                 <div className="relative h-full w-full overflow-hidden rounded-xl ring-1 ring-neutral-100">
                   <Image
-                    src={data.asideImage}
+                    src={ROLETY[slug].asideImage!}
                     alt={`${data.title} — realizacja`}
                     fill
                     className="object-cover"

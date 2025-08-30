@@ -6,7 +6,6 @@ import { notFound } from "next/navigation";
 import ProductHeader from "@/components/ProductHeader";
 import ProductExplainer from "@/components/ProductExplainer";
 import ProductGallery from "@/components/ProductGallery";
-
 import stef from "../../../../public/images/stef.png";
 
 // --- Tipi e dati -------------------------------------------------------------
@@ -15,9 +14,9 @@ type Product = {
   title: string;
   category: string;
   description: string;
-  image: string;            // hero
-  asideImage?: string;      // immagine che riempie l'aside (solo desktop)
-  galleryImages?: string[]; // immagini esempi per la griglia sotto l'explainer
+  image: string;        // hero
+  asideImage?: string;  // immagine che riempie l'aside (solo desktop)
+  galleryImages?: string[];
 };
 
 const PRODUCTS: Record<string, Product> = {
@@ -85,18 +84,18 @@ const PRODUCTS: Record<string, Product> = {
   },
 };
 
-type RouteParams = { slug: string };
-
-export function generateStaticParams(): RouteParams[] {
+export function generateStaticParams() {
   return Object.keys(PRODUCTS).map((slug) => ({ slug }));
 }
 
-// --- Pagina ------------------------------------------------------------------
-// Nota: PageProps è globale in Next 15: PageProps<'/produkty/[slug]'>
-export default async function ProductPage(
-  props: PageProps<"/produkty/[slug]">
-) {
-  const { slug } = await props.params; // params è una Promise in Next 15
+// --- Pagina (Next 15: params è una Promise) ---------------------------------
+
+export default async function ProductPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
   const data = PRODUCTS[slug];
   if (!data) notFound();
 
@@ -114,7 +113,7 @@ export default async function ProductPage(
         </div>
       </div>
 
-      {/* Contenuto con container unico */}
+      {/* Container unico */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-12">
         {/* breadcrumb */}
         <nav aria-label="Breadcrumb" className="mb-6 text-sm text-neutral-500">
@@ -125,7 +124,7 @@ export default async function ProductPage(
           <span aria-current="page" className="text-neutral-700">{data.title}</span>
         </nav>
 
-        {/* Header mobile (fuori dall'immagine) */}
+        {/* Header mobile (fuori immagine) */}
         <div className="md:hidden">
           <ProductHeader
             category={data.category}
@@ -135,17 +134,10 @@ export default async function ProductPage(
           />
         </div>
 
-        {/* Hero con overlay header (desktop) */}
+        {/* Hero + overlay header (desktop) */}
         <div className="relative mb-10 aspect-[16/9] w-full overflow-hidden rounded-3xl bg-neutral-100 ring-1 ring-neutral-200/60">
-          <Image
-            src={data.image}
-            alt={data.title}
-            fill
-            className="object-cover"
-            priority
-          />
+          <Image src={data.image} alt={data.title} fill className="object-cover" priority />
           <div className="absolute inset-0 hidden md:block">
-            {/* gradiente per leggibilità, testo in alto */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-transparent" />
             <div className="absolute top-8 left-8 right-8">
               <ProductHeader
@@ -169,7 +161,6 @@ export default async function ProductPage(
         <section className="grid gap-8 md:grid-cols-3">
           <ProductExplainer slug={slug} />
 
-          {/* Aside: CTA + immagine di riempimento (solo desktop) */}
           <aside className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-neutral-100 md:flex md:h-full md:flex-col">
             <h3 className="text-lg font-semibold text-neutral-900">Umów pomiar*</h3>
             <p className="mt-2 text-neutral-600">
@@ -177,22 +168,13 @@ export default async function ProductPage(
             </p>
 
             <div className="mt-4 space-y-2">
-              <a
-                href="tel:+48598423534"
-                className="block rounded-xl bg-gradient-to-r from-yellow-400 via-red-500 to-blue-400 px-4 py-3 text-center font-medium text-white transition hover:opacity-90"
-              >
+              <a href="tel:+48598423534" className="block rounded-xl bg-gradient-to-r from-yellow-400 via-red-500 to-blue-400 px-4 py-3 text-center font-medium text-white transition hover:opacity-90">
                 +48 59 842 35 34
               </a>
-              <a
-                href="tel:+48603380709"
-                className="block rounded-xl bg-gradient-to-r from-yellow-400 via-red-500 to-blue-400 px-4 py-3 text-center font-medium text-white transition hover:opacity-90"
-              >
+              <a href="tel:+48603380709" className="block rounded-xl bg-gradient-to-r from-yellow-400 via-red-500 to-blue-400 px-4 py-3 text-center font-medium text-white transition hover:opacity-90">
                 +48 603 380 709
               </a>
-              <a
-                href="mailto:biuro@gamacolor.pl"
-                className="block rounded-xl border border-transparent bg-neutral-100 px-4 py-3 text-center font-medium text-neutral-900 ring-1 ring-neutral-200 transition hover:bg-neutral-200"
-              >
+              <a href="mailto:biuro@gamacolor.pl" className="block rounded-xl border border-transparent bg-neutral-100 px-4 py-3 text-center font-medium text-neutral-900 ring-1 ring-neutral-200 transition hover:bg-neutral-200">
                 biuro@gamacolor.pl
               </a>
             </div>
@@ -222,10 +204,10 @@ export default async function ProductPage(
           </aside>
         </section>
 
-        {/* Gallery esempi */}
+        {/* Gallery esempi (solo se presente) */}
         <ProductGallery images={data.galleryImages ?? []} altBase={data.title} />
 
-        {/* FAQ solo per fotorolety (esempio) */}
+        {/* FAQ dedicato (esempio per fotorolety) */}
         {slug === "fotorolety" && (
           <section className="mt-12 px-2 sm:px-0">
             <div className="grid gap-8 sm:grid-cols-3 sm:gap-10">
@@ -237,9 +219,7 @@ export default async function ProductPage(
                 <div className="space-y-4">
                   <details className="group border-b border-dotted border-gray-300 pb-4">
                     <summary className="flex w-full cursor-pointer list-none justify-between text-left">
-                      <span className="text-xl font-medium text-black">
-                        Czy mogę użyć własnego zdjęcia?
-                      </span>
+                      <span className="text-xl font-medium text-black">Czy mogę użyć własnego zdjęcia?</span>
                       <svg className="h-5 w-5 text-neutral-500 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
@@ -251,9 +231,7 @@ export default async function ProductPage(
 
                   <details className="group border-b border-dotted border-gray-300 pb-4">
                     <summary className="flex w-full cursor-pointer list-none justify-between text-left">
-                      <span className="text-xl font-medium text-black">
-                        W jakich systemach dostępne są fotorolety?
-                      </span>
+                      <span className="text-xl font-medium text-black">W jakich systemach dostępne są fotorolety?</span>
                       <svg className="h-5 w-5 text-neutral-500 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
@@ -265,9 +243,7 @@ export default async function ProductPage(
 
                   <details className="group border-b border-dotted border-gray-300 pb-4">
                     <summary className="flex w-full cursor-pointer list-none justify-between text-left">
-                      <span className="text-xl font-medium text-black">
-                        Jaki jest czas realizacji?
-                      </span>
+                      <span className="text-xl font-medium text-black">Jaki jest czas realizacji?</span>
                       <svg className="h-5 w-5 text-neutral-500 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
@@ -279,9 +255,7 @@ export default async function ProductPage(
 
                   <details className="group border-b border-dotted border-gray-300 pb-4">
                     <summary className="flex w-full cursor-pointer list-none justify-between text-left">
-                      <span className="text-xl font-medium text-black">
-                        Jak dbać o nadruk?
-                      </span>
+                      <span className="text-xl font-medium text-black">Jak dbać o nadruk?</span>
                       <svg className="h-5 w-5 text-neutral-500 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
@@ -293,7 +267,7 @@ export default async function ProductPage(
                 </div>
               </div>
 
-              {/* Box kontakt a lato FAQ */}
+              {/* box kontakt a lato FAQ */}
               <aside
                 className="h-fit rounded-xl p-6 text-center shadow-sm ring-1 ring-neutral-100"
                 style={{ background: "linear-gradient(135deg, #fff8e1, #ffe5e0)" }}
