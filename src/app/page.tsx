@@ -4,7 +4,6 @@ import  { AppleCardsCarouselDemo }  from "@/components/AppleCardsCarouselDemo";
 import Reviews from "@/components/Reviews";
 import Faq from "@/components/Faq";
 import CallToAction from "@/components/CallToAction";
-import Footer from "@/components/Footer";
 import { LayoutGridDemo }from "@/components/LayoutGridDemo";
 
 
@@ -15,11 +14,11 @@ export default function HomePage() {
       <Hero />
       <FeaturesSectionDemo />
       <AppleCardsCarouselDemo />
-      {/* <LayoutGridDemo /> */}
+      <LayoutGridDemo />
       <Reviews />
       <Faq />
       <CallToAction />
-      <Footer />
+      
     </main>
   )
 }
