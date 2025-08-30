@@ -1,5 +1,6 @@
 // app/produkty/[slug]/page.tsx
 import type { PageProps } from "next";
+import { use } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -16,8 +17,8 @@ type Product = {
   title: string;
   category: string;
   description: string;
-  image: string;        // hero
-  asideImage?: string;  // immagine che riempie l'aside (solo desktop)
+  image: string;           // hero
+  asideImage?: string;     // immagine che riempie l'aside (solo desktop)
   galleryImages?: string[]; // immagini esempi per la griglia sotto l'explainer
 };
 
@@ -94,16 +95,17 @@ export function generateStaticParams(): RouteParams[] {
 
 // --- Pagina ------------------------------------------------------------------
 
-export default async function ProductPage({
+export default function ProductPage({
   params,
 }: PageProps<RouteParams>) {
-  const { slug } = await params; // Next 15: params è una Promise
+  // Next 15: params è una Promise -> lo “unwrap” con use()
+  const { slug } = use(params);
   const data = PRODUCTS[slug];
   if (!data) notFound();
 
   return (
     <main className="relative">
-      {/* Strisce fisse lato destro */}
+      {/* Strisce fisse lato destro (desktop) */}
       <div
         aria-hidden
         className="pointer-events-none fixed inset-y-0 right-[-12px] z-0 hidden translate-x-4 sm:block"
