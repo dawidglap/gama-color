@@ -1,19 +1,24 @@
 // app/produkty/[slug]/page.tsx
-import ProductExplainer from "@/components/ProductExplainer";
-import ProductHeader from "@/components/ProductHeader";
+import type { PageProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import stef from "../../../../public/images/stef.png" // Sostituisci con il tuo path effettivo
+
+import ProductHeader from "@/components/ProductHeader";
+import ProductExplainer from "@/components/ProductExplainer";
 import ProductGallery from "@/components/ProductGallery";
+
+import stef from "../../../../public/images/stef.png"; // avatar per box FAQ
+
+// --- Tipi e dati -------------------------------------------------------------
 
 type Product = {
   title: string;
   category: string;
   description: string;
-  image: string;       // hero
-  asideImage?: string; // ⬅️ NUOVO: immagine di riempimento per l'aside (desktop only)
-  galleryImages?: string[]; 
+  image: string;        // hero
+  asideImage?: string;  // immagine che riempie l'aside (solo desktop)
+  galleryImages?: string[]; // immagini esempi per la griglia sotto l'explainer
 };
 
 const PRODUCTS: Record<string, Product> = {
@@ -23,23 +28,14 @@ const PRODUCTS: Record<string, Product> = {
     description:
       "Rolety z nadrukiem dowolnej grafiki lub zdjęcia. Personalizacja 1:1, produkcja na wymiar i montaż w Słupsku i okolicach.",
     image: "/images/fotorolety-hero.webp",
-    asideImage: "/images/fotorolety/g5.webp", 
-      galleryImages: [
+    asideImage: "/images/fotorolety/g5.webp",
+    galleryImages: [
       "/images/fotorolety/g1.webp",
       "/images/fotorolety/g2.webp",
       "/images/fotorolety/g3.webp",
       "/images/fotorolety/g4.webp",
-      // puoi aggiungerne altre; il componente gestisce qualsiasi lunghezza
     ],
   },
-//   "rolety-materialowe": {
-//     title: "Rolety materiałowe",
-//     category: "Rolety",
-//     description:
-//       "Rolety wewnętrzne: wolnowiszące, w kasecie, dzień-noc. Szeroki wybór tkanin i kolorów, montaż na wymiar.",
-//     image: "/images/rolety-og.jpg",
-//     asideImage: "/images/rolety-aside.jpg",
-//   },
   zaluzje: {
     title: "Żaluzje drewniane i aluminiowe",
     category: "Żaluzje",
@@ -90,17 +86,24 @@ const PRODUCTS: Record<string, Product> = {
   },
 };
 
-export function generateStaticParams() {
+type RouteParams = { slug: string };
+
+export function generateStaticParams(): RouteParams[] {
   return Object.keys(PRODUCTS).map((slug) => ({ slug }));
 }
 
-export default function ProductPage({ params }: { params: { slug: string } }) {
-  const data = PRODUCTS[params.slug];
+// --- Pagina ------------------------------------------------------------------
+
+export default async function ProductPage({
+  params,
+}: PageProps<RouteParams>) {
+  const { slug } = await params; // Next 15: params è una Promise
+  const data = PRODUCTS[slug];
   if (!data) notFound();
 
   return (
     <main className="relative">
-      {/* STRISCE fisse a destra */}
+      {/* Strisce fisse lato destro */}
       <div
         aria-hidden
         className="pointer-events-none fixed inset-y-0 right-[-12px] z-0 hidden translate-x-4 sm:block"
@@ -112,7 +115,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         </div>
       </div>
 
-      {/* CONTAINER */}
+      {/* Contenuto con container unico */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-12">
         {/* breadcrumb */}
         <nav aria-label="Breadcrumb" className="mb-6 text-sm text-neutral-500">
@@ -123,7 +126,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           <span aria-current="page" className="text-neutral-700">{data.title}</span>
         </nav>
 
-        {/* HEADER mobile (fuori dall’immagine) */}
+        {/* Header mobile (fuori dall'immagine) */}
         <div className="md:hidden">
           <ProductHeader
             category={data.category}
@@ -133,7 +136,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           />
         </div>
 
-        {/* HERO con overlay header (desktop) */}
+        {/* Hero con overlay header (desktop) */}
         <div className="relative mb-10 aspect-[16/9] w-full overflow-hidden rounded-3xl bg-neutral-100 ring-1 ring-neutral-200/60">
           <Image
             src={data.image}
@@ -143,6 +146,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             priority
           />
           <div className="absolute inset-0 hidden md:block">
+            {/* gradiente per leggibilità, testo in alto */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-transparent" />
             <div className="absolute top-8 left-8 right-8">
               <ProductHeader
@@ -162,12 +166,11 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           <div className="h-1 w-1/3 bg-blue-400" />
         </div>
 
-        {/* CONTENUTI + ASIDE */}
+        {/* Contenuti + aside */}
         <section className="grid gap-8 md:grid-cols-3">
-          <ProductExplainer slug={params.slug} />
- 
+          <ProductExplainer slug={slug} />
 
-          {/* ASIDE: stile bianco + immagine riempitiva su desktop */}
+          {/* Aside: CTA + immagine di riempimento (solo desktop) */}
           <aside className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-neutral-100 md:flex md:h-full md:flex-col">
             <h3 className="text-lg font-semibold text-neutral-900">Umów pomiar*</h3>
             <p className="mt-2 text-neutral-600">
@@ -204,7 +207,6 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               Wizyta pomiarowa bez dalszego zamówienia może wiązać się z opłatą serwisową.
             </p>
 
-            {/* ⬇️ Immagine che RIEMPIE lo spazio restante, solo desktop */}
             {data.asideImage && (
               <div className="mt-6 hidden md:block md:flex-1">
                 <div className="relative h-full w-full overflow-hidden rounded-xl ring-1 ring-neutral-100">
@@ -214,24 +216,25 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                     fill
                     className="object-cover"
                     sizes="(min-width: 1024px) 28vw, (min-width: 768px) 33vw, 100vw"
-                    priority={false}
                   />
                 </div>
               </div>
             )}
           </aside>
         </section>
-         <ProductGallery
-  images={data.galleryImages ?? []}
-  altBase={data.title}/>
-        {/* FAQ dedykowane dla Fotorolety */}
-        {params.slug === "fotorolety" && (
+
+        {/* Gallery esempi (4×1 desktop, 2×2 tablet, 1×N mobile) */}
+        <ProductGallery images={data.galleryImages ?? []} altBase={data.title} />
+
+        {/* FAQ solo per fotorolety (esempio) */}
+        {slug === "fotorolety" && (
           <section className="mt-12 px-2 sm:px-0">
             <div className="grid gap-8 sm:grid-cols-3 sm:gap-10">
               <div className="sm:col-span-2">
                 <h2 className="mb-6 text-3xl font-bold text-neutral-900">
                   Najczęściej zadawane pytania
                 </h2>
+
                 <div className="space-y-4">
                   <details className="group border-b border-dotted border-gray-300 pb-4">
                     <summary className="flex w-full cursor-pointer list-none justify-between text-left">
@@ -291,30 +294,34 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                 </div>
               </div>
 
-              {/* box kontakt a lato FAQ */}
+              {/* Box kontakt a lato FAQ */}
               <aside
                 className="h-fit rounded-xl p-6 text-center shadow-sm ring-1 ring-neutral-100"
                 style={{ background: "linear-gradient(135deg, #fff8e1, #ffe5e0)" }}
               >
-                 <div className='flex justify-center'>
-                      <div className='relative h-20 w-20 mb-4 overflow-hidden rounded-full shadow-md'>
-                        <Image
-                          src={stef}
-                          alt='Zespół Gama Color'
-                          layout='fill'
-                          objectFit='cover'
-                        />
-                      </div>
-                    </div>
+                <div className="flex justify-center">
+                  <div className="relative mb-4 h-20 w-20 overflow-hidden rounded-full shadow-md">
+                    <Image src={stef} alt="Zespół Gama Color" fill className="object-cover" />
+                  </div>
+                </div>
+
                 <h3 className="text-2xl font-bold text-neutral-900">Masz inne pytania?</h3>
+
                 <a href="mailto:biuro@gamacolor.pl" className="mt-2 block text-sm text-neutral-700">
                   <span className="font-semibold text-black">e-mail:</span> biuro@gamacolor.pl
                 </a>
-                <p className="mt-2 text-sm text-neutral-700">
-                  <span className="font-semibold text-yellow-400">tel:</span> +48 59 842 35 34 <br />
-                  <span className="font-semibold text-red-500">fax:</span> +48 59 842 35 34 <br />
-                  <span className="font-semibold text-blue-500">kom:</span> +48 603 380 709
-                </p>
+
+                <div className="mt-2 space-y-1 text-sm text-neutral-700">
+                  <a href="tel:+48598423534" className="block hover:underline">
+                    <span className="font-semibold text-yellow-400">tel:</span> +48 59 842 35 34
+                  </a>
+                  <a href="tel:+48598423534" className="block hover:underline">
+                    <span className="font-semibold text-red-500">fax:</span> +48 59 842 35 34
+                  </a>
+                  <a href="tel:+48603380709" className="block hover:underline">
+                    <span className="font-semibold text-blue-500">kom:</span> +48 603 380 709
+                  </a>
+                </div>
               </aside>
             </div>
           </section>
