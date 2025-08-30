@@ -1,6 +1,4 @@
 // app/produkty/[slug]/page.tsx
-import type { PageProps } from "next";
-import { use } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -9,7 +7,7 @@ import ProductHeader from "@/components/ProductHeader";
 import ProductExplainer from "@/components/ProductExplainer";
 import ProductGallery from "@/components/ProductGallery";
 
-import stef from "../../../../public/images/stef.png"; // avatar per box FAQ
+import stef from "../../../../public/images/stef.png";
 
 // --- Tipi e dati -------------------------------------------------------------
 
@@ -17,8 +15,8 @@ type Product = {
   title: string;
   category: string;
   description: string;
-  image: string;           // hero
-  asideImage?: string;     // immagine che riempie l'aside (solo desktop)
+  image: string;            // hero
+  asideImage?: string;      // immagine che riempie l'aside (solo desktop)
   galleryImages?: string[]; // immagini esempi per la griglia sotto l'explainer
 };
 
@@ -94,12 +92,11 @@ export function generateStaticParams(): RouteParams[] {
 }
 
 // --- Pagina ------------------------------------------------------------------
-
-export default function ProductPage({
-  params,
-}: PageProps<RouteParams>) {
-  // Next 15: params è una Promise -> lo “unwrap” con use()
-  const { slug } = use(params);
+// Nota: PageProps è globale in Next 15: PageProps<'/produkty/[slug]'>
+export default async function ProductPage(
+  props: PageProps<"/produkty/[slug]">
+) {
+  const { slug } = await props.params; // params è una Promise in Next 15
   const data = PRODUCTS[slug];
   if (!data) notFound();
 
@@ -225,7 +222,7 @@ export default function ProductPage({
           </aside>
         </section>
 
-        {/* Gallery esempi (4×1 desktop, 2×2 tablet, 1×N mobile) */}
+        {/* Gallery esempi */}
         <ProductGallery images={data.galleryImages ?? []} altBase={data.title} />
 
         {/* FAQ solo per fotorolety (esempio) */}
