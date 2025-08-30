@@ -1,6 +1,7 @@
+// src/components/ProductExplainer.tsx
 'use client';
 
-import { motion } from 'motion/react';
+import { motion, type Variants } from 'framer-motion';
 import {
   IconCheck,
   IconPhoto,
@@ -11,12 +12,19 @@ import {
   IconFile,
 } from '@tabler/icons-react';
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 12 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: 'easeOut' },
+  },
 };
 
-const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.06 } } };
+const stagger: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.06 } },
+};
 
 export default function ProductExplainer({ slug }: { slug: string }) {
   const isFotorolety = slug === 'fotorolety';
@@ -114,7 +122,10 @@ export default function ProductExplainer({ slug }: { slug: string }) {
           </motion.div>
 
           {/* files */}
-          <motion.div variants={fadeUp} className="relative overflow-hidden rounded-xl ring-1 ring-neutral-100">
+          <motion.div
+            variants={fadeUp}
+            className="relative overflow-hidden rounded-xl ring-1 ring-neutral-100"
+          >
             <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-yellow-400 via-red-500 to-blue-400" />
             <div className="grid gap-3 p-4 sm:grid-cols-2">
               <div className="flex items-start gap-3">
