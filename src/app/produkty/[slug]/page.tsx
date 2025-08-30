@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import stef from "../../../../public/images/stef.png" // Sostituisci con il tuo path effettivo
+import ProductGallery from "@/components/ProductGallery";
 
 type Product = {
   title: string;
@@ -12,6 +13,7 @@ type Product = {
   description: string;
   image: string;       // hero
   asideImage?: string; // ⬅️ NUOVO: immagine di riempimento per l'aside (desktop only)
+  galleryImages?: string[]; 
 };
 
 const PRODUCTS: Record<string, Product> = {
@@ -21,16 +23,23 @@ const PRODUCTS: Record<string, Product> = {
     description:
       "Rolety z nadrukiem dowolnej grafiki lub zdjęcia. Personalizacja 1:1, produkcja na wymiar i montaż w Słupsku i okolicach.",
     image: "/images/fotorolety-hero.webp",
-    asideImage: "/images/fotorolety-hero.webp", // ⬅️ aggiungi tu il file
+    asideImage: "/images/fotorolety/g5.webp", 
+      galleryImages: [
+      "/images/fotorolety/g1.webp",
+      "/images/fotorolety/g2.webp",
+      "/images/fotorolety/g3.webp",
+      "/images/fotorolety/g4.webp",
+      // puoi aggiungerne altre; il componente gestisce qualsiasi lunghezza
+    ],
   },
-  "rolety-materialowe": {
-    title: "Rolety materiałowe",
-    category: "Rolety",
-    description:
-      "Rolety wewnętrzne: wolnowiszące, w kasecie, dzień-noc. Szeroki wybór tkanin i kolorów, montaż na wymiar.",
-    image: "/images/rolety-og.jpg",
-    asideImage: "/images/rolety-aside.jpg",
-  },
+//   "rolety-materialowe": {
+//     title: "Rolety materiałowe",
+//     category: "Rolety",
+//     description:
+//       "Rolety wewnętrzne: wolnowiszące, w kasecie, dzień-noc. Szeroki wybór tkanin i kolorów, montaż na wymiar.",
+//     image: "/images/rolety-og.jpg",
+//     asideImage: "/images/rolety-aside.jpg",
+//   },
   zaluzje: {
     title: "Żaluzje drewniane i aluminiowe",
     category: "Żaluzje",
@@ -156,6 +165,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         {/* CONTENUTI + ASIDE */}
         <section className="grid gap-8 md:grid-cols-3">
           <ProductExplainer slug={params.slug} />
+ 
 
           {/* ASIDE: stile bianco + immagine riempitiva su desktop */}
           <aside className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-neutral-100 md:flex md:h-full md:flex-col">
@@ -211,7 +221,9 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             )}
           </aside>
         </section>
-
+         <ProductGallery
+  images={data.galleryImages ?? []}
+  altBase={data.title}/>
         {/* FAQ dedykowane dla Fotorolety */}
         {params.slug === "fotorolety" && (
           <section className="mt-12 px-2 sm:px-0">
