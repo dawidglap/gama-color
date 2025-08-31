@@ -1,10 +1,8 @@
 'use client';
 
 import { motion, type Variants } from 'framer-motion';
-import type { ComponentProps, ReactNode } from 'react';
-import {
-  IconCheck,
-} from '@tabler/icons-react';
+import type { ReactNode } from 'react';
+import { IconCheck } from '@tabler/icons-react';
 
 export const fadeUp: Variants = {
   hidden: { opacity: 0, y: 12 },
@@ -24,7 +22,7 @@ export function Chips({
   items,
   className = '',
 }: {
-  items: { label: string; Icon: (props: ComponentProps<'svg'>) => JSX.Element }[];
+  items: { label: string; Icon: React.ElementType }[]; // ✅ accetta Tabler icons (o qualsiasi componente)
   className?: string;
 }) {
   return (
