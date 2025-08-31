@@ -16,7 +16,7 @@ import Work12 from "../../public/images/work2.webp";
 
 export function LayoutGridDemo() {
   return (
-    <div className="min-h-screen py-20 w-full">
+    <div className="min-h-screen py-20 w-full" id="realizacje">
       <LayoutGrid cards={cards} />
     </div>
   );

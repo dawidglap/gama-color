@@ -11,17 +11,18 @@ import {
   MobileNavToggle,
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
-
+import Link from "next/link";
 import { useState } from "react";
 
 export default function NavbarWrapper() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  // Link assoluti per funzionare da qualunque pagina
   const navItems = [
-    { name: "O nas", link: "#about" },
-    { name: "Produkty", link: "#products" },
-    { name: "Realizacje", link: "#realizacje" },
-    // { name: "Kontakt", link: "#contact" },
+    { name: "Produkty",   link: "/produkty" },
+    { name: "Realizacje", link: "/#realizacje" },
+    { name: "Opinie",     link: "/#reviews" },
+    { name: "O nas",      link: "/o-nas" },
   ];
 
   return (
@@ -30,7 +31,8 @@ export default function NavbarWrapper() {
       <NavBody>
         <NavbarLogo />
         <NavItems items={navItems} />
-        <NavbarButton href="#contact">Kontakt</NavbarButton>
+        {/* Desktop: pagina contatti */}
+        <NavbarButton href="/kontakt">Kontakt</NavbarButton>
       </NavBody>
 
       {/* Mobile navbar */}
@@ -39,25 +41,29 @@ export default function NavbarWrapper() {
           <NavbarLogo />
           <MobileNavToggle
             isOpen={isMobileMenuOpen}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => setIsMobileMenuOpen((v) => !v)}
           />
         </MobileNavHeader>
+
         <MobileNavMenu
           isOpen={isMobileMenuOpen}
           onClose={() => setIsMobileMenuOpen(false)}
         >
-          {navItems.map((item, idx) => (
-            <a
-              key={idx}
+          {navItems.map((item) => (
+            <Link
+              key={item.link}
               href={item.link}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-neutral-600 text-xl  font-bold"
+              className="text-neutral-600 text-xl font-bold"
+              prefetch
             >
               {item.name}
-            </a>
+            </Link>
           ))}
+
           <div className="flex w-full flex-col gap-4 pt-4">
-            <NavbarButton variant="primary" className="w-full">
+            {/* Mobile: chiamata diretta */}
+            <NavbarButton href="tel:+48598423534" className="w-full">
               Kontakt
             </NavbarButton>
           </div>
