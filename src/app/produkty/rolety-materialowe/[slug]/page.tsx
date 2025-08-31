@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { ROLETY } from "@/data/rolety";
 import ProductHeader from "@/components/ProductHeader";
 import ProductExplainer from "@/components/ProductExplainer";
+import ProductGallery from "@/components/ProductGallery";
 
 // Slug statici dalle varianti
 export function generateStaticParams() {
@@ -128,6 +129,8 @@ export default async function RoletyVariantPage({
             )}
           </aside>
         </section>
+         {/* ⬇️ GALLERY esempi (4×1 desktop, 2×2 tablet, 1×N mobile) */}
+        <ProductGallery images={data.galleryImages ?? []} altBase={data.title} />
       </div>
     </main>
   );

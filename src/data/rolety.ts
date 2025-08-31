@@ -4,11 +4,13 @@ const CATEGORY = "Rolety materiałowe" as const;
 export type RoletyVariant = {
     slug: string;
     title: string;
-    short: string;       // krótki opis do kart/hero
-    description: string; // opis rozszerzony (SEO)
-    image: string;       // hero image
-    asideImage?: string; // obraz do asida (desktop)
+    short: string;
+    description: string;
+    image: string;
+    asideImage?: string;
     category: typeof CATEGORY;
+    // ⬇️ nuovo
+    galleryImages?: string[];
 };
 
 export const ROLETY: Record<string, RoletyVariant> = {
@@ -16,84 +18,115 @@ export const ROLETY: Record<string, RoletyVariant> = {
         slug: "vegas-classic",
         title: "Rolety Vegas Classic",
         short:
-            "Eleganckie rolety kasetowe z prowadnicami — idealne dopasowanie do ramy okna.",
+            "Elegancka kaseta + płaskie prowadnice. Montaż do listwy przyszybowej.",
         description:
-            "Vegas Classic to sprawdzony system rolet w kasecie aluminiowej lub PVC z prowadnicami, który estetycznie przylega do szyby i minimalizuje prześwity. Szeroka paleta tkanin i oklein osprzętu pozwala dobrać roletę do każdego stylu wnętrza. Profesjonalny pomiar, produkcja na wymiar i montaż w Słupsku oraz na terenie Pomorza.",
-        image: "/images/rolety/vegas-classic-hero.jpg",
+            "Vegas Classic to uznany system rolet w opływowej kasecie (aluminium lub PVC). Prowadnice klejone do listew utrzymują tkaninę przy szybie, również w oknie uchylonym. Samohamujący mechanizm pozwala zatrzymać roletę na dowolnej wysokości i łatwo zmienić stronę łańcuszka. Szeroki wybór tkanin – także możliwość nadruku (Fotorolety).",
+        image: "/images/rolety/vegas-classic/g1.webp",
         asideImage: "/images/rolety/vegas-classic-aside.jpg",
         category: CATEGORY,
+        // ⬇️ 4 immagini (metti i file in /public)
+        galleryImages: [
+            "/images/rolety/vegas-classic/g1.webp",
+            "/images/rolety/vegas-classic/g2.webp",
+            "/images/rolety/vegas-classic/g3.webp",
+            "/images/rolety/vegas-classic/g4.webp",
+        ],
     },
-
     "vegas-profil": {
         slug: "vegas-profil",
         title: "Rolety Vegas Profil",
-        short:
-            "System przyklejany taśmą dwustronną — świetny na okna z przewiązkami i drzwi balkonowe.",
+        short: "System w całości przyklejany. Prowadnice w kształcie C.",
         description:
-            "Vegas Profil to bezinwazyjny system rolet w kasecie, montowany na taśmę dwustronną. Prowadnice w kształcie litery C umożliwiają montaż na oknach z przewiązkami oraz na pełnej wysokości drzwi balkonowych. Szybki montaż, czysta estetyka i dopasowanie na wymiar — obsługujemy Słupsk i okoliczne miejscowości w regionie Pomorza.",
+            "Prowadnice typu C pozwalają montować roletę na oknach z przewiązkami i na całej wysokości drzwi balkonowych. Montaż szybki i czysty, bez wiercenia w ramie.",
         image: "/images/rolety/vegas-profil-hero.jpg",
         asideImage: "/images/rolety/vegas-profil-aside.jpg",
         category: CATEGORY,
+        galleryImages: [
+            "/images/rolety/vegas-profil/g1.webp",
+            "/images/rolety/vegas-profil/g2.webp",
+            "/images/rolety/vegas-profil/g3.webp",
+            "/images/rolety/vegas-profil/g4.webp",
+        ],
     },
-
     "vegas-mini": {
         slug: "vegas-mini",
         title: "Rolety Vegas Mini",
-        short:
-            "Ekonomiczne rolety wolnowiszące — montaż na listwie przyszybowej lub bezinwazyjnie.",
+        short: "Wolnowiszący, ekonomiczny system na wymiar.",
         description:
-            "Vegas Mini to prosty i korzystny cenowo system rolet wolnowiszących. Sprawdza się w mieszkaniach i biurach, pozwalając na montaż na listwie przyszybowej lub bezinwazyjnie na ramie okna. Duży wybór tkanin (od lekkich po zaciemniające) i realizacja na wymiar z montażem w Słupsku i regionie Pomorza.",
+            "Najprostsze i najtańsze rolety materiałowe. Montaż na listwie przyszybowej lub bezinwazyjnie na ramie okna.",
         image: "/images/rolety/vegas-mini-hero.jpg",
         asideImage: "/images/rolety/vegas-mini-aside.jpg",
         category: CATEGORY,
+        galleryImages: [
+            "/images/rolety/vegas-mini/g1.webp",
+            "/images/rolety/vegas-mini/g2.webp",
+            "/images/rolety/vegas-mini/g3.webp",
+            "/images/rolety/vegas-mini/g4.webp",
+        ],
     },
-
     "wolnowiszace": {
         slug: "wolnowiszace",
         title: "Rolety wolnowiszące",
-        short:
-            "Klasyczna osłona przeciwsłoneczna do większych przeszkleń — montaż na ścianie, suficie lub we wnęce.",
+        short: "Klasyczna osłona i dekoracja większych powierzchni.",
         description:
-            "Rolety wolnowiszące to uniwersalne i trwałe rozwiązanie do zaciemniania większych powierzchni. Możliwy montaż nad wnęką, do sufitu, we wnęce lub bezpośrednio na okno; świetnie sprawdzą się także jako ekran projekcyjny czy przesłona wnęk. Wykonujemy pomiar i montaż na terenie Słupska i całego Pomorza.",
+            "Montaż nad wnęką, do sufitu, we wnęce lub bezpośrednio na ramie. Sprawdzą się także jako ekran projekcyjny.",
         image: "/images/rolety/wolnowiszace-hero.jpg",
         asideImage: "/images/rolety/wolnowiszace-aside.jpg",
         category: CATEGORY,
+        galleryImages: [
+            "/images/rolety/wolnowiszace/g1.webp",
+            "/images/rolety/wolnowiszace/g2.webp",
+            "/images/rolety/wolnowiszace/g3.webp",
+            "/images/rolety/wolnowiszace/g4.webp",
+        ],
     },
-
     "dzien-noc": {
         slug: "dzien-noc",
         title: "Rolety dzień i noc",
-        short:
-            "Dwie warstwy tkaniny (pasy) — płynna regulacja światła i prywatności przez cały dzień.",
+        short: "Dwie warstwy tkaniny – pełna kontrola światła.",
         description:
-            "Rolety dzień i noc (tzw. zebra) łączą pasy zaciemniające i transparentne, dzięki czemu jednym ruchem regulujesz ilość wpadającego światła i prywatność. Zgrabna kaseta, estetyczne prowadnice i bogaty wybór tkanin. Realizacja na wymiar z fachowym montażem w Słupsku i w woj. pomorskim.",
+            "Pasy zaciemniające i transparentne ułożone naprzemiennie. Zgrabna kaseta i estetyczne prowadnice.",
         image: "/images/rolety/dzien-noc-hero.jpg",
         asideImage: "/images/rolety/dzien-noc-aside.jpg",
         category: CATEGORY,
+        galleryImages: [
+            "/images/rolety/dzien-noc/g1.webp",
+            "/images/rolety/dzien-noc/g2.webp",
+            "/images/rolety/dzien-noc/g3.webp",
+            "/images/rolety/dzien-noc/g4.webp",
+        ],
     },
-
     "dachowe-wolnowiszace": {
         slug: "dachowe-wolnowiszace",
         title: "Rolety dachowe wolnowiszące",
-        short:
-            "Komfort na poddaszu — ograniczenie nagrzewania latem i lepsze warunki snu nocą.",
+        short: "Komfort latem i zimą dla poddasza.",
         description:
-            "Rolety wolnowiszące do okien dachowych pomagają ograniczyć nasłonecznienie w dzień i zapewnić komfortowe warunki po zmroku. Dostępne tkaniny antyrefleksyjne i zaciemniające pozwalają dopasować poziom ochrony do potrzeb pomieszczenia. Pomiar i montaż realizujemy w Słupsku i na terenie Pomorza.",
+            "Chronią przed nadmiernym słońcem i ułatwiają nocny wypoczynek. Tkaniny antyrefleksyjne ograniczają nagrzewanie.",
         image: "/images/rolety/dachowe-wolnowiszace-hero.jpg",
         asideImage: "/images/rolety/dachowe-wolnowiszace-aside.jpg",
         category: CATEGORY,
+        galleryImages: [
+            "/images/rolety/dachowe-wolnowiszace/g1.webp",
+            "/images/rolety/dachowe-wolnowiszace/g2.webp",
+            "/images/rolety/dachowe-wolnowiszace/g3.webp",
+            "/images/rolety/dachowe-wolnowiszace/g4.webp",
+        ],
     },
-
     "dachowe-w-kasecie": {
         slug: "dachowe-w-kasecie",
         title: "Rolety dachowe w kasecie",
-        short:
-            "Kaseta i prowadnice przy szybie — maksimum kontroli światła w oknach dachowych.",
+        short: "Kaseta i prowadnice – maksymalna kontrola światła.",
         description:
-            "Rolety dachowe w kasecie (do okien drewnianych i PVC) prowadzą tkaninę przy szybie, ograniczając prześwity i przypadkowe zwisanie. Skuteczna kontrola światła i estetyczny wygląd. Wycena, produkcja na wymiar i montaż — Słupsk oraz miejscowości w całym regionie Pomorza.",
+            "Do okien dachowych drewnianych i PVC. Prowadnice utrzymują tkaninę przy szybie i minimalizują dopływ światła.",
         image: "/images/rolety/dachowe-w-kasecie-hero.jpg",
         asideImage: "/images/rolety/dachowe-w-kasecie-aside.jpg",
         category: CATEGORY,
+        galleryImages: [
+            "/images/rolety/dachowe-w-kasecie/g1.webp",
+            "/images/rolety/dachowe-w-kasecie/g2.webp",
+            "/images/rolety/dachowe-w-kasecie/g3.webp",
+            "/images/rolety/dachowe-w-kasecie/g4.webp",
+        ],
     },
 };
 

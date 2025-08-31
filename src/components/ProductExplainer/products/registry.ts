@@ -1,0 +1,18 @@
+'use client';
+
+import dynamic from 'next/dynamic';
+import { Fallback } from '../ui';
+
+// dynamic imports per page weight & code-split
+const Fotorolety = dynamic(() => import('../products/Fotorolety'), { ssr: false });
+const VegasClassic = dynamic(() => import('../products/VegasClassic'), { ssr: false });
+
+const REGISTRY: Record<string, React.ComponentType> = {
+    'fotorolety': Fotorolety,
+    'vegas-classic': VegasClassic,
+    // aggiungi qui: 'vegas-profil': dynamic(() => import('./VegasProfil'), { ssr: false }),
+};
+
+export function getProductComponent(slug: string): React.ComponentType {
+    return REGISTRY[slug] ?? Fallback;
+}
