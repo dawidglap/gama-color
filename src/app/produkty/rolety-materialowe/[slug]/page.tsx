@@ -7,6 +7,7 @@ import { ROLETY } from "@/data/rolety";
 import ProductHeader from "@/components/ProductHeader";
 import ProductExplainer from "@/components/ProductExplainer";
 import ProductGallery from "@/components/ProductGallery";
+import RollerColorConfigurator from "@/components/ColorConfigurator/RollerColorConfigurator";
 
 // Slug statici dalle varianti
 export function generateStaticParams() {
@@ -129,6 +130,9 @@ export default async function RoletyVariantPage({
             )}
           </aside>
         </section>
+          <div className="md:col-span-3">
+        <RollerColorConfigurator />
+      </div>
          {/* ⬇️ GALLERY esempi (4×1 desktop, 2×2 tablet, 1×N mobile) */}
         <ProductGallery images={data.galleryImages ?? []} altBase={data.title} />
       </div>
