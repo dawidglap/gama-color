@@ -27,7 +27,7 @@ export default function RollerBlindPreview({
   const cassetteFill = cassetteTexture && patternId ? `url(#${patternId})` : (cassetteHex ?? '#9aa0a6');
 
   return (
-    <svg viewBox="0 0 300 320" className={className} role="img" aria-label="Podgląd rolety">
+    <svg viewBox="0 0 300 320" className={className} role="img" aria-label="Podgląd rolety" stroke="#efefef" rx="2">
       <defs>
         {cassetteTexture && patternId && (
           /**

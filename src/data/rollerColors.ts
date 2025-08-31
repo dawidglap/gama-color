@@ -15,13 +15,13 @@ export type CassetteColorOption = ColorOption & {
 /* ---------------- KASETA/PROWADNICE: con TEXTURE ---------------- */
 // Metti i file in /public/images/textures/...
 export const cassetteColors: CassetteColorOption[] = [
+    { id: 'sosna', name: 'Sosna', code: 'DB 703', texture: '/images/textures/sosna.webp', textClass: 'text-white', featured: true },
     { id: 'bialy', name: 'Biały', code: 'RAL 9016', texture: '/images/textures/bialy.webp', textClass: 'text-neutral-900', featured: true },
-    { id: 'czarny', name: 'Czarny', code: 'RAL 9005', texture: '/images/textures/czarny.webp', textClass: 'text-white', featured: true },
-    { id: 'antracyt', name: 'Antracyt', code: 'RAL 7016', texture: '/images/textures/antracyt.webp', textClass: 'text-white', featured: true },
-    { id: 'srebrny', name: 'Srebrny', code: 'RAL 9006', texture: '/images/textures/srebrny.webp', textClass: 'text-neutral-900', featured: true },
-    { id: 'szary', name: 'Szary', code: 'RAL 7040', texture: '/images/textures/szary.webp', textClass: 'text-neutral-900', featured: true },
-    { id: 'db703', name: 'Antracyt Struktura', code: 'DB 703', texture: '/images/textures/db703.webp', textClass: 'text-white', featured: true },
-    { id: 'brazowy', name: 'Brązowy', code: '—', texture: '/images/textures/brazowy.webp', textClass: 'text-white', featured: true },
+    { id: 'brazowy', name: 'Brązowy', code: 'RAL 8017', texture: '/images/textures/brazowy.webp', textClass: 'text-white', featured: true },
+    { id: 'dab-bagienny', name: 'Dąb bagienny', code: 'RAL 7016', texture: '/images/textures/dab-bagienny.webp', textClass: 'text-white', featured: true },
+    { id: 'mahon', name: 'Mahoń', code: 'RAL 9006', texture: '/images/textures/mahon.webp', textClass: 'text-white', featured: true },
+    { id: 'orzech', name: 'Orzech', code: 'RAL 7040', texture: '/images/textures/orzech.webp', textClass: 'text-white', featured: true },
+    { id: 'zloty-dab', name: 'Złoty dąb', code: 'RAL 8017', texture: '/images/textures/zloty-dab.webp', textClass: 'text-white', featured: true },
     // Se vuoi anche "sosna": togli featured o aggiungilo
     // { id: 'sosna',  name: 'Sosna', code: '—', texture: '/images/textures/sosna.webp', textClass:'text-neutral-900' },
 ];
@@ -31,7 +31,7 @@ export const featuredCassetteColors = cassetteColors.filter(c => c.featured);
 // (come prima: generiamo HEX provvisori finché non hai i valori reali)
 export const fabricCodesOrdered: string[] = [
     // a6xx
-    'a601', 'a602', 'a603', 'a604', 'a605', 'a606',
+    'e503', 'a602', 'a603', 'a604', 'a605', 'a606',
     'a607', 'a608', 'a609', 'a610', 'a611', 'a612',
     'a613', 'a614', 'a615', 'a616', 'a617', 'a618',
     'a619', 'a620', 'a621', 'a622', 'a623', 'a624',
@@ -58,7 +58,7 @@ export const fabricCodesOrdered: string[] = [
     'c107', 'c108', 'c109', 'c110', 'c301', 'c302',
     'c303', 'c304', 'c305', 'c306', 'c307', 'c308', 'c309',
     // e5xx
-    'e501', 'e502', 'e503',
+    'e501', 'e502', 'a601',
     // m1xx/m2xx
     'm101', 'm103', 'm104', 'm201', 'm202', 'm203', 'm204',
 ];
