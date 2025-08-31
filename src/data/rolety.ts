@@ -22,14 +22,14 @@ export const ROLETY: Record<string, RoletyVariant> = {
         description:
             "Vegas Classic to uznany system rolet w opływowej kasecie (aluminium lub PVC). Prowadnice klejone do listew utrzymują tkaninę przy szybie, również w oknie uchylonym. Samohamujący mechanizm pozwala zatrzymać roletę na dowolnej wysokości i łatwo zmienić stronę łańcuszka. Szeroki wybór tkanin – także możliwość nadruku (Fotorolety).",
         image: "/images/rolety/vegas-classic/g1.webp",
-        asideImage: "/images/rolety/vegas-classic-aside.jpg",
+        asideImage: "/images/rolety/vegas-classic/g6.webp",
         category: CATEGORY,
         // ⬇️ 4 immagini (metti i file in /public)
         galleryImages: [
             "/images/rolety/vegas-classic/g1.webp",
             "/images/rolety/vegas-classic/g2.webp",
             "/images/rolety/vegas-classic/g3.webp",
-            "/images/rolety/vegas-classic/g4.webp",
+            "/images/rolety/vegas-classic/g5.webp",
         ],
     },
     "vegas-profil": {

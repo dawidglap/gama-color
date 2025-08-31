@@ -54,7 +54,7 @@ export default function RollerColorConfigurator({
         variants={fadeVariants}
         initial="hidden"
         animate="show"
-        className="relative overflow-hidden rounded-2xl bg-neutral-900 px-5 py-8 text-white md:px-8 md:py-10"
+        className="relative overflow-hidden rounded-2xl  bg-neutral-900 sm:bg-gradient-to-br from-neutral-900 via-neutral-800 to-blue-400 px-5 py-8 text-white md:px-8 md:py-10"
       >
         <span className="absolute left-6 top-0 h-10 w-[2px] bg-yellow-400 md:h-12" aria-hidden />
         <span className="absolute left-7 top-0 h-10 w-[2px] bg-red-400 md:h-12" aria-hidden />
