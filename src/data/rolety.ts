@@ -1,4 +1,4 @@
-// data/rolety.ts
+// src/data/rolety.ts
 const CATEGORY = "Rolety materiałowe" as const;
 
 export type RoletyVariant = {
@@ -9,22 +9,24 @@ export type RoletyVariant = {
     image: string;
     asideImage?: string;
     category: typeof CATEGORY;
-    // ⬇️ nuovo
     galleryImages?: string[];
+    /** Config del color configurator per variante */
+    colorConfig?: {
+        /** Limita i colori cassetta/prowadnice agli ID specificati (es. ['bialy','brazowy']) */
+        cassetteIds?: string[];
+    };
 };
 
 export const ROLETY: Record<string, RoletyVariant> = {
     "vegas-classic": {
         slug: "vegas-classic",
         title: "Rolety Vegas Classic",
-        short:
-            "Elegancka kaseta + płaskie prowadnice. Montaż do listwy przyszybowej.",
+        short: "Elegancka kaseta + płaskie prowadnice. Montaż do listwy przyszybowej.",
         description:
             "Vegas Classic to uznany system rolet w opływowej kasecie (aluminium lub PVC). Prowadnice klejone do listew utrzymują tkaninę przy szybie, również w oknie uchylonym. Samohamujący mechanizm pozwala zatrzymać roletę na dowolnej wysokości i łatwo zmienić stronę łańcuszka. Szeroki wybór tkanin – także możliwość nadruku (Fotorolety).",
         image: "/images/rolety/vegas-classic/g1.webp",
         asideImage: "/images/rolety/vegas-classic/g6.webp",
         category: CATEGORY,
-        // ⬇️ 4 immagini (metti i file in /public)
         galleryImages: [
             "/images/rolety/vegas-classic/g1.webp",
             "/images/rolety/vegas-classic/g2.webp",
@@ -32,6 +34,7 @@ export const ROLETY: Record<string, RoletyVariant> = {
             "/images/rolety/vegas-classic/g5.webp",
         ],
     },
+
     "vegas-profil": {
         slug: "vegas-profil",
         title: "Rolety Vegas Profil",
@@ -48,6 +51,7 @@ export const ROLETY: Record<string, RoletyVariant> = {
             "/images/rolety/vegas-profil/g4.webp",
         ],
     },
+
     "vegas-mini": {
         slug: "vegas-mini",
         title: "Rolety Vegas Mini",
@@ -63,7 +67,12 @@ export const ROLETY: Record<string, RoletyVariant> = {
             "/images/rolety/vegas-mini/g3.webp",
             "/images/rolety/vegas-mini/g4.webp",
         ],
+        // ⬇️ Limiti per il configuratore colori (solo biały/brązowy)
+        colorConfig: {
+            cassetteIds: ["bialy", "brazowy"],
+        },
     },
+
     "wolnowiszace": {
         slug: "wolnowiszace",
         title: "Rolety wolnowiszące",
@@ -79,7 +88,12 @@ export const ROLETY: Record<string, RoletyVariant> = {
             "/images/rolety/wolnowiszace/g3.webp",
             "/images/rolety/wolnowiszace/g4.webp",
         ],
+        // ⬇️ Limiti per il configuratore colori (solo biały/brązowy)
+        colorConfig: {
+            cassetteIds: ["bialy", "brazowy"],
+        },
     },
+
     "dzien-noc": {
         slug: "dzien-noc",
         title: "Rolety dzień i noc",
@@ -96,6 +110,7 @@ export const ROLETY: Record<string, RoletyVariant> = {
             "/images/rolety/dzien-noc/g4.webp",
         ],
     },
+
     "dachowe-wolnowiszace": {
         slug: "dachowe-wolnowiszace",
         title: "Rolety dachowe wolnowiszące",
@@ -112,6 +127,7 @@ export const ROLETY: Record<string, RoletyVariant> = {
             "/images/rolety/dachowe-wolnowiszace/g4.webp",
         ],
     },
+
     "dachowe-w-kasecie": {
         slug: "dachowe-w-kasecie",
         title: "Rolety dachowe w kasecie",

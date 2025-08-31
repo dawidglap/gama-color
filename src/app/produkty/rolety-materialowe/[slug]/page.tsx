@@ -131,7 +131,8 @@ export default async function RoletyVariantPage({
           </aside>
         </section>
           <div className="md:col-span-3">
-        <RollerColorConfigurator />
+        <RollerColorConfigurator cassetteIds={data.colorConfig?.cassetteIds}  />
+
       </div>
          {/* ⬇️ GALLERY esempi (4×1 desktop, 2×2 tablet, 1×N mobile) */}
         <ProductGallery images={data.galleryImages ?? []} altBase={data.title} />
