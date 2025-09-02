@@ -22,26 +22,7 @@ type Item = {
 
 // NOTE: usa immagini esistenti in /public/images/...
 const ITEMS: Item[] = [
-  {
-    slug: "fotorolety",
-    title: "Fotorolety – rolety z nadrukiem",
-    category: "Rolety",
-    description:
-      "Personalizowane rolety z nadrukiem Twojego zdjęcia lub grafiki. Na wymiar z montażem w Słupsku i okolicach.",
-    href: "/produkty/fotorolety",
-    image: "/images/fotorolety-hero.webp",
-    highlights: ["Personalizacja 1:1", "Na wymiar", "Do domu i firm"],
-  },
-  {
-    slug: "rolety-materialowe",
-    title: "Rolety materiałowe",
-    category: "Rolety",
-    description:
-      "Rolety wolnowiszące, kasetowe i dzień–noc. Szeroki wybór tkanin, pomiar i montaż w Słupsku i na Pomorzu.",
-    href: "/produkty/rolety-materialowe",
-    image: "/images/roleta.webp",
-    highlights: ["Prowadnice/kasety", "Setki tkanin", "Pomiar i montaż"],
-  },
+
   {
     slug: "zaluzje",
     title: "Żaluzje drewniane i aluminiowe",
@@ -62,6 +43,26 @@ const ITEMS: Item[] = [
     image: "/images/plisy.webp",
     highlights: ["Sterowanie góra/dół", "Cosimo / Smartline", "Wiele tkanin"],
   },
+    {
+    slug: "fotorolety",
+    title: "Fotorolety – rolety z nadrukiem",
+    category: "Rolety",
+    description:
+      "Personalizowane rolety z nadrukiem Twojego zdjęcia lub grafiki. Na wymiar z montażem w Słupsku i okolicach.",
+    href: "/produkty/fotorolety",
+    image: "/images/fotorolety-hero.webp",
+    highlights: ["Personalizacja 1:1", "Na wymiar", "Do domu i firm"],
+  },
+  {
+    slug: "rolety-materialowe",
+    title: "Rolety materiałowe",
+    category: "Rolety",
+    description:
+      "Rolety wolnowiszące, kasetowe i dzień–noc. Szeroki wybór tkanin, pomiar i montaż w Słupsku i na Pomorzu.",
+    href: "/produkty/rolety-materialowe",
+    image: "/images/roleta.webp",
+    highlights: ["Prowadnice/kasety", "Setki tkanin", "Pomiar i montaż"],
+  },
   {
     slug: "rolety-rzymskie-austriackie",
     title: "Rolety rzymskie i austriackie",
@@ -71,6 +72,16 @@ const ITEMS: Item[] = [
     href: "/produkty/rolety-rzymskie-austriackie",
     image: "/images/rzymskie.webp",
     highlights: ["Tkaniny premium", "Szycie na miarę", "Estetyczne wykończenie"],
+  },
+   {
+    slug: "rolety-zewnetrzne",
+    title: "Rolety zewnętrzne",
+    category: "Rolety zewnętrzne",
+    description:
+      "Komfort termiczny i akustyczny, prywatność i bezpieczeństwo. Systemy podtynkowe i elewacyjne, montaż lokalny.",
+    href: "/produkty/rolety-zewnetrzne",
+    image: "/images/zew.webp",
+    highlights: ["Izolacja i cisza", "Prywatność", "Bezpieczeństwo"],
   },
   {
     slug: "moskitiery",
@@ -92,16 +103,7 @@ const ITEMS: Item[] = [
     image: "/images/markizy.webp",
     highlights: ["Konstrukcja alu", "Tkaniny UV", "Do tarasu/balkonu"],
   },
-  {
-    slug: "rolety-zewnetrzne",
-    title: "Rolety zewnętrzne",
-    category: "Rolety zewnętrzne",
-    description:
-      "Komfort termiczny i akustyczny, prywatność i bezpieczeństwo. Systemy podtynkowe i elewacyjne, montaż lokalny.",
-    href: "/produkty/rolety-zewnetrzne",
-    image: "/images/zew.webp",
-    highlights: ["Izolacja i cisza", "Prywatność", "Bezpieczeństwo"],
-  },
+ 
 ];
 
 export default function Page() {
@@ -171,7 +173,7 @@ export default function Page() {
                   {/* Colonna testo */}
                   <div className="p-6 md:p-8">
                     <div className="mb-3 inline-flex items-center gap-2">
-                      <span className="rounded-md bg-neutral-100 px-3 py-1 text-xs font-medium text-neutral-700">
+                      <span className="rounded-md bg-gradient-to-br from-neutral-900 via-neutral-700 to-blue-400 px-3 py-1 text-xs font-medium text-neutral-100">
                         {item.category}
                       </span>
                     </div>

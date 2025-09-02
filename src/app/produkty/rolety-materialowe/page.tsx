@@ -81,7 +81,7 @@ export default function RoletyMaterialoweIndexPage() {
               <div className="p-4">
                 <p className="line-clamp-3 text-sm text-neutral-600">{v.short}</p>
                 <div className="mt-4 inline-flex items-center gap-2 text-sm font-medium">
-                  <span className="bg-gradient-to-r from-yellow-400 via-red-500 to-blue-400 bg-clip-text text-transparent">
+                  <span className="bg-black bg-clip-text text-transparent">
                     Zobacz szczegóły
                   </span>
                   <span aria-hidden>→</span>
