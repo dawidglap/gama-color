@@ -1,4 +1,3 @@
-// app/produkty/zaluzje/[slug]/page.tsx
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -7,7 +6,7 @@ import { ZALUZJE } from "@/data/zaluzje";
 import ProductHeader from "@/components/ProductHeader";
 import ProductExplainer from "@/components/ProductExplainer";
 import ProductGallery from "@/components/ProductGallery";
-import SlatsColorConfigurator from "@/components/ColorConfigurator/SlatsColorConfigurator";
+import ConfiguratorSlot from "@/components/ColorConfigurator/ConfiguratorSlot"; // ⬅️ wrapper client
 
 // Slug statici
 export function generateStaticParams() {
@@ -86,7 +85,6 @@ export default async function ZaluzjeVariantPage({
 
         {/* contenuto + aside */}
         <section className="grid gap-8 md:grid-cols-3">
-          {/* Usa lo stesso ProductExplainer con lo slug della variante */}
           <ProductExplainer slug={slug} />
 
           <aside className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-neutral-100 md:flex md:h-full md:flex-col">
@@ -129,9 +127,12 @@ export default async function ZaluzjeVariantPage({
             )}
           </aside>
         </section>
-<div className="md:col-span-3">
-  <SlatsColorConfigurator />
-</div>
+
+        {/* ⬇️ Configurator specifico per slug */}
+      <div className="md:col-span-3">
+        <ConfiguratorSlot slug={slug} />
+      </div>
+
         {/* gallery */}
         <ProductGallery images={data.galleryImages ?? []} altBase={data.title} />
       </div>

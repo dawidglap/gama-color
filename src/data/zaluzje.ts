@@ -35,8 +35,8 @@ export const ZALUZJE: Record<string, ZaluzjeVariant> = {
     },
 
     /** ===================== ŻALUZJE PIONOWE ===================== */
-    "zaluzje-pionowe": {
-        slug: "zaluzje-pionowe",
+    "zaluzje-pionowe-verticale": {
+        slug: "zaluzje-pionowe-verticale",
         title: "Żaluzje pionowe (verticale)",
         short:
             "Praktyczne przesłony do biur i dużych przeszkleń — płynna regulacja światła.",
