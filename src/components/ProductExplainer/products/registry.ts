@@ -12,6 +12,8 @@ const RoletyWolnowiszace = dynamic(() => import('../products/RoletyWolnowiszace'
 const RoletyDzienNoc = dynamic(() => import('../products/RoletyDzienNoc'), { ssr: false });
 const RoletyDachoweWolnowiszace = dynamic(() => import('../products/RoletyDachoweWolnowiszace'), { ssr: false });
 const RoletyDachoweKaseta = dynamic(() => import('../products/RoletyDachoweKaseta'), { ssr: false });
+const ZaluzjePoziome = dynamic(() => import('../products/ZaluzjePoziome'), { ssr: false });
+
 
 
 
@@ -24,6 +26,7 @@ const REGISTRY: Record<string, React.ComponentType> = {
     'rolety-dzien-noc': RoletyDzienNoc,
     'rolety-dachowe-wolnowiszace': RoletyDachoweWolnowiszace,
     'rolety-dachowe-w-kasecie': RoletyDachoweKaseta,
+    'zaluzje-poziome': ZaluzjePoziome,
 
 
 

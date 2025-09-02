@@ -7,6 +7,7 @@ import { ZALUZJE } from "@/data/zaluzje";
 import ProductHeader from "@/components/ProductHeader";
 import ProductExplainer from "@/components/ProductExplainer";
 import ProductGallery from "@/components/ProductGallery";
+import SlatsColorConfigurator from "@/components/ColorConfigurator/SlatsColorConfigurator";
 
 // Slug statici
 export function generateStaticParams() {
@@ -128,7 +129,9 @@ export default async function ZaluzjeVariantPage({
             )}
           </aside>
         </section>
-
+<div className="md:col-span-3">
+  <SlatsColorConfigurator />
+</div>
         {/* gallery */}
         <ProductGallery images={data.galleryImages ?? []} altBase={data.title} />
       </div>
