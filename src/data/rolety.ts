@@ -73,8 +73,8 @@ export const ROLETY: Record<string, RoletyVariant> = {
         },
     },
 
-    "wolnowiszace": {
-        slug: "wolnowiszace",
+    "rolety-wolnowiszace": {
+        slug: "rolety-wolnowiszace",
         title: "Rolety wolnowiszące",
         short: "Klasyczna osłona i dekoracja większych powierzchni.",
         description:
@@ -94,8 +94,8 @@ export const ROLETY: Record<string, RoletyVariant> = {
         },
     },
 
-    "dzien-noc": {
-        slug: "dzien-noc",
+    "rolety-dzien-noc": {
+        slug: "rolety-dzien-noc",
         title: "Rolety dzień i noc",
         short: "Dwie warstwy tkaniny – pełna kontrola światła.",
         description:
@@ -111,8 +111,8 @@ export const ROLETY: Record<string, RoletyVariant> = {
         ],
     },
 
-    "dachowe-wolnowiszace": {
-        slug: "dachowe-wolnowiszace",
+    "rolety-dachowe-wolnowiszace": {
+        slug: "rolety-dachowe-wolnowiszace",
         title: "Rolety dachowe wolnowiszące",
         short: "Komfort latem i zimą dla poddasza.",
         description:
@@ -128,8 +128,8 @@ export const ROLETY: Record<string, RoletyVariant> = {
         ],
     },
 
-    "dachowe-w-kasecie": {
-        slug: "dachowe-w-kasecie",
+    "rolety-dachowe-w-kasecie": {
+        slug: "rolety-dachowe-w-kasecie",
         title: "Rolety dachowe w kasecie",
         short: "Kaseta i prowadnice – maksymalna kontrola światła.",
         description:

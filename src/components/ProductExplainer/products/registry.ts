@@ -8,12 +8,24 @@ const Fotorolety = dynamic(() => import('../products/Fotorolety'), { ssr: false 
 const VegasClassic = dynamic(() => import('../products/VegasClassic'), { ssr: false });
 const VegasProfil = dynamic(() => import('../products/VegasProfil'), { ssr: false });
 const VegasMini = dynamic(() => import('../products/VegasMini'), { ssr: false });
+const RoletyWolnowiszace = dynamic(() => import('../products/RoletyWolnowiszace'), { ssr: false });
+const RoletyDzienNoc = dynamic(() => import('../products/RoletyDzienNoc'), { ssr: false });
+const RoletyDachoweWolnowiszace = dynamic(() => import('../products/RoletyDachoweWolnowiszace'), { ssr: false });
+const RoletyDachoweKaseta = dynamic(() => import('../products/RoletyDachoweKaseta'), { ssr: false });
+
+
 
 const REGISTRY: Record<string, React.ComponentType> = {
     'fotorolety': Fotorolety,
     'vegas-classic': VegasClassic,
     'vegas-profil': VegasProfil,
     'vegas-mini': VegasMini,
+    'rolety-wolnowiszace': RoletyWolnowiszace,
+    'rolety-dzien-noc': RoletyDzienNoc,
+    'rolety-dachowe-wolnowiszace': RoletyDachoweWolnowiszace,
+    'rolety-dachowe-w-kasecie': RoletyDachoweKaseta,
+
+
 
     // aggiungi qui: 'vegas-profil': dynamic(() => import('./VegasProfil'), { ssr: false }),
 };
