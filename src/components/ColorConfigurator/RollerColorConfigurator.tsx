@@ -36,12 +36,15 @@ type Props = {
   subtitle?: string;
   /** opzionale: limita i colori cassetta/prowadnic a questi ID (es. ['bialy','brazowy']) */
   cassetteIds?: string[];
+    /** opzionale: testo del disclaimer a piè di componente */
+  disclaimerText?: string;
 };
 
 export default function RollerColorConfigurator({
   title = 'Kolorystyka rolet materiałowych',
   subtitle = 'Wybierz kolor, który pasuje do Ciebie',
   cassetteIds,
+  disclaimerText = 'Uwaga: kolory widoczne na ekranie mogą różnić się od rzeczywistych w zależności od ustawień i kalibracji wyświetlacza. W celu potwierdzenia barwy zachęcamy do kontaktu lub zamówienia próbek tkanin.',
 }: Props) {
   const pathname = usePathname();
 
@@ -289,9 +292,25 @@ export default function RollerColorConfigurator({
               <p className="text-sm opacity-90">Wybierz kolor skrzynki i prowadnic</p>
               <p className="text-lg font-semibold">{cassette.name}</p>
             </div>
+  
           </div>
         </div>
+        
       </div>
+                {/* DISCLAIMER */}
+   <motion.p
+      variants={fadeVariants}
+      initial="hidden"
+      animate="show"
+      className="mt-4 text-[10px] leading-relaxed text-neutral-500 sm:text-xs max-w-md"
+      role="note"
+    >
+      {disclaimerText}{' '}
+      <a href="/kontakt" className="underline hover:no-underline">
+        Skontaktuj się z nami
+      </a>
+      , aby otrzymać próbki.
+    </motion.p>
     </section>
   );
 }

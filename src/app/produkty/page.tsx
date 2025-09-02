@@ -253,16 +253,11 @@ export default function Page() {
           })}
         </div>
 
-        {/* Nota asterisco */}
-        {/* <p
-          id="pomiar-footnote"
-          className="mt-8 text-[11px] leading-relaxed text-neutral-500"
-        >
-          Pomiar na miejscu jest bezpłatny w przypadku złożenia zamówienia.
-          Wizyta pomiarowa bez dalszego zamówienia może wiązać się z opłatą serwisową.
-        </p> */}
-
-        {/* Spazio finale per respiro */}
+         <div className="mx-auto mt-12 max-w-xl rounded-xl border border-neutral-200 bg-white p-5 text-sm text-neutral-600 shadow-sm">
+            <p>
+              Nie widzisz produktu, którego szukasz? Zadzwoń do nas – doradzimy najlepsze rozwiązanie i umówimy <strong>bezpłatny pomiar</strong>.
+            </p>
+          </div>
         <div className="h-8" />
       </div>
     </main>
