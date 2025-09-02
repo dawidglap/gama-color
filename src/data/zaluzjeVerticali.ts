@@ -3,7 +3,7 @@
 // W razie potrzeby podmień hex-y na dokładniejsze.
 
 export type VerticalOption = {
-    id: string;        // np. 'poma-040', 'itaca-blue'
+    id: string;        // np. 'roma-040', 'itaca-blue'
     name: string;      // etykieta dla UI
     hex: string;       // kolor pełny (bez tekstury)
     textClass?: string;
@@ -32,23 +32,23 @@ const o = (id: string, name: string, hex: string, featured = false): VerticalOpt
 
 export const ZALUZJE_VERTICALI: VerticalGroup[] = [
     {
-        id: "poma",
-        name: "Poma",
+        id: "Roma",
+        name: "Roma",
         options: [
-            o("poma-040", "040", "#E9E6D5"),
-            o("poma-060", "060", "#F4E271"),
-            o("poma-070", "070", "#E9B88F"),
-            o("poma-090", "090", "#BDB78A"),
-            o("poma-132", "132", "#EDEDED"),
-            o("poma-140", "140", "#FFFFFF"),
-            o("poma-228", "228", "#B5B5B5"),
-            o("poma-245", "245", "#8E8E8E"),
-            o("poma-300", "300", "#DCD2B8"),
-            o("poma-407", "407", "#B2C2B0"),
-            o("poma-415", "415", "#CFE4E6"),
-            o("poma-425", "425", "#9CB9D8"),
-            o("poma-600", "600", "#F0A23A"),
-            o("poma-701", "701", "#E7A6C0"),
+            o("roma-040", "040", "#E9E6D5"),
+            o("roma-060", "060", "#F4E271"),
+            o("roma-070", "070", "#E9B88F"),
+            o("roma-090", "090", "#BDB78A"),
+            o("roma-132", "132", "#EDEDED"),
+            o("roma-140", "140", "#FFFFFF"),
+            o("roma-228", "228", "#B5B5B5"),
+            o("roma-245", "245", "#8E8E8E"),
+            o("roma-300", "300", "#DCD2B8"),
+            o("roma-407", "407", "#B2C2B0"),
+            o("roma-415", "415", "#CFE4E6"),
+            o("roma-425", "425", "#9CB9D8"),
+            o("roma-600", "600", "#F0A23A"),
+            o("roma-701", "701", "#E7A6C0"),
         ],
     },
     {
@@ -236,6 +236,6 @@ export const VERTICALI_BY_ID: Record<string, VerticalOption> =
     Object.fromEntries(VERTICALI_ALL.map(v => [v.id, v]));
 export const VERTICALI_FEATURED: VerticalOption[] =
     [
-        "poma-140", "poma-415", "praga-450", "berlin-600",
+        "roma-140", "roma-415", "praga-450", "berlin-600",
         "kair-425", "kama-663", "itaca-ivory", "niagara-navy",
     ].map(id => VERTICALI_BY_ID[id]).filter(Boolean);

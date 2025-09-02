@@ -9,6 +9,7 @@ import {
   type VerticalGroup,
   type VerticalOption,
 } from '@/data/zaluzjeVerticali';
+import VerticalsControlGuide from './VerticalsControlGuide';
 
 const easeCB = cubicBezier(0.16, 1, 0.3, 1);
 const fade: Variants = {
@@ -161,7 +162,7 @@ export default function VerticalsColorConfigurator({
                 aria-pressed={isSel}
                 title={`${activeGroup.name} — ${opt.name}`}
                 className={[
-                  'h-6 w-[14px] rounded-[2px] ring-2 transition',
+                  'h-6 w-[14px] rounded-[2px] ring-2 transition border-1 border-neutral-300',
                   isSel ? 'ring-amber-400' : 'ring-transparent hover:ring-neutral-300',
                 ].join(' ')}
                 style={{ backgroundColor: opt.hex }}
@@ -181,7 +182,7 @@ export default function VerticalsColorConfigurator({
                 aria-pressed={isSel}
                 title={`${activeGroup.name} — ${opt.name}`}
                 className={[
-                  'h-8 w-full rounded-[4px] ring-2 transition',
+                  'h-8 w-full rounded-[4px] ring-2 transition border-1 border-neutral-300',
                   isSel ? 'ring-amber-400' : 'ring-transparent hover:ring-neutral-300',
                 ].join(' ')}
                 style={{ backgroundColor: opt.hex }}
@@ -200,6 +201,8 @@ export default function VerticalsColorConfigurator({
       >
         {disclaimerText}
       </motion.p>
+
+      <VerticalsControlGuide className="md:mt-12" />
     </section>
   );
 }
