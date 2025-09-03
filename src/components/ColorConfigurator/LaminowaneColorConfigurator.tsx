@@ -82,7 +82,7 @@ export default function LaminowaneColorConfigurator({
       {/* PALETTE LAMELI */}
       <div className="flex flex-col items-center gap-3">
         <h3 className="text-center text-base font-semibold text-neutral-900">
-          Lamele laminowane (dekor)
+          Ekskluzywna kolekcja lameli dekoracyjnych
         </h3>
 
         {/* DESKTOP: ribbon a listelli stretti */}
