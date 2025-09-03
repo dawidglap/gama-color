@@ -73,8 +73,8 @@ export const ZALUZJE: Record<string, ZaluzjeVariant> = {
     },
 
     /** ===================== ŻALUZJE LAMINOWANE ===================== */
-    "zaluzje-laminowane-25-50mm": {
-        slug: "zaluzje-laminowane-25-50mm",
+    "zaluzje-laminowane": {
+        slug: "zaluzje-laminowane",
         title: "Żaluzje laminowane (25 mm, 50 mm)",
         short:
             "Drewniana stylistyka z trwałym dekorem — idealne do spójnych aranżacji.",

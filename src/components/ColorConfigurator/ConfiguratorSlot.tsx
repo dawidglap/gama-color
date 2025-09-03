@@ -16,12 +16,17 @@ const DrewnianeColorConfigurator = dynamic(
   () => import('./DrewnianeColorConfigurator'),
   { ssr: false }
 );
+const LaminowaneColorConfigurator = dynamic(
+  () => import('./LaminowaneColorConfigurator'),
+  { ssr: false }
+);
 
 // mappa slug → componente
 const MAP: Record<string, React.ComponentType | null> = {
   'zaluzje-poziome': SlatsColorConfigurator,
   'zaluzje-pionowe-verticale': VerticalsColorConfigurator,
-  'zaluzje-drewniane': DrewnianeColorConfigurator, // ⬅️ nuovo
+  'zaluzje-drewniane': DrewnianeColorConfigurator,
+  'zaluzje-laminowane': LaminowaneColorConfigurator, // ⬅️ aggiunto
 };
 
 export default function ConfiguratorSlot({ slug }: { slug: string }) {
