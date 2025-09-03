@@ -92,8 +92,8 @@ export const ZALUZJE: Record<string, ZaluzjeVariant> = {
     },
 
     /** ===================== ŻALUZJE BAMBUSOWE ===================== */
-    "zaluzje-bambusowe-25-50mm": {
-        slug: "zaluzje-bambusowe-25-50mm",
+    "zaluzje-bambusowe": {
+        slug: "zaluzje-bambusowe",
         title: "Żaluzje bambusowe (25 mm, 50 mm)",
         short:
             "Egzotyczny surowiec, lekka konstrukcja i naturalny efekt w stylu eko.",

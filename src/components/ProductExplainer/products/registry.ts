@@ -16,6 +16,7 @@ const ZaluzjePoziome = dynamic(() => import('../products/ZaluzjePoziome'), { ssr
 const ZaluzjeVerticali = dynamic(() => import('../products/ZaluzjeVerticali'), { ssr: false });
 const ZaluzjeDrewniane = dynamic(() => import('../products/ZaluzjeDrewniane'), { ssr: false });
 const ZaluzjeLaminowane = dynamic(() => import('../products/ZaluzjeLaminowane'), { ssr: false });
+const ZaluzjeBambusowe = dynamic(() => import('../products/ZaluzjeBambusowe'), { ssr: false });
 
 
 
@@ -34,6 +35,7 @@ const REGISTRY: Record<string, React.ComponentType> = {
     'zaluzje-pionowe-verticale': ZaluzjeVerticali,
     'zaluzje-drewniane': ZaluzjeDrewniane,
     'zaluzje-laminowane': ZaluzjeLaminowane,
+    'zaluzje-bambusowe': ZaluzjeBambusowe,
 
 
 
