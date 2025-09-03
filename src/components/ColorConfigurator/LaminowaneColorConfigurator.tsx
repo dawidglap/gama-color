@@ -115,7 +115,7 @@ export default function LaminowaneColorConfigurator({
         </div>
 
         {/* MOBILE: griglia compatta */}
-        <div className="grid grid-cols-10 gap-2 md:hidden">
+        <div className="grid grid-cols-8 gap-2 md:hidden">
           {laminateSlatOptions.map((c) => {
             const selected = slats.id === c.id;
             return (
