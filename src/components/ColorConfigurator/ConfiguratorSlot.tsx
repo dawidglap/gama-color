@@ -12,11 +12,16 @@ const VerticalsColorConfigurator = dynamic(
   () => import('./VerticalsColorConfigurator'),
   { ssr: false }
 );
+const DrewnianeColorConfigurator = dynamic(
+  () => import('./DrewnianeColorConfigurator'),
+  { ssr: false }
+);
 
 // mappa slug → componente
 const MAP: Record<string, React.ComponentType | null> = {
   'zaluzje-poziome': SlatsColorConfigurator,
   'zaluzje-pionowe-verticale': VerticalsColorConfigurator,
+  'zaluzje-drewniane': DrewnianeColorConfigurator, // ⬅️ nuovo
 };
 
 export default function ConfiguratorSlot({ slug }: { slug: string }) {
