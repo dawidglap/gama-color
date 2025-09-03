@@ -54,8 +54,8 @@ export const ZALUZJE: Record<string, ZaluzjeVariant> = {
     },
 
     /** ===================== ŻALUZJE DREWNIANE ===================== */
-    "zaluzje-drewniane-25-50mm": {
-        slug: "zaluzje-drewniane-25-50mm",
+    "zaluzje-drewniane": {
+        slug: "zaluzje-drewniane",
         title: "Żaluzje drewniane (25 mm, 50 mm)",
         short:
             "Naturalne drewno i ciepły klimat we wnętrzu. Lamele 25 lub 50 mm na wymiar.",

@@ -202,7 +202,7 @@ export default function VerticalsColorConfigurator({
         {disclaimerText}
       </motion.p>
 
-      <VerticalsControlGuide className="md:mt-12" />
+      {/* <VerticalsControlGuide className="md:mt-12" /> */}
     </section>
   );
 }
