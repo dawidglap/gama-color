@@ -7,20 +7,26 @@ import { ROLETY_ZEWNETRZNE } from "@/data/roletyZewnetrzne";
 import ProductHeader from "@/components/ProductHeader";
 import ProductExplainer from "@/components/ProductExplainer";
 import ProductGallery from "@/components/ProductGallery";
-import ConfiguratorSlot from "@/components/ColorConfigurator/ConfiguratorSlot";
+import ConfiguratorSlotRoletyZewn, {
+  type RoletyZewnSlug,
+} from "@/components/ColorConfigurator/ConfiguratorSlotRoletyZewn";
+
+// 👉 unione tipi chiavi del dataset (sicura e sempre aggiornata)
+type DataSlug = keyof typeof ROLETY_ZEWNETRZNE;
 
 // Slug statici
 export function generateStaticParams() {
-  return Object.keys(ROLETY_ZEWNETRZNE).map((slug) => ({ slug }));
+  const slugs = Object.keys(ROLETY_ZEWNETRZNE) as DataSlug[];
+  return slugs.map((slug) => ({ slug }));
 }
 
 // Next 15: params è Promise
 export default async function RoletyZewnetrzneVariantPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: DataSlug }>; // 👈 tipizziamo qui
 }) {
-  const { slug } = await params;
+  const { slug } = await params;       // slug: DataSlug
   const data = ROLETY_ZEWNETRZNE[slug];
   if (!data) notFound();
 
@@ -131,7 +137,8 @@ export default async function RoletyZewnetrzneVariantPage({
 
         {/* Configurator specifico per slug */}
         <div className="md:col-span-3 mt-10">
-          <ConfiguratorSlot slug={slug} />
+          {/* cast compatibile con lo slot separato */}
+          <ConfiguratorSlotRoletyZewn slug={slug as RoletyZewnSlug} />
         </div>
 
         {/* gallery */}

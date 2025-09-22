@@ -21,7 +21,7 @@ const PlisyCosimo = dynamic(() => import('../products/PlisyCosimo'), { ssr: fals
 const PlisyCosimoSmartline = dynamic(() => import('../products/PlisyCosimoSmartline'), { ssr: false });
 const PlisyUltima = dynamic(() => import('../products/PlisyUltima'), { ssr: false });
 
-// prodotti già aggiunti in questo folder
+// prodotti in questa cartella
 const RoletyRzymskie = dynamic(() => import('./RoletyRzymskie'), { ssr: false });
 const RoletyAustriackie = dynamic(() => import('./RoletyAustriackie'), { ssr: false });
 const MoskitieryRamkowe = dynamic(() => import('./MoskitieryRamkowe'), { ssr: false });
@@ -29,10 +29,13 @@ const MoskitieryDrzwiowe = dynamic(() => import('./MoskitieryDrzwiowe'), { ssr: 
 const MoskitieryRolowane = dynamic(() => import('./MoskitieryRolowane'), { ssr: false });
 const MoskitieryPrzesuwne = dynamic(() => import('./MoskitieryPrzesuwne'), { ssr: false });
 
-// ⬇️ NUOVI: Rolety zewnętrzne
+// ⬇️ Rolety zewnętrzne
 const RoletyZewnetrzneStandardowe = dynamic(() => import('./RoletyZewnetrzneStandardowe'), { ssr: false });
 const RoletyZewnetrzneMoskitiery = dynamic(() => import('./RoletyZewnetrzneMoskitiery'), { ssr: false });
 const RoletyZewnetrzneNadstawne = dynamic(() => import('./RoletyZewnetrzneNadstawne'), { ssr: false });
+
+// ⬇️ (Opzionale) Markizy — se vuoi poterle richiamare via slug
+const Markizy = dynamic(() => import('./Markizy'), { ssr: false });
 
 const REGISTRY: Record<string, React.ComponentType> = {
     'fotorolety': Fotorolety,
@@ -67,7 +70,8 @@ const REGISTRY: Record<string, React.ComponentType> = {
     'standardowe-moskitiery': RoletyZewnetrzneMoskitiery,
     'nadstawne': RoletyZewnetrzneNadstawne,
 
-    // aggiungi qui: 'vegas-profil': dynamic(() => import('./VegasProfil'), { ssr: false }),
+    // opzionale
+    'markizy': Markizy,
 };
 
 export function getProductComponent(slug: string): React.ComponentType {
