@@ -17,6 +17,9 @@ const ZaluzjeVerticali = dynamic(() => import('../products/ZaluzjeVerticali'), {
 const ZaluzjeDrewniane = dynamic(() => import('../products/ZaluzjeDrewniane'), { ssr: false });
 const ZaluzjeLaminowane = dynamic(() => import('../products/ZaluzjeLaminowane'), { ssr: false });
 const ZaluzjeBambusowe = dynamic(() => import('../products/ZaluzjeBambusowe'), { ssr: false });
+const PlisyCosimo = dynamic(() => import('../products/PlisyCosimo'), { ssr: false });
+const PlisyCosimoSmartline = dynamic(() => import('../products/PlisyCosimoSmartline'), { ssr: false });
+const PlisyUltima = dynamic(() => import('../products/PlisyUltima'), { ssr: false });
 
 
 
@@ -36,6 +39,9 @@ const REGISTRY: Record<string, React.ComponentType> = {
     'zaluzje-drewniane': ZaluzjeDrewniane,
     'zaluzje-laminowane': ZaluzjeLaminowane,
     'zaluzje-bambusowe': ZaluzjeBambusowe,
+    'cosimo': PlisyCosimo,
+    'cosimo-smartline': PlisyCosimoSmartline,
+    'ultima': PlisyUltima,
 
 
 

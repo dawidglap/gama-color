@@ -41,7 +41,7 @@ export const ROLETY: Record<string, RoletyVariant> = {
         short: "System w całości przyklejany. Prowadnice w kształcie C.",
         description:
             "Prowadnice typu C pozwalają montować roletę na oknach z przewiązkami i na całej wysokości drzwi balkonowych. Montaż szybki i czysty, bez wiercenia w ramie.",
-        image: "/images/rolety/vegas-profil-hero.jpg",
+        image: "/images/rolety/vegas-profil/g1.webp",
         asideImage: "/images/rolety/vegas-profil-aside.jpg",
         category: CATEGORY,
         galleryImages: [
