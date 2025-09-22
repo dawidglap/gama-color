@@ -42,7 +42,7 @@ export const ROLETY: Record<string, RoletyVariant> = {
         description:
             "Prowadnice typu C pozwalają montować roletę na oknach z przewiązkami i na całej wysokości drzwi balkonowych. Montaż szybki i czysty, bez wiercenia w ramie.",
         image: "/images/rolety/vegas-profil/g1.webp",
-        asideImage: "/images/rolety/vegas-profil-aside.jpg",
+        asideImage: "/images/rolety/vegas-profil/g3.webp",
         category: CATEGORY,
         galleryImages: [
             "/images/rolety/vegas-profil/g1.webp",
@@ -58,8 +58,8 @@ export const ROLETY: Record<string, RoletyVariant> = {
         short: "Wolnowiszący, ekonomiczny system na wymiar.",
         description:
             "Najprostsze i najtańsze rolety materiałowe. Montaż na listwie przyszybowej lub bezinwazyjnie na ramie okna.",
-        image: "/images/rolety/vegas-mini-hero.jpg",
-        asideImage: "/images/rolety/vegas-mini-aside.jpg",
+        image: "/images/rolety/vegas-mini/g1.webp",
+        asideImage: "/images/rolety/vegas-mini/g2.webp",
         category: CATEGORY,
         galleryImages: [
             "/images/rolety/vegas-mini/g1.webp",
@@ -79,8 +79,8 @@ export const ROLETY: Record<string, RoletyVariant> = {
         short: "Klasyczna osłona i dekoracja większych powierzchni.",
         description:
             "Montaż nad wnęką, do sufitu, we wnęce lub bezpośrednio na ramie. Sprawdzą się także jako ekran projekcyjny.",
-        image: "/images/rolety/wolnowiszace-hero.jpg",
-        asideImage: "/images/rolety/wolnowiszace-aside.jpg",
+        image: "/images/rolety/wolnowiszace/g1.webp",
+        asideImage: "/images/rolety/wolnowiszace/g5.webp",
         category: CATEGORY,
         galleryImages: [
             "/images/rolety/wolnowiszace/g1.webp",
