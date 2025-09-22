@@ -4,10 +4,19 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MOSKITIERY } from "@/data/moskitiery";
 
-type Slug = keyof typeof MOSKITIERY;
+// SSG per tutti gli slug disponibili
+export function generateStaticParams() {
+  return Object.keys(MOSKITIERY).map((slug) => ({ slug }));
+}
 
-export default function MoskitieraDetailPage({ params }: { params: { slug: Slug } }) {
-  const data = MOSKITIERY[params.slug as Slug];
+// Next 15: params è Promise
+export default async function MoskitieraDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const data = MOSKITIERY[slug as keyof typeof MOSKITIERY];
   if (!data) return notFound();
 
   return (
@@ -45,10 +54,10 @@ export default function MoskitieraDetailPage({ params }: { params: { slug: Slug 
             </h1>
             <p className="mt-4 text-neutral-600">{data.short}</p>
 
-            {/* selling points rapidi */}
+            {/* selling points */}
             {data.notes?.length ? (
               <ul className="mt-6 grid gap-2 text-sm text-neutral-700">
-                {data.notes.map((n, i) => <li key={i}>• {n}</li>)}
+                {data.notes.map((n: string, i: number) => <li key={i}>• {n}</li>)}
               </ul>
             ) : null}
 
@@ -96,7 +105,7 @@ export default function MoskitieraDetailPage({ params }: { params: { slug: Slug 
             {/* galleria */}
             {data.galleryImages?.length ? (
               <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
-                {data.galleryImages.map((src, i) => (
+                {data.galleryImages.map((src: string, i: number) => (
                   <div key={i} className="relative aspect-[4/3] overflow-hidden rounded-xl ring-1 ring-neutral-200">
                     <Image src={src} alt={`${data.title} ${i + 1}`} fill className="object-cover" />
                   </div>

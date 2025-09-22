@@ -17,7 +17,7 @@ const MOCKUP = {
   base:           '/mockups/rolety-zewn/base.png',
   lamellaMask:    '/mockups/rolety-zewn/mask-lamela.png',
   cassetteMask:   '/mockups/rolety-zewn/mask-cassette.png',
-  mosquitoMask:   '/mockups/rolety-zewn/mask-moskitiera.png', // solo per “z moskitierą”
+  mosquitoMask:   '/mockups/rolety-zewn/moskitiera.png', // solo per “z moskitierą”
   shade:          '/mockups/rolety-zewn/shad.png',
 } as const;
 
@@ -209,7 +209,7 @@ export default function RoletyZewnetrzneColorConfigurator({
 
       {/* Disclaimer */}
       <motion.p variants={fade} initial="hidden" animate="show"
-        className="mt-2 max-w-2xl text-[10px] leading-relaxed text-neutral-500 sm:text-center sm:text-xs">
+        className="mx-auto mt-2 max-w-2xl text-[10px] leading-relaxed text-neutral-500 sm:text-center sm:text-xs">
         {disclaimerText}
       </motion.p>
     </section>
