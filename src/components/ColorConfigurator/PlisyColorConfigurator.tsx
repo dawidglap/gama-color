@@ -6,6 +6,21 @@ import PlisyPreview from '../ColorConfigurator/PlisyPreview';
 import type { ColorOption } from '../../data/plisyOptions';
 import { plisyFabricOptions, plisyProfileOptions } from '../../data/plisyOptions';
 
+// Helper sfondo: HEX sempre + texture opzionale
+function makeBg(opt: ColorOption): React.CSSProperties {
+  return {
+    backgroundColor: opt.hex ?? '#9aa0a6',
+    ...(opt.texture
+      ? {
+          backgroundImage: `url(${opt.texture})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }
+      : {}),
+  };
+}
+
 const easeCB = cubicBezier(0.16, 1, 0.3, 1);
 const fade: Variants = {
   hidden: { opacity: 0, y: 6 },
@@ -20,7 +35,7 @@ const MOCKUP = {
   shade: '/mockups/plisy/shade-mask-plisy1.png',
 } as const;
 
-// Contrasto testo automatico sul colore di sfondo
+// Contrasto testo automatico
 function textColorForBg(hex?: string) {
   const c = (hex ?? '#000000').replace('#', '');
   const r = parseInt(c.slice(0, 2), 16) || 0;
@@ -40,14 +55,9 @@ export default function PlisyColorConfigurator({
 
   const animateKey = `${fabric.id}|${profile.id}`;
 
-  // stili di sfondo (HEX prima di tutto; texture opzionale se presente)
-  const fabricBg: React.CSSProperties = fabric.texture
-    ? { backgroundImage: `url(${fabric.texture})`, backgroundSize: 'cover', backgroundPosition: 'center' }
-    : { backgroundColor: fabric.hex ?? '#9aa0a6' };
-
-  const profileBg: React.CSSProperties = profile.texture
-    ? { backgroundImage: `url(${profile.texture})`, backgroundSize: 'cover', backgroundPosition: 'center' }
-    : { backgroundColor: profile.hex ?? '#9aa0a6' };
+  // ✅ calcolali DENTRO al componente
+  const fabricBg  = React.useMemo(() => makeBg(fabric),  [fabric.hex, fabric.texture]);
+  const profileBg = React.useMemo(() => makeBg(profile), [profile.hex, profile.texture]);
 
   return (
     <section className="mt-10 space-y-8">
@@ -69,21 +79,14 @@ export default function PlisyColorConfigurator({
       <div className="md:hidden">
         <div className="relative mx-auto mt-2 w-full max-w-[420px]" style={{ aspectRatio: '4 / 3' }}>
           <AnimatePresence mode="sync" initial={false}>
-            <motion.div
-              key={animateKey + '-m'}
-              variants={fade}
-              initial="hidden"
-              animate="show"
-              exit="exit"
-              className="absolute inset-0"
-            >
+            <motion.div key={animateKey + '-m'} variants={fade} initial="hidden" animate="show" exit="exit" className="absolute inset-0">
               <PlisyPreview
                 baseSrc={MOCKUP.base}
                 fabricMask={MOCKUP.fabricMask}
                 profileMask={MOCKUP.profileMask}
                 shadeSrc={MOCKUP.shade}
                 fabricHex={fabric.hex}
-                fabricTexture={fabric.texture}     // opzionale, per futuro
+                fabricTexture={fabric.texture}     // opzionale (in futuro)
                 profileHex={profile.hex}
                 profileTexture={profile.texture}   // opzionale
                 animateKey={animateKey}
@@ -100,14 +103,7 @@ export default function PlisyColorConfigurator({
       <div className="hidden md:flex md:items-center md:justify-center">
         <div className="relative w-full max-w-[560px]" style={{ aspectRatio: '4 / 3' }}>
           <AnimatePresence mode="sync" initial={false}>
-            <motion.div
-              key={animateKey + '-d'}
-              variants={fade}
-              initial="hidden"
-              animate="show"
-              exit="exit"
-              className="absolute inset-0"
-            >
+            <motion.div key={animateKey + '-d'} variants={fade} initial="hidden" animate="show" exit="exit" className="absolute inset-0">
               <PlisyPreview
                 baseSrc={MOCKUP.base}
                 fabricMask={MOCKUP.fabricMask}
@@ -131,14 +127,11 @@ export default function PlisyColorConfigurator({
       <div className="flex flex-col items-center gap-3">
         <h3 className="text-base font-semibold text-neutral-900 text-center">Tkanina (kolor / tekstura)</h3>
 
-        {/* Desktop: stick sottili in ribbon scrollabile */}
+        {/* Desktop: stick sottili */}
         <div className="relative hidden max-w-5xl overflow-x-auto rounded-md p-2 md:block">
           <div className="flex h-8 min-w-max items-center gap-[2px]">
             {plisyFabricOptions.map((opt) => {
               const selected = fabric.id === opt.id;
-              const style = opt.texture
-                ? { backgroundImage: `url(${opt.texture})`, backgroundSize: 'cover', backgroundPosition: 'center' }
-                : { backgroundColor: opt.hex ?? '#9aa0a6' };
               return (
                 <motion.button
                   whileTap={{ scale: 0.92 }}
@@ -147,7 +140,7 @@ export default function PlisyColorConfigurator({
                   className={`h-10 w-2 rounded-[2px] ring-2 ring-offset-1 transition ${
                     selected ? 'ring-amber-400' : 'ring-transparent hover:ring-neutral-300'
                   }`}
-                  style={style}
+                  style={makeBg(opt)}
                   title={opt.name}
                   aria-pressed={selected}
                 />
@@ -156,13 +149,10 @@ export default function PlisyColorConfigurator({
           </div>
         </div>
 
-        {/* Mobile: griglia di quadratini */}
+        {/* Mobile: quadratini */}
         <div className="grid grid-cols-12 gap-2 md:hidden px-2">
           {plisyFabricOptions.map((opt) => {
             const selected = fabric.id === opt.id;
-            const style = opt.texture
-              ? { backgroundImage: `url(${opt.texture})`, backgroundSize: 'cover', backgroundPosition: 'center' }
-              : { backgroundColor: opt.hex ?? '#9aa0a6' };
             return (
               <motion.button
                 whileTap={{ scale: 0.94 }}
@@ -171,7 +161,7 @@ export default function PlisyColorConfigurator({
                 className={`h-7 w-7 rounded-[4px] ring-2 transition ${
                   selected ? 'ring-amber-400' : 'ring-transparent hover:ring-neutral-300'
                 }`}
-                style={style}
+                style={makeBg(opt)}
                 title={opt.name}
                 aria-pressed={selected}
               />
@@ -180,7 +170,7 @@ export default function PlisyColorConfigurator({
         </div>
       </div>
 
-      {/* PROFIL — come prima */}
+      {/* PROFIL */}
       <div className="flex flex-col items-center gap-3">
         <h3 className="text-base font-semibold text-neutral-900 text-center">Profil / ramka</h3>
 
@@ -191,9 +181,6 @@ export default function PlisyColorConfigurator({
               <div className="inline-flex whitespace-nowrap gap-[6px] px-2 py-1">
                 {plisyProfileOptions.map((opt) => {
                   const selected = profile.id === opt.id;
-                  const style = opt.texture
-                    ? { backgroundImage: `url(${opt.texture})`, backgroundSize: 'cover', backgroundPosition: 'center' }
-                    : { backgroundColor: opt.hex ?? '#9aa0a6' };
                   return (
                     <button
                       key={opt.id}
@@ -201,7 +188,7 @@ export default function PlisyColorConfigurator({
                       className={`h-8 w-8 rounded-[6px] border border-neutral-200 ring-2 transition ${
                         selected ? 'ring-amber-400' : 'ring-transparent hover:ring-neutral-300'
                       }`}
-                      style={style}
+                      style={makeBg(opt)}
                       title={opt.name}
                       aria-pressed={selected}
                     />
@@ -213,20 +200,17 @@ export default function PlisyColorConfigurator({
         </div>
 
         {/* Mobile */}
-        <div className="grid grid-cols-7 gap-2 md:hidden">
+        <div className="grid grid-cols-6 gap-2 md:hidden">
           {plisyProfileOptions.map((opt) => {
             const selected = profile.id === opt.id;
-            const style = opt.texture
-              ? { backgroundImage: `url(${opt.texture})`, backgroundSize: 'cover', backgroundPosition: 'center' }
-              : { backgroundColor: opt.hex ?? '#9aa0a6' };
             return (
               <button
                 key={opt.id}
                 onClick={() => setProfile(opt)}
-                className={`h-7 w-7 rounded-[4px] ring-2 transition ${
+                className={`h-7 w-7 rounded-[4px] border-1 border-neutral-200 ring-2 transition ${
                   selected ? 'ring-amber-400' : 'ring-transparent hover:ring-neutral-300'
                 }`}
-                style={style}
+                style={makeBg(opt)}
                 title={opt.name}
                 aria-pressed={selected}
               />
@@ -235,7 +219,7 @@ export default function PlisyColorConfigurator({
         </div>
       </div>
 
-      {/* === Riquadri grandi con il selezionato (desktop: affiancati, mobile: impilati) === */}
+      {/* Riquadri grandi con selezione */}
       <div className="mt-6 grid gap-4 md:grid-cols-2">
         {/* Fabric big sample */}
         <div className="relative h-40 overflow-hidden rounded-md ring-1 ring-neutral-200 md:h-52">

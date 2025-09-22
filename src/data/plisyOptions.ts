@@ -281,12 +281,23 @@ export const plisyFabricOptions: ColorOption[] = [
     ...trend06, ...trend07, ...trend08, ...trend09, ...trend10,
 ];
 
+// src/data/plisyOptions.ts  (SEZIONE PROFILI — KOMPLET 12 Z OBRAZKA)
 export const plisyProfileOptions: ColorOption[] = [
-    { id: 'prof-white', name: 'Profil biały', hex: '#ffffff' },
-    { id: 'prof-silver', name: 'Profil srebrny', hex: '#d0d0d0' },
-    { id: 'prof-anthracite', name: 'Profil antracyt', hex: '#2f2f30' },
-    { id: 'prof-black', name: 'Profil czarny', hex: '#000000' },
-    { id: 'prof-pine', name: 'Sosna (dekor)', hex: '#cfb481' /*, texture: '/textures/profile-pine.jpg' */ },
-    { id: 'prof-golden-oak', name: 'Złoty dąb (dekor)', hex: '#a8742e' /*, texture: '/textures/profile-golden-oak.jpg' */ },
-    { id: 'prof-walnut', name: 'Orzech (dekor)', hex: '#6b4a2e' /*, texture: '/textures/profile-walnut.jpg' */ },
+    // z teksturą (masz pliki)
+    { id: 'prof-srebrny', name: 'Srebrny', hex: '#bfc1c2' },
+
+    { id: 'prof-bialy', name: 'Biały', hex: '#ffffff', texture: '/textures/bialy.webp' },
+    { id: 'prof-brazowy', name: 'Brązowy', hex: '#3c2f2a', texture: '/textures/brazowy.webp' },
+    { id: 'prof-dab-bagienny', name: 'Dąb bagienny', hex: '#5e4635', texture: '/textures/dab-bagienny.webp' },
+    { id: 'prof-mahon', name: 'Mahoń', hex: '#6b2d1a', texture: '/textures/mahon.webp' },
+    { id: 'prof-orzech', name: 'Orzech', hex: '#5a3d2a', texture: '/textures/orzech.webp' },
+    { id: 'prof-sosna', name: 'Sosna', hex: '#cfb481', texture: '/textures/sosna.webp' },
+    { id: 'prof-zloty-dab', name: 'Złoty dąb', hex: '#a8742e', texture: '/textures/zloty-dab.webp' },
+
+    // bez tekstury (fallback na HEX)
+    { id: 'prof-antracyt', name: 'Antracyt', hex: '#2f2f30' },   // ~ RAL 7016
+    { id: 'prof-czarny', name: 'Czarny', hex: '#000000' },
+    { id: 'prof-oliwka', name: 'Oliwka', hex: '#6b6e3a' },
+    { id: 'prof-szampanski', name: 'Szampański', hex: '#e0cfa9' },
 ];
+

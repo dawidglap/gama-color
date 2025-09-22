@@ -1,166 +1,120 @@
 // src/components/ColorConfigurator/RoletyZewnPreview.tsx
 'use client';
 
-import React from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence, cubicBezier } from 'framer-motion';
+import React from 'react';
 
-type Props = {
-  baseSrc?: string;        // np. /mockups/rolety-zew/base.png (okno/ściana)
-  slatsMask?: string;      // np. /mockups/rolety-zew/slats-mask.png (obszar pancerza)
-  boxMask?: string;        // np. /mockups/rolety-zew/box-mask.png   (obszar skrzynki+prowadnic)
-  shadeSrc?: string;       // np. /mockups/rolety-zew/shade.png
-  slatHex?: string;
-  slatTexture?: string;
-  boxHex?: string;
-  boxTexture?: string;
-  animateKey?: string;
-  /** wysokość pojedynczej lameli w px (do rastra podziału) */
-  slatPitch?: number;      // default 12
-  className?: string;
-  aspect?: `${number} / ${number}`;
-  fit?: 'cover' | 'contain';
-};
+type Styleable = { hex?: string; texture?: string };
 
-const easeCB = cubicBezier(0.16, 1, 0.3, 1);
+function layerStyle(fill: Styleable, maskUrl: string): React.CSSProperties {
+  const bg: React.CSSProperties = fill.texture
+    ? {
+        backgroundImage: `url(${fill.texture})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundColor: fill.hex ?? '#9aa0a6', // fallback
+      }
+    : { backgroundColor: fill.hex ?? '#9aa0a6' };
 
-function maskStyle(maskSrc: string, fit: 'cover' | 'contain'): React.CSSProperties {
   return {
-    WebkitMaskImage: `url(${maskSrc})`,
-    maskImage: `url(${maskSrc})`,
+    ...bg,
+    WebkitMaskImage: `url(${maskUrl})`,
+    maskImage: `url(${maskUrl})`,
     WebkitMaskRepeat: 'no-repeat',
     maskRepeat: 'no-repeat',
-    WebkitMaskSize: fit,
-    maskSize: fit,
+    WebkitMaskSize: 'contain',
+    maskSize: 'contain',
     WebkitMaskPosition: 'center',
     maskPosition: 'center',
   };
 }
 
+type Props = {
+  baseSrc: string;
+  lamellaMask: string;
+  cassetteMask: string;
+  mosquitoMask?: string; // opzionale
+  shadeSrc?: string;
+
+  lamellaHex?: string;
+  lamellaTexture?: string;
+
+  cassetteHex?: string;
+  cassetteTexture?: string;
+
+  showMosquito?: boolean;
+  className?: string;
+};
+
 export default function RoletyZewnPreview({
-  baseSrc = '/mockups/rolety-zew/base.png',
-  slatsMask = '/mockups/rolety-zew/slats-mask.png',
-  boxMask = '/mockups/rolety-zew/box-mask.png',
-  shadeSrc = '/mockups/rolety-zew/shade.png',
-  slatHex = '#b8bcc3',
-  slatTexture,
-  boxHex = '#c7c9cc',
-  boxTexture,
-  animateKey,
-  slatPitch = 12,
-  className = '',
-  aspect = '4 / 3',
-  fit = 'contain',
+  baseSrc,
+  lamellaMask,
+  cassetteMask,
+  mosquitoMask,
+  shadeSrc,
+  lamellaHex,
+  lamellaTexture,
+  cassetteHex,
+  cassetteTexture,
+  showMosquito,
+  className,
 }: Props) {
-  const fitClass = fit === 'cover' ? 'object-cover' : 'object-contain';
-
-  // Tło pancerza (kolor/tekstura)
-  const slatBg: React.CSSProperties = {
-    backgroundColor: slatHex,
-    ...(slatTexture && {
-      backgroundImage: `url(${slatTexture})`,
-      backgroundRepeat: 'repeat',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-    }),
-  };
-
-  // Raster podziału lameli — delikatne poziome „rowki”
-  const ribs =
-    slatPitch > 0
-      ? `repeating-linear-gradient(
-          to bottom,
-          rgba(0,0,0,.10) 0px,
-          rgba(0,0,0,.10) 1px,
-          transparent 1px,
-          transparent ${slatPitch}px
-        )`
-      : undefined;
-
-  // Tło skrzynki/prowadnic
-  const boxBg: React.CSSProperties = {
-    backgroundColor: boxHex,
-    ...(boxTexture && {
-      backgroundImage: `url(${boxTexture})`,
-      backgroundRepeat: 'repeat',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-    }),
-  };
-
   return (
-    <div className={className} style={{ position: 'relative', aspectRatio: aspect, overflow: 'hidden' }}>
-      {/* BASE */}
-      <Image
-        src={baseSrc}
-        alt=""
-        fill
-        sizes="(max-width: 740px) 100vw, 560px"
-        className={`absolute inset-0 h-full w-full ${fitClass} bg-white select-none pointer-events-none`}
-        priority
-      />
+    <div className={className ?? ''}>
+      <div className="relative h-full w-full">
+        {/* base */}
+        <img
+          src={baseSrc}
+          alt=""
+          className="absolute inset-0 h-full w-full object-contain object-center"
+          draggable={false}
+        />
 
-      {/* PANCERZ (mask) */}
-      <div className="absolute inset-0" style={maskStyle(slatsMask, fit)}>
-        <AnimatePresence mode="sync" initial={false}>
-          <motion.div
-            key={`slat-${animateKey}`}
-            className="absolute inset-0"
-            style={slatBg}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.28, ease: easeCB }}
-          />
-        </AnimatePresence>
+        {/* skrzynka + prowadnice */}
+        <div
+          className="absolute inset-0"
+          style={layerStyle({ hex: cassetteHex, texture: cassetteTexture }, cassetteMask)}
+          aria-hidden
+        />
 
-        {/* delikatny raster lameli */}
-        {ribs && (
+        {/* lamela */}
+        <div
+          className="absolute inset-0"
+          style={layerStyle({ hex: lamellaHex, texture: lamellaTexture }, lamellaMask)}
+          aria-hidden
+        />
+
+        {/* moskitiera (opzionale) — riempita con un grigio trasparente */}
+        {showMosquito && mosquitoMask && (
           <div
             className="absolute inset-0"
             style={{
-              backgroundImage: ribs,
-              mixBlendMode: 'multiply',
-              opacity: 0.35,
+              background:
+                'repeating-linear-gradient(45deg, rgba(30,30,30,.22) 0 2px, rgba(30,30,30,.26) 2px 4px)',
+              WebkitMaskImage: `url(${mosquitoMask})`,
+              maskImage: `url(${mosquitoMask})`,
+              WebkitMaskRepeat: 'no-repeat',
+              maskRepeat: 'no-repeat',
+              WebkitMaskSize: 'contain',
+              maskSize: 'contain',
+              WebkitMaskPosition: 'center',
+              maskPosition: 'center',
             }}
             aria-hidden
           />
         )}
-      </div>
 
-      {/* SKRZYNKA + PROWADNICE (mask) */}
-      <div className="absolute inset-0" style={maskStyle(boxMask, fit)}>
-        <AnimatePresence mode="sync" initial={false}>
-          <motion.div
-            key={`box-${boxHex}-${boxTexture ?? 'none'}`}
-            className="absolute inset-0"
-            style={boxBg}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.28, ease: easeCB }}
+        {/* shade opzionale */}
+        {shadeSrc && (
+          <img
+            src={shadeSrc}
+            alt=""
+            className="absolute inset-0 h-full w-full object-contain object-center"
+            draggable={false}
           />
-        </AnimatePresence>
+        )}
       </div>
-
-      {/* OMBRA */}
-      {shadeSrc && (
-        <Image
-          src={shadeSrc}
-          alt=""
-          fill
-          sizes="(max-width: 740px) 100vw, 560px"
-          className={`absolute inset-0 h-full w-full ${fitClass} pointer-events-none`}
-          priority
-        />
-      )}
-
-      {/* delikatny refleks */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{ background: 'linear-gradient(180deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,0) 45%)' }}
-        aria-hidden
-      />
     </div>
   );
 }

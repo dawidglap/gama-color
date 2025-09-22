@@ -2,27 +2,27 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import type { ComponentType } from 'react';
 
-// Code-split solo client
 const RoletyZewnetrzneColorConfigurator = dynamic(
   () => import('./RoletyZewnetrzneColorConfigurator'),
   { ssr: false }
 );
 
-// Slug supportati per rolety zewnętrzne
+// Slug obsługiwane
 export type RoletyZewnSlug = 'standardowe' | 'standardowe-moskitiery' | 'nadstawne';
 
-// Mappa slug → componente
-const MAP: Record<RoletyZewnSlug, ComponentType<any>> = {
-  standardowe: RoletyZewnetrzneColorConfigurator,
-  'standardowe-moskitiery': RoletyZewnetrzneColorConfigurator,
-  nadstawne: RoletyZewnetrzneColorConfigurator,
-};
-
 export default function ConfiguratorSlotRoletyZewn({ slug }: { slug: RoletyZewnSlug }) {
-  const Cmp = MAP[slug];
-  // se arriva uno slug non previsto, non renderizziamo nulla
-  if (!Cmp) return null;
-  return <Cmp />;
+  if (slug === 'standardowe' || slug === 'standardowe-moskitiery') {
+    return (
+      <RoletyZewnetrzneColorConfigurator
+        withMosquito={slug === 'standardowe-moskitiery'}
+        title={slug === 'standardowe-moskitiery'
+          ? 'Roleta zewnętrzna — Standard z moskitierą'
+          : 'Roleta zewnętrzna — Standard'}
+      />
+    );
+  }
+
+  // Nadstawne: faremo un configuratore dedicato in un secondo step
+  return null;
 }
