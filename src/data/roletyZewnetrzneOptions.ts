@@ -1,5 +1,5 @@
 // src/data/roletyZewnetrzneOptions.ts
-import type { ColorOption } from '@/data/types';
+import type { ColorOption } from '@/data/plisyOptions';
 
 // Kolory pancerza (lameli) — przykładowy zestaw (standard + drewnopodobne)
 export const pancerzOptions: ColorOption[] = [
