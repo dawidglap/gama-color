@@ -4,12 +4,19 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { RA } from "@/data/roletyRzymskieAustriackie";
 
-export default function RoletyRzymskieAustriackieDetailPage({
+// Pre-render di tutti gli slug disponibili
+export function generateStaticParams() {
+  return Object.keys(RA).map((slug) => ({ slug }));
+}
+
+// Next 15: params è una Promise
+export default async function RoletyRzymskieAustriackieDetailPage({
   params,
 }: {
-  params: { slug: "rolety-rzymskie" | "rolety-austriackie" };
+  params: Promise<{ slug: string }>;
 }) {
-  const data = RA[params.slug];
+  const { slug } = await params;
+  const data = RA[slug as keyof typeof RA];
   if (!data) return notFound();
 
   return (
@@ -57,7 +64,7 @@ export default function RoletyRzymskieAustriackieDetailPage({
               <li>• Doradztwo kolorystyczne i pomiar na miejscu</li>
             </ul>
 
-            {/* CTA semplice (adatta href/scroll-to) */}
+            {/* CTA semplice */}
             <div className="mt-6 flex gap-3">
               <Link
                 href="/kontakt"
@@ -103,7 +110,7 @@ export default function RoletyRzymskieAustriackieDetailPage({
             {/* galleria semplice */}
             {data.galleryImages?.length ? (
               <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
-                {data.galleryImages.map((src, i) => (
+                {data.galleryImages.map((src: string, i: number) => (
                   <div key={i} className="relative aspect-[4/3] overflow-hidden rounded-xl ring-1 ring-neutral-200">
                     <Image src={src} alt={`${data.title} ${i + 1}`} fill className="object-cover" />
                   </div>
