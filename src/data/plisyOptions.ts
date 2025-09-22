@@ -2,14 +2,11 @@
 export type ColorOption = {
     id: string;
     name: string;
-    hex?: string;      // fallback solid color
-    texture?: string;  // path in /public
+    hex?: string;      // fallback / colore pieno
+    texture?: string;  // path in /public (PER ORA NON USATO)
 };
 
 /* ========= Utilities ========= */
-function slugify(s: string) {
-    return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-}
 function hslToHex(h: number, s: number, l: number): string {
     s /= 100; l /= 100;
     const k = (n: number) => (n + h / 30) % 12;
@@ -26,19 +23,22 @@ function hashToHex(name: string): string {
     const lig = 40 + (h % 20); // 40–59
     return hslToHex(hue, sat, lig);
 }
+
 type Entry = { slug: string; name: string };
-function makeTexOptions(prefix: string, items: Entry[]): ColorOption[] {
+
+/** Crea opzioni SOLO con HEX (texture lasciata commentata per uso futuro). */
+function makeHexOptions(prefix: string, items: Entry[]): ColorOption[] {
     return items.map(({ slug, name }) => ({
         id: `${prefix}-${slug}`,
         name,
-        texture: `/textures/plisy/${prefix}/${slug}.jpg`,
-        hex: hashToHex(`${prefix}:${name}`), // fallback visivo se la texture non c’è
+        hex: hashToHex(`${prefix}:${name}`),
+        // texture: `/textures/plisy/${prefix}/${slug}.jpg`, // <-- riattiva quando avrai i file
     }));
 }
 
-/* ========= Liste (dalle tue schermate) ========= */
+/* ========= Liste ========= */
 // TREND 01 — Kamari 004..028
-const trend01 = makeTexOptions('trend01', [
+const trend01 = makeHexOptions('trend01', [
     { slug: 'kamari-004', name: 'Kamari 004' },
     { slug: 'kamari-005', name: 'Kamari 005' },
     { slug: 'kamari-006', name: 'Kamari 006' },
@@ -63,7 +63,7 @@ const trend01 = makeTexOptions('trend01', [
 ]);
 
 // TREND 02 — Femi / Shine
-const trend02 = makeTexOptions('trend02', [
+const trend02 = makeHexOptions('trend02', [
     { slug: 'femi-101', name: 'Femi 101' },
     { slug: 'femi-102', name: 'Femi 102' },
     { slug: 'femi-105', name: 'Femi 105' },
@@ -93,7 +93,7 @@ const trend02 = makeTexOptions('trend02', [
 ]);
 
 // TREND 03 — California / Frankfurt / Jaipur / Kala / Op
-const trend03 = makeTexOptions('trend03', [
+const trend03 = makeHexOptions('trend03', [
     { slug: 'california-01', name: 'California 01' },
     { slug: 'california-02', name: 'California 02' },
     { slug: 'california-003', name: 'California 003' },
@@ -114,7 +114,7 @@ const trend03 = makeTexOptions('trend03', [
 ]);
 
 // TREND 04 — Office / Stockholm
-const trend04 = makeTexOptions('trend04', [
+const trend04 = makeHexOptions('trend04', [
     { slug: 'office-327', name: 'Office 327' },
     { slug: 'office-2011', name: 'Office 2011' },
     { slug: 'office-2298', name: 'Office 2298' },
@@ -137,7 +137,7 @@ const trend04 = makeTexOptions('trend04', [
 ]);
 
 // TREND 05 — Kamari Pearl
-const trend05 = makeTexOptions('trend05', [
+const trend05 = makeHexOptions('trend05', [
     { slug: 'kamari-pearl-204', name: 'Kamari Pearl 204' },
     { slug: 'kamari-pearl-205', name: 'Kamari Pearl 205' },
     { slug: 'kamari-pearl-206', name: 'Kamari Pearl 206' },
@@ -161,7 +161,7 @@ const trend05 = makeTexOptions('trend05', [
 ]);
 
 // TREND 06 — Montreal
-const trend06 = makeTexOptions('trend06', [
+const trend06 = makeHexOptions('trend06', [
     { slug: 'montreal-7510', name: 'Montreal 7510' },
     { slug: 'montreal-7513', name: 'Montreal 7513' },
     { slug: 'montreal-7515', name: 'Montreal 7515' },
@@ -181,7 +181,7 @@ const trend06 = makeTexOptions('trend06', [
 ]);
 
 // TREND 07 — Amazone / Brussels / Delhi / Graffic / Jakarta / Kent / Kuala / Leipzig / Sofia / York
-const trend07 = makeTexOptions('trend07', [
+const trend07 = makeHexOptions('trend07', [
     { slug: 'amazone-2702', name: 'Amazone 2702' },
     { slug: 'brussels-1300', name: 'Brussels 1300' },
     { slug: 'delhi', name: 'Delhi' },
@@ -204,7 +204,7 @@ const trend07 = makeTexOptions('trend07', [
 ]);
 
 // TREND 08 — Samoa / Stone / Torres
-const trend08 = makeTexOptions('trend08', [
+const trend08 = makeHexOptions('trend08', [
     { slug: 'samoa-001', name: 'Samoa 001' },
     { slug: 'samoa-002', name: 'Samoa 002' },
     { slug: 'samoa-003', name: 'Samoa 003' },
@@ -228,7 +228,7 @@ const trend08 = makeTexOptions('trend08', [
 ]);
 
 // TREND 09 — Denim / Flax
-const trend09 = makeTexOptions('trend09', [
+const trend09 = makeHexOptions('trend09', [
     { slug: 'denim-7912', name: 'Denim 7912' },
     { slug: 'denim-7913', name: 'Denim 7913' },
     { slug: 'denim-7914', name: 'Denim 7914' },
@@ -252,7 +252,7 @@ const trend09 = makeTexOptions('trend09', [
 ]);
 
 // TREND 10 — Basel
-const trend10 = makeTexOptions('trend10', [
+const trend10 = makeHexOptions('trend10', [
     { slug: 'basel-1201', name: 'Basel 1201' },
     { slug: 'basel-1202', name: 'Basel 1202' },
     { slug: 'basel-1204', name: 'Basel 1204' },
@@ -275,7 +275,7 @@ const trend10 = makeTexOptions('trend10', [
     { slug: 'basel-1230', name: 'Basel 1230' },
 ]);
 
-/* ========= Export unificato ========= */
+/* ========= Export ========= */
 export const plisyFabricOptions: ColorOption[] = [
     ...trend01, ...trend02, ...trend03, ...trend04, ...trend05,
     ...trend06, ...trend07, ...trend08, ...trend09, ...trend10,
@@ -286,7 +286,7 @@ export const plisyProfileOptions: ColorOption[] = [
     { id: 'prof-silver', name: 'Profil srebrny', hex: '#d0d0d0' },
     { id: 'prof-anthracite', name: 'Profil antracyt', hex: '#2f2f30' },
     { id: 'prof-black', name: 'Profil czarny', hex: '#000000' },
-    { id: 'prof-pine', name: 'Sosna (dekor)', hex: '#cfb481', texture: '/textures/profile-pine.jpg' },
-    { id: 'prof-golden-oak', name: 'Złoty dąb (dekor)', hex: '#a8742e', texture: '/textures/profile-golden-oak.jpg' },
-    { id: 'prof-walnut', name: 'Orzech (dekor)', hex: '#6b4a2e', texture: '/textures/profile-walnut.jpg' },
+    { id: 'prof-pine', name: 'Sosna (dekor)', hex: '#cfb481' /*, texture: '/textures/profile-pine.jpg' */ },
+    { id: 'prof-golden-oak', name: 'Złoty dąb (dekor)', hex: '#a8742e' /*, texture: '/textures/profile-golden-oak.jpg' */ },
+    { id: 'prof-walnut', name: 'Orzech (dekor)', hex: '#6b4a2e' /*, texture: '/textures/profile-walnut.jpg' */ },
 ];

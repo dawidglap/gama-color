@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion, AnimatePresence, type Variants, cubicBezier } from 'framer-motion';
 import PlisyPreview from '../ColorConfigurator/PlisyPreview';
-import type { ColorOption } from '../../data/plisyOptions'; // { id:string; name:string; hex?:string; texture?:string }
+import type { ColorOption } from '../../data/plisyOptions';
 import { plisyFabricOptions, plisyProfileOptions } from '../../data/plisyOptions';
 
 const easeCB = cubicBezier(0.16, 1, 0.3, 1);
@@ -20,6 +20,16 @@ const MOCKUP = {
   shade: '/mockups/plisy/shade-mask-plisy1.png',
 } as const;
 
+// Contrasto testo automatico sul colore di sfondo
+function textColorForBg(hex?: string) {
+  const c = (hex ?? '#000000').replace('#', '');
+  const r = parseInt(c.slice(0, 2), 16) || 0;
+  const g = parseInt(c.slice(2, 4), 16) || 0;
+  const b = parseInt(c.slice(4, 6), 16) || 0;
+  const lum = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+  return lum > 0.6 ? 'text-neutral-900' : 'text-white';
+}
+
 export default function PlisyColorConfigurator({
   title = 'Kolorystyka plis',
   subtitle = 'Wybierz tkaninę i profil',
@@ -29,6 +39,15 @@ export default function PlisyColorConfigurator({
   const [profile, setProfile] = React.useState<ColorOption>(plisyProfileOptions[0]);
 
   const animateKey = `${fabric.id}|${profile.id}`;
+
+  // stili di sfondo (HEX prima di tutto; texture opzionale se presente)
+  const fabricBg: React.CSSProperties = fabric.texture
+    ? { backgroundImage: `url(${fabric.texture})`, backgroundSize: 'cover', backgroundPosition: 'center' }
+    : { backgroundColor: fabric.hex ?? '#9aa0a6' };
+
+  const profileBg: React.CSSProperties = profile.texture
+    ? { backgroundImage: `url(${profile.texture})`, backgroundSize: 'cover', backgroundPosition: 'center' }
+    : { backgroundColor: profile.hex ?? '#9aa0a6' };
 
   return (
     <section className="mt-10 space-y-8">
@@ -50,25 +69,28 @@ export default function PlisyColorConfigurator({
       <div className="md:hidden">
         <div className="relative mx-auto mt-2 w-full max-w-[420px]" style={{ aspectRatio: '4 / 3' }}>
           <AnimatePresence mode="sync" initial={false}>
-            <motion.div key={animateKey + '-m'} variants={fade} initial="hidden" animate="show" exit="exit" className="absolute inset-0">
-       
-
-
-<PlisyPreview
-  baseSrc={MOCKUP.base}
-  fabricMask={MOCKUP.fabricMask}
-  profileMask={MOCKUP.profileMask}
-  shadeSrc={MOCKUP.shade}
-  fabricHex={fabric.hex}
-  fabricTexture={fabric.texture}
-  profileHex={profile.hex}
-  profileTexture={profile.texture}
-  animateKey={animateKey}
-  pleatCount={122}
-  pleatFillRatio={12.00}
-  className="h-full w-full"
-/>
-
+            <motion.div
+              key={animateKey + '-m'}
+              variants={fade}
+              initial="hidden"
+              animate="show"
+              exit="exit"
+              className="absolute inset-0"
+            >
+              <PlisyPreview
+                baseSrc={MOCKUP.base}
+                fabricMask={MOCKUP.fabricMask}
+                profileMask={MOCKUP.profileMask}
+                shadeSrc={MOCKUP.shade}
+                fabricHex={fabric.hex}
+                fabricTexture={fabric.texture}     // opzionale, per futuro
+                profileHex={profile.hex}
+                profileTexture={profile.texture}   // opzionale
+                animateKey={animateKey}
+                pleatCount={22}
+                pleatFillRatio={1}
+                className="h-full w-full"
+              />
             </motion.div>
           </AnimatePresence>
         </div>
@@ -78,70 +100,77 @@ export default function PlisyColorConfigurator({
       <div className="hidden md:flex md:items-center md:justify-center">
         <div className="relative w-full max-w-[560px]" style={{ aspectRatio: '4 / 3' }}>
           <AnimatePresence mode="sync" initial={false}>
-            <motion.div key={animateKey + '-d'} variants={fade} initial="hidden" animate="show" exit="exit" className="absolute inset-0">
-          <PlisyPreview
-  baseSrc={MOCKUP.base}
-  fabricMask={MOCKUP.fabricMask}
-  profileMask={MOCKUP.profileMask}
-  shadeSrc={MOCKUP.shade}
-  fabricHex={fabric.hex}
-  fabricTexture={fabric.texture}
-  profileHex={profile.hex}
-  profileTexture={profile.texture}
-  animateKey={animateKey}
-  pleatCount={22}
-  pleatFillRatio={1}
-  className="h-full w-full"
-/>
+            <motion.div
+              key={animateKey + '-d'}
+              variants={fade}
+              initial="hidden"
+              animate="show"
+              exit="exit"
+              className="absolute inset-0"
+            >
+              <PlisyPreview
+                baseSrc={MOCKUP.base}
+                fabricMask={MOCKUP.fabricMask}
+                profileMask={MOCKUP.profileMask}
+                shadeSrc={MOCKUP.shade}
+                fabricHex={fabric.hex}
+                fabricTexture={fabric.texture}
+                profileHex={profile.hex}
+                profileTexture={profile.texture}
+                animateKey={animateKey}
+                pleatCount={22}
+                pleatFillRatio={1}
+                className="h-full w-full"
+              />
             </motion.div>
           </AnimatePresence>
         </div>
       </div>
 
-      {/* PALETA: TKANINA */}
+      {/* TKANINA — ribbon a bastoncini (desktop) / griglia (mobile) */}
       <div className="flex flex-col items-center gap-3">
         <h3 className="text-base font-semibold text-neutral-900 text-center">Tkanina (kolor / tekstura)</h3>
 
-        {/* Desktop ribbon */}
-        <div className="hidden w-full md:block">
-          <div className="mx-auto max-w-5xl overflow-x-auto">
-            <div className="flex justify-center">
-              <div className="inline-flex whitespace-nowrap gap-[6px] px-2 py-1">
-                {plisyFabricOptions.map((opt) => {
-                  const selected = fabric.id === opt.id;
-                  const style = opt.texture
-                    ? { backgroundImage: `url(${opt.texture})`, backgroundSize: 'cover', backgroundPosition: 'center' }
-                    : { backgroundColor: opt.hex ?? '#9aa0a6' };
-                  return (
-                    <button
-                      key={opt.id}
-                      onClick={() => setFabric(opt)}
-                      className={`h-8 w-8 rounded-[6px] ring-2 transition
-                        ${selected ? 'ring-amber-400' : 'ring-transparent hover:ring-neutral-300'}`}
-                      style={style}
-                      title={opt.name}
-                      aria-pressed={selected}
-                    />
-                  );
-                })}
-              </div>
-            </div>
+        {/* Desktop: stick sottili in ribbon scrollabile */}
+        <div className="relative hidden max-w-5xl overflow-x-auto rounded-md p-2 md:block">
+          <div className="flex h-8 min-w-max items-center gap-[2px]">
+            {plisyFabricOptions.map((opt) => {
+              const selected = fabric.id === opt.id;
+              const style = opt.texture
+                ? { backgroundImage: `url(${opt.texture})`, backgroundSize: 'cover', backgroundPosition: 'center' }
+                : { backgroundColor: opt.hex ?? '#9aa0a6' };
+              return (
+                <motion.button
+                  whileTap={{ scale: 0.92 }}
+                  key={opt.id}
+                  onClick={() => setFabric(opt)}
+                  className={`h-10 w-2 rounded-[2px] ring-2 ring-offset-1 transition ${
+                    selected ? 'ring-amber-400' : 'ring-transparent hover:ring-neutral-300'
+                  }`}
+                  style={style}
+                  title={opt.name}
+                  aria-pressed={selected}
+                />
+              );
+            })}
           </div>
         </div>
 
-        {/* Mobile grid */}
-        <div className="grid grid-cols-10 gap-2 md:hidden">
+        {/* Mobile: griglia di quadratini */}
+        <div className="grid grid-cols-12 gap-2 md:hidden px-2">
           {plisyFabricOptions.map((opt) => {
             const selected = fabric.id === opt.id;
             const style = opt.texture
               ? { backgroundImage: `url(${opt.texture})`, backgroundSize: 'cover', backgroundPosition: 'center' }
               : { backgroundColor: opt.hex ?? '#9aa0a6' };
             return (
-              <button
+              <motion.button
+                whileTap={{ scale: 0.94 }}
                 key={opt.id}
                 onClick={() => setFabric(opt)}
-                className={`h-7 w-7 rounded-[4px] ring-2 transition
-                  ${selected ? 'ring-amber-400' : 'ring-transparent hover:ring-neutral-300'}`}
+                className={`h-7 w-7 rounded-[4px] ring-2 transition ${
+                  selected ? 'ring-amber-400' : 'ring-transparent hover:ring-neutral-300'
+                }`}
                 style={style}
                 title={opt.name}
                 aria-pressed={selected}
@@ -151,11 +180,11 @@ export default function PlisyColorConfigurator({
         </div>
       </div>
 
-      {/* PALETA: PROFIL */}
+      {/* PROFIL — come prima */}
       <div className="flex flex-col items-center gap-3">
         <h3 className="text-base font-semibold text-neutral-900 text-center">Profil / ramka</h3>
 
-        {/* Desktop ribbon */}
+        {/* Desktop */}
         <div className="hidden w-full md:block">
           <div className="mx-auto max-w-5xl overflow-x-auto">
             <div className="flex justify-center">
@@ -169,8 +198,9 @@ export default function PlisyColorConfigurator({
                     <button
                       key={opt.id}
                       onClick={() => setProfile(opt)}
-                      className={`h-8 w-8 rounded-[6px] ring-2 transition
-                        ${selected ? 'ring-amber-400' : 'ring-transparent hover:ring-neutral-300'}`}
+                      className={`h-8 w-8 rounded-[6px] border border-neutral-200 ring-2 transition ${
+                        selected ? 'ring-amber-400' : 'ring-transparent hover:ring-neutral-300'
+                      }`}
                       style={style}
                       title={opt.name}
                       aria-pressed={selected}
@@ -182,8 +212,8 @@ export default function PlisyColorConfigurator({
           </div>
         </div>
 
-        {/* Mobile grid */}
-        <div className="grid grid-cols-10 gap-2 md:hidden">
+        {/* Mobile */}
+        <div className="grid grid-cols-7 gap-2 md:hidden">
           {plisyProfileOptions.map((opt) => {
             const selected = profile.id === opt.id;
             const style = opt.texture
@@ -193,14 +223,58 @@ export default function PlisyColorConfigurator({
               <button
                 key={opt.id}
                 onClick={() => setProfile(opt)}
-                className={`h-7 w-7 rounded-[4px] ring-2 transition
-                  ${selected ? 'ring-amber-400' : 'ring-transparent hover:ring-neutral-300'}`}
+                className={`h-7 w-7 rounded-[4px] ring-2 transition ${
+                  selected ? 'ring-amber-400' : 'ring-transparent hover:ring-neutral-300'
+                }`}
                 style={style}
                 title={opt.name}
                 aria-pressed={selected}
               />
             );
           })}
+        </div>
+      </div>
+
+      {/* === Riquadri grandi con il selezionato (desktop: affiancati, mobile: impilati) === */}
+      <div className="mt-6 grid gap-4 md:grid-cols-2">
+        {/* Fabric big sample */}
+        <div className="relative h-40 overflow-hidden rounded-md ring-1 ring-neutral-200 md:h-52">
+          <div className="absolute inset-0" style={fabricBg} />
+          <div
+            className={[
+              'relative z-10 flex h-full flex-col items-center justify-center text-center px-3',
+              textColorForBg(fabric.hex),
+            ].join(' ')}
+            style={{
+              textShadow:
+                textColorForBg(fabric.hex) === 'text-white'
+                  ? '0 1px 2px rgba(0,0,0,.45)'
+                  : '0 1px 1px rgba(255,255,255,.6)',
+            }}
+          >
+            <p className="text-base md:text-lg opacity-90">Wybierz kolor tkaniny:</p>
+            <p className="mt-1 text-xl font-semibold md:text-2xl">{fabric.name}</p>
+          </div>
+        </div>
+
+        {/* Profile big sample */}
+        <div className="relative h-40 overflow-hidden rounded-md ring-1 ring-neutral-200 md:h-52">
+          <div className="absolute inset-0" style={profileBg} />
+          <div
+            className={[
+              'relative z-10 flex h-full flex-col items-center justify-center text-center px-3',
+              textColorForBg(profile.hex),
+            ].join(' ')}
+            style={{
+              textShadow:
+                textColorForBg(profile.hex) === 'text-white'
+                  ? '0 1px 2px rgba(0,0,0,.45)'
+                  : '0 1px 1px rgba(255,255,255,.6)',
+            }}
+          >
+            <p className="text-base md:text-lg opacity-90">Wybierz kolor profilu:</p>
+            <p className="mt-1 text-xl font-semibold md:text-2xl">{profile.name}</p>
+          </div>
         </div>
       </div>
 
