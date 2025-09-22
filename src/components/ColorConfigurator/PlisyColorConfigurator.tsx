@@ -3,8 +3,8 @@
 import React from 'react';
 import { motion, AnimatePresence, type Variants, cubicBezier } from 'framer-motion';
 import PlisyPreview from '../ColorConfigurator/PlisyPreview';
-import type { ColorOption } from '@/data/types'; // { id:string; name:string; hex?:string; texture?:string }
-import { plisyFabricOptions, plisyProfileOptions } from '@/data/plisyOptions';
+import type { ColorOption } from '../../data/plisyOptions'; // { id:string; name:string; hex?:string; texture?:string }
+import { plisyFabricOptions, plisyProfileOptions } from '../../data/plisyOptions';
 
 const easeCB = cubicBezier(0.16, 1, 0.3, 1);
 const fade: Variants = {
@@ -12,6 +12,13 @@ const fade: Variants = {
   show:   { opacity: 1, y: 0, transition: { duration: 0.35, ease: easeCB } },
   exit:   { opacity: 0, y: -6, transition: { duration: 0.28, ease: easeCB } },
 };
+
+const MOCKUP = {
+  base: '/mockups/plisy/base-plisy.png',
+  fabricMask: '/mockups/plisy/maskFabric-plisy1.png',
+  profileMask: '/mockups/plisy/profil-plisy.png',
+  shade: '/mockups/plisy/shade-mask-plisy1.png',
+} as const;
 
 export default function PlisyColorConfigurator({
   title = 'Kolorystyka plis',
@@ -44,21 +51,24 @@ export default function PlisyColorConfigurator({
         <div className="relative mx-auto mt-2 w-full max-w-[420px]" style={{ aspectRatio: '4 / 3' }}>
           <AnimatePresence mode="sync" initial={false}>
             <motion.div key={animateKey + '-m'} variants={fade} initial="hidden" animate="show" exit="exit" className="absolute inset-0">
-              <PlisyPreview
-                // mockup defaults (sostituisci con i tuoi file quando pronti)
-                baseSrc="/mockups/plisy/base.png"
-                fabricMask="/mockups/plisy/fabric-mask.png"
-                profileMask="/mockups/plisy/profile-mask.png"
-                shadeSrc="/mockups/plisy/shade.png"
-                fabricHex={fabric.hex}
-                fabricTexture={fabric.texture}
-                profileHex={profile.hex}
-                profileTexture={profile.texture}
-                animateKey={animateKey}
-                pleatCount={22}
-                pleatFillRatio={0.68}
-                className="h-full w-full"
-              />
+       
+
+
+<PlisyPreview
+  baseSrc={MOCKUP.base}
+  fabricMask={MOCKUP.fabricMask}
+  profileMask={MOCKUP.profileMask}
+  shadeSrc={MOCKUP.shade}
+  fabricHex={fabric.hex}
+  fabricTexture={fabric.texture}
+  profileHex={profile.hex}
+  profileTexture={profile.texture}
+  animateKey={animateKey}
+  pleatCount={122}
+  pleatFillRatio={12.00}
+  className="h-full w-full"
+/>
+
             </motion.div>
           </AnimatePresence>
         </div>
@@ -69,20 +79,20 @@ export default function PlisyColorConfigurator({
         <div className="relative w-full max-w-[560px]" style={{ aspectRatio: '4 / 3' }}>
           <AnimatePresence mode="sync" initial={false}>
             <motion.div key={animateKey + '-d'} variants={fade} initial="hidden" animate="show" exit="exit" className="absolute inset-0">
-              <PlisyPreview
-                baseSrc="/mockups/plisy/base.png"
-                fabricMask="/mockups/plisy/fabric-mask.png"
-                profileMask="/mockups/plisy/profile-mask.png"
-                shadeSrc="/mockups/plisy/shade.png"
-                fabricHex={fabric.hex}
-                fabricTexture={fabric.texture}
-                profileHex={profile.hex}
-                profileTexture={profile.texture}
-                animateKey={animateKey}
-                pleatCount={22}
-                pleatFillRatio={0.68}
-                className="h-full w-full"
-              />
+          <PlisyPreview
+  baseSrc={MOCKUP.base}
+  fabricMask={MOCKUP.fabricMask}
+  profileMask={MOCKUP.profileMask}
+  shadeSrc={MOCKUP.shade}
+  fabricHex={fabric.hex}
+  fabricTexture={fabric.texture}
+  profileHex={profile.hex}
+  profileTexture={profile.texture}
+  animateKey={animateKey}
+  pleatCount={22}
+  pleatFillRatio={1}
+  className="h-full w-full"
+/>
             </motion.div>
           </AnimatePresence>
         </div>

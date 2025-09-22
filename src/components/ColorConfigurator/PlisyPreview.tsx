@@ -76,8 +76,8 @@ export default function PlisyPreview({
     periodPx && fillPx
       ? `repeating-linear-gradient(
            to bottom,
-           #000 0px,
-           #000 ${fillPx}px,
+           #fff 0px,
+           #fff ${fillPx}px,
            transparent ${fillPx}px,
            transparent ${periodPx}px
          )`
