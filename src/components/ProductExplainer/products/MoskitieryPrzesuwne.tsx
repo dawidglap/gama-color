@@ -2,7 +2,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { IconHome, IconShield, IconRulerMeasure, IconDoorSliding, IconMaximize } from '@tabler/icons-react';
+import { IconHome, IconShield, IconRulerMeasure, IconDoorEnter, IconMaximize } from '@tabler/icons-react';
 import { Block, Bullets, Chips, Note, fadeUp } from '../ui';
 
 export default function MoskitieryPrzesuwne() {
@@ -31,7 +31,7 @@ export default function MoskitieryPrzesuwne() {
       <Chips
         items={[
           { label: 'Duże przeszklenia', Icon: IconMaximize },
-          { label: 'System przesuwny', Icon: IconDoorSliding },
+          { label: 'System przesuwny', Icon: IconDoorEnter },
           { label: 'Stabilna konstrukcja', Icon: IconShield },
           { label: 'Na wymiar', Icon: IconRulerMeasure },
           { label: 'Kolory RAL i okleiny', Icon: IconHome },
