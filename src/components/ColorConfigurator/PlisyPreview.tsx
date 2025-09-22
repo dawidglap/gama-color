@@ -84,24 +84,25 @@ export default function PlisyPreview({
       : undefined;
 
   // tkanina: kolor / tekstura (powtarzana co "fałdę")
-  const fabricBg: React.CSSProperties = fabricTexture
-    ? {
-        backgroundImage: `url(${fabricTexture})`,
-        backgroundRepeat: 'repeat-y',
-        backgroundPosition: 'center top',
-        backgroundSize: periodPx ? `100% ${periodPx}px` : '100% 12px',
-      }
-    : { backgroundColor: fabricHex ?? '#d8dbe0' };
+const fabricBg: React.CSSProperties = {
+  backgroundColor: fabricHex ?? '#d8dbe0', // fallback visivo
+  ...(fabricTexture && {
+    backgroundImage: `url(${fabricTexture})`,
+    backgroundRepeat: 'repeat-y',
+    backgroundPosition: 'center top',
+    backgroundSize: periodPx ? `100% ${periodPx}px` : '100% 12px',
+  }),
+};
 
-  // profil: kolor / tekstura (mask profilu)
-  const profileBg: React.CSSProperties = profileTexture
-    ? {
-        backgroundImage: `url(${profileTexture})`,
-        backgroundRepeat: 'repeat',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }
-    : { backgroundColor: profileHex };
+const profileBg: React.CSSProperties = {
+  backgroundColor: profileHex ?? '#c9c9c9',
+  ...(profileTexture && {
+    backgroundImage: `url(${profileTexture})`,
+    backgroundRepeat: 'repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  }),
+};
 
   const fitClass = fit === 'cover' ? 'object-cover' : 'object-contain';
 

@@ -6,7 +6,7 @@ import { PLISY } from "@/data/plisy";
 import ProductHeader from "@/components/ProductHeader";
 import ProductExplainer from "@/components/ProductExplainer";
 import ProductGallery from "@/components/ProductGallery";
-import ConfiguratorSlot from "@/components/ColorConfigurator/ConfiguratorSlot";
+import ConfiguratorSlotPlisy from "@/components/ColorConfigurator/ConfiguratorSlotPlisy";
 
 // Slug statici
 export function generateStaticParams() {
@@ -130,7 +130,7 @@ export default async function PlisyVariantPage({
 
         {/* ⬇️ Configurator specifico per slug */}
         <div className="md:col-span-3">
-          <ConfiguratorSlot slug={slug} />
+          <ConfiguratorSlotPlisy slug={slug} />
         </div>
 
         {/* gallery */}
