@@ -1,18 +1,18 @@
 "use client";
 import React from "react";
 import { LayoutGrid } from "./ui/layout-grid";
-import Work1 from "../../public/images/work1.webp";
+import Work1 from "../../public/images/work8.webp";
 import Work2 from "../../public/images/work2.webp";
 import Work3 from "../../public/images/work3.webp";
-import Work4 from "../../public/images/work2.webp";
+import Work4 from "../../public/images/work4.webp";
 import Work5 from "../../public/images/work5.webp";
 import Work6 from "../../public/images/work6.webp";
 import Work7 from "../../public/images/work7.webp";
-import Work8 from "../../public/images/work2.webp";
-import Work9 from "../../public/images/work2.webp";
-import Work10 from "../../public/images/work2.webp";
-import Work11 from "../../public/images/work2.webp";
-import Work12 from "../../public/images/work2.webp";
+import Work8 from "../../public/images/work1.webp";
+import Work9 from "../../public/images/work9.webp";
+import Work10 from "../../public/images/work10.webp";
+import Work11 from "../../public/images/work11.webp";
+import Work12 from "../../public/images/work12.webp";
 
 export function LayoutGridDemo() {
   return (
