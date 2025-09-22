@@ -1,16 +1,12 @@
-// app/produkty/rolety-rzymskie-austriackie/page.tsx
 import Link from "next/link";
 import Image from "next/image";
-import { RA_LIST } from "@/data/roletyRzymskieAustriackie";
+import { ROLETY_ZEWNETRZNE_LIST } from "@/data/roletyZewnetrzne";
 
-export default function RoletyRzymskieAustriackieIndexPage() {
+export default function RoletyZewnetrzneIndexPage() {
   return (
     <main className="relative">
-      {/* Strisce laterali coerenti */}
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-y-0 right-[-12px] z-0 hidden translate-x-4 sm:block"
-      >
+      {/* strisce laterali */}
+      <div aria-hidden className="pointer-events-none fixed inset-y-0 right-[-12px] z-0 hidden translate-x-4 sm:block">
         <div className="relative h-full w-[220px] rotate-[18deg]">
           <div className="absolute inset-y-0 right-0 w-[14px] rounded-full bg-blue-400/90" />
           <div className="absolute inset-y-0 right-[28px] w-[14px] rounded-full bg-red-500/90" />
@@ -25,23 +21,19 @@ export default function RoletyRzymskieAustriackieIndexPage() {
           <span className="mx-2">/</span>
           <Link href="/produkty" className="hover:underline">Produkty</Link>
           <span className="mx-2">/</span>
-          <span aria-current="page" className="text-neutral-700">
-            Rolety rzymskie i austriackie
-          </span>
+          <span aria-current="page" className="text-neutral-700">Rolety zewnętrzne</span>
         </nav>
 
-        {/* header SEO */}
+        {/* header */}
         <header className="mb-8">
-          <p className="text-sm font-medium text-neutral-500">
-            Rolety rzymskie i austriackie
-          </p>
+          <p className="text-sm font-medium text-neutral-500">Rolety zewnętrzne</p>
           <h1 className="mt-2 text-3xl font-bold text-neutral-900 md:text-5xl">
-            Rolety rzymskie i austriackie — elegancja, którą widać
+            Rolety zewnętrzne — komfort i bezpieczeństwo
           </h1>
           <p className="mt-4 max-w-3xl text-neutral-600">
-            Miękkie, dekoracyjne wykończenie okna szyte na wymiar. Setki tkanin do wyboru,
-            od lekkich woali po blackout. Doradzimy krój, sposób montażu i detale wykończenia,
-            aby uzyskać dokładnie taki efekt, jakiego oczekujesz.
+            Termoizolacja zimą, ochrona przed nagrzewaniem latem, izolacja akustyczna,
+            prywatność i dodatkowe zabezpieczenie przed włamaniem. Wybierz system rolet
+            dopasowany do Twojego domu i sposobu montażu.
           </p>
         </header>
 
@@ -52,12 +44,12 @@ export default function RoletyRzymskieAustriackieIndexPage() {
           <div className="h-1 w-1/3 bg-blue-400" />
         </div>
 
-        {/* griglia: 2 varianti */}
-        <section className="grid gap-6 sm:grid-cols-2">
-          {RA_LIST.map((v) => (
+        {/* griglia varianti */}
+        <section className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {ROLETY_ZEWNETRZNE_LIST.map((v) => (
             <Link
               key={v.slug}
-              href={`/produkty/rolety-rzymskie-austriackie/${v.slug}`}
+              href={`/produkty/rolety-zewnetrzne/${v.slug}`}
               className="group block overflow-hidden rounded-2xl bg-white ring-1 ring-neutral-200 shadow-sm transition hover:shadow-md focus-visible:outline-none"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden">
@@ -66,7 +58,7 @@ export default function RoletyRzymskieAustriackieIndexPage() {
                   alt={v.title}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                 />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/55 via-black/20 to-transparent" />
                 <div className="absolute bottom-3 left-4 right-4">
@@ -79,7 +71,6 @@ export default function RoletyRzymskieAustriackieIndexPage() {
               <div className="p-4">
                 <p className="line-clamp-3 text-sm text-neutral-600">{v.short}</p>
                 <div className="mt-4 inline-flex items-center gap-2 text-sm font-medium">
-                  {/* versione minimal (niente gradienti) */}
                   <span className="text-neutral-800">Zobacz szczegóły</span>
                   <span aria-hidden>→</span>
                 </div>

@@ -21,9 +21,18 @@ const PlisyCosimo = dynamic(() => import('../products/PlisyCosimo'), { ssr: fals
 const PlisyCosimoSmartline = dynamic(() => import('../products/PlisyCosimoSmartline'), { ssr: false });
 const PlisyUltima = dynamic(() => import('../products/PlisyUltima'), { ssr: false });
 
+// prodotti già aggiunti in questo folder
+const RoletyRzymskie = dynamic(() => import('./RoletyRzymskie'), { ssr: false });
+const RoletyAustriackie = dynamic(() => import('./RoletyAustriackie'), { ssr: false });
+const MoskitieryRamkowe = dynamic(() => import('./MoskitieryRamkowe'), { ssr: false });
+const MoskitieryDrzwiowe = dynamic(() => import('./MoskitieryDrzwiowe'), { ssr: false });
+const MoskitieryRolowane = dynamic(() => import('./MoskitieryRolowane'), { ssr: false });
+const MoskitieryPrzesuwne = dynamic(() => import('./MoskitieryPrzesuwne'), { ssr: false });
 
-
-
+// ⬇️ NUOVI: Rolety zewnętrzne
+const RoletyZewnetrzneStandardowe = dynamic(() => import('./RoletyZewnetrzneStandardowe'), { ssr: false });
+const RoletyZewnetrzneMoskitiery = dynamic(() => import('./RoletyZewnetrzneMoskitiery'), { ssr: false });
+const RoletyZewnetrzneNadstawne = dynamic(() => import('./RoletyZewnetrzneNadstawne'), { ssr: false });
 
 const REGISTRY: Record<string, React.ComponentType> = {
     'fotorolety': Fotorolety,
@@ -43,9 +52,20 @@ const REGISTRY: Record<string, React.ComponentType> = {
     'cosimo-smartline': PlisyCosimoSmartline,
     'ultima': PlisyUltima,
 
+    // rolety rzymskie/austriackie
+    'rolety-rzymskie': RoletyRzymskie,
+    'rolety-austriackie': RoletyAustriackie,
 
+    // moskitiery
+    'moskitiery-ramkowe': MoskitieryRamkowe,
+    'moskitiery-drzwiowe': MoskitieryDrzwiowe,
+    'moskitiery-rolowane': MoskitieryRolowane,
+    'moskitiery-przesuwne': MoskitieryPrzesuwne,
 
-
+    // rolety zewnętrzne
+    'standardowe': RoletyZewnetrzneStandardowe,
+    'standardowe-moskitiery': RoletyZewnetrzneMoskitiery,
+    'nadstawne': RoletyZewnetrzneNadstawne,
 
     // aggiungi qui: 'vegas-profil': dynamic(() => import('./VegasProfil'), { ssr: false }),
 };

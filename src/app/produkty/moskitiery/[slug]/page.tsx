@@ -1,20 +1,18 @@
-// app/produkty/rolety-rzymskie-austriackie/[slug]/page.tsx
+// app/produkty/moskitiery/[slug]/page.tsx
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { RA } from "@/data/roletyRzymskieAustriackie";
+import { MOSKITIERY } from "@/data/moskitiery";
 
-export default function RoletyRzymskieAustriackieDetailPage({
-  params,
-}: {
-  params: { slug: "rolety-rzymskie" | "rolety-austriackie" };
-}) {
-  const data = RA[params.slug];
+type Slug = keyof typeof MOSKITIERY;
+
+export default function MoskitieraDetailPage({ params }: { params: { slug: Slug } }) {
+  const data = MOSKITIERY[params.slug as Slug];
   if (!data) return notFound();
 
   return (
     <main className="relative">
-      {/* Strisce laterali coerenti */}
+      {/* Strisce laterali */}
       <div
         aria-hidden
         className="pointer-events-none fixed inset-y-0 right-[-12px] z-0 hidden translate-x-4 sm:block"
@@ -33,9 +31,7 @@ export default function RoletyRzymskieAustriackieDetailPage({
           <span className="mx-2">/</span>
           <Link href="/produkty" className="hover:underline">Produkty</Link>
           <span className="mx-2">/</span>
-          <Link href="/produkty/rolety-rzymskie-austriackie" className="hover:underline">
-            Rolety rzymskie i austriackie
-          </Link>
+          <Link href="/produkty/moskitiery" className="hover:underline">Moskitiery</Link>
           <span className="mx-2">/</span>
           <span aria-current="page" className="text-neutral-700">{data.title}</span>
         </nav>
@@ -45,19 +41,18 @@ export default function RoletyRzymskieAustriackieDetailPage({
           <div>
             <p className="text-sm font-medium text-neutral-500">{data.category}</p>
             <h1 className="mt-2 text-3xl font-bold text-neutral-900 md:text-5xl">
-              {data.title} — szyte na wymiar
+              {data.title} — na wymiar
             </h1>
             <p className="mt-4 text-neutral-600">{data.short}</p>
 
             {/* selling points rapidi */}
-            <ul className="mt-6 grid gap-2 text-sm text-neutral-700">
-              <li>• Setki tkanin: woal, len, mieszanki, blackout</li>
-              <li>• Montaż: do ściany, do sufitu, we wnęce okiennej</li>
-              <li>• Precyzyjne sterowanie światłem, łatwe czyszczenie</li>
-              <li>• Doradztwo kolorystyczne i pomiar na miejscu</li>
-            </ul>
+            {data.notes?.length ? (
+              <ul className="mt-6 grid gap-2 text-sm text-neutral-700">
+                {data.notes.map((n, i) => <li key={i}>• {n}</li>)}
+              </ul>
+            ) : null}
 
-            {/* CTA semplice (adatta href/scroll-to) */}
+            {/* CTA */}
             <div className="mt-6 flex gap-3">
               <Link
                 href="/kontakt"
@@ -95,12 +90,10 @@ export default function RoletyRzymskieAustriackieDetailPage({
         {/* corpo descrizione + aside */}
         <section className="grid gap-8 md:grid-cols-3">
           <article className="md:col-span-2">
-            <h2 className="mb-3 text-2xl font-semibold text-neutral-900">
-              Dlaczego {data.slug === "rolety-rzymskie" ? "rzymskie" : "austriackie"}?
-            </h2>
+            <h2 className="mb-3 text-2xl font-semibold text-neutral-900">Dlaczego warto</h2>
             <p className="text-neutral-700">{data.description}</p>
 
-            {/* galleria semplice */}
+            {/* galleria */}
             {data.galleryImages?.length ? (
               <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
                 {data.galleryImages.map((src, i) => (
@@ -119,12 +112,12 @@ export default function RoletyRzymskieAustriackieDetailPage({
               </div>
             )}
             <div className="rounded-2xl bg-neutral-50 p-5 ring-1 ring-neutral-200">
-              <h3 className="mb-2 font-semibold text-neutral-900">Szycie i montaż</h3>
+              <h3 className="mb-2 font-semibold text-neutral-900">Pomiar i montaż</h3>
               <ul className="space-y-1 text-sm text-neutral-700">
-                <li>• Pomiar u klienta i doradztwo tkanin</li>
-                <li>• Szycie pod wymiar + dodatki (lamówki, podszewki)</li>
+                <li>• Doradztwo i pomiar u klienta</li>
+                <li>• Produkcja na wymiar, kolory do stolarki</li>
                 <li>• Montaż i regulacja na miejscu</li>
-                <li>• Gwarancja i serwis</li>
+                <li>• Serwis i części zamienne</li>
               </ul>
               <Link
                 href="/kontakt"
