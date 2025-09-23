@@ -106,7 +106,7 @@ const grid = [
     icon: BadgeCheck,
   },
   {
-    title: "Fachowy montaż i pomiar",
+    title: "Fachowy pomiar i montaż ",
     description:
       "Zapewniamy precyzyjny pomiar i profesjonalny montaż osłon okiennych — zawsze na czas i bezproblemowo.",
     icon: Ruler,
