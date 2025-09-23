@@ -99,8 +99,8 @@ export const ZALUZJE: Record<string, ZaluzjeVariant> = {
             "Egzotyczny surowiec, lekka konstrukcja i naturalny efekt w stylu eko.",
         description:
             "Żaluzje bambusowe wprowadzają do wnętrza nutę Orientu i naturalną lekkość. Są funkcjonalne, zapewniają płynną regulację światła, a bogata kolorystyka umożliwia dopasowanie do indywidualnego stylu pomieszczeń. Dostępne lamele o szerokości 25 i 50 mm. Montaż i doradztwo — Słupsk i okolice.",
-        image: "/images/zaluzje/bambusowe/hero.webp",
-        asideImage: "/images/zaluzje/bambusowe/aside.webp",
+        image: "/images/zaluzje/bambusowe/g1.webp",
+        asideImage: "/images/zaluzje/bambusowe/g5.webp",
         category: CATEGORY,
         galleryImages: [
             "/images/zaluzje/bambusowe/g1.webp",

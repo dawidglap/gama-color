@@ -16,9 +16,13 @@ export const PLISY: Record<string, PlisyItem> = {
         title: "Plisy COSIMO – góra/dół",
         short:
             "Uniwersalny system do okien standardowych. Precyzyjnie zasłania wybrany fragment szyby. Montaż i pomiar: Słupsk, Ustka, Kobylnica, Siemianice.",
-        image: "/images/plisy.webp",
-        asideImage: "/images/plisy.webp",
-        galleryImages: ["/images/plisy.webp"],
+        image: "/images/plisy/g1.webp",
+        asideImage: "/images/plisy/g5.webp",
+        galleryImages: ["/images/plisy/g1.webp",
+            "/images/plisy/g2.webp",
+            "/images/plisy/g3.webp",
+            "/images/plisy/g4.webp"
+        ],
     },
     "cosimo-smartline": {
         slug: "cosimo-smartline",
@@ -28,7 +32,11 @@ export const PLISY: Record<string, PlisyItem> = {
             "System w prowadnicach z blokadą Easy Click. Profile: biały, srebrny, sosna. Idealny do okien dachowych w Słupsku, Redzikowie, Siemianicach.",
         image: "/images/plisy.webp",
         asideImage: "/images/plisy.webp",
-        galleryImages: ["/images/plisy.webp"],
+        galleryImages: ["/images/plisy.webp",
+            "/images/plisy.webp",
+            "/images/plisy.webp",
+            "/images/plisy.webp"
+        ],
     },
     "ultima": {
         slug: "ultima",
@@ -38,6 +46,10 @@ export const PLISY: Record<string, PlisyItem> = {
             "Rozwiązanie do trójkątów, trapezów i łuków, a także do okien standardowych. Realizacje: Słupsk, Rowy, Ustka i okolice.",
         image: "/images/plisy.webp",
         asideImage: "/images/plisy.webp",
-        galleryImages: ["/images/plisy.webp"],
+        galleryImages: ["/images/plisy.webp",
+            "/images/plisy.webp",
+            "/images/plisy.webp",
+            "/images/plisy.webp"
+        ],
     },
 };
