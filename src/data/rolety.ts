@@ -100,8 +100,8 @@ export const ROLETY: Record<string, RoletyVariant> = {
         short: "Dwie warstwy tkaniny – pełna kontrola światła.",
         description:
             "Pasy zaciemniające i transparentne ułożone naprzemiennie. Zgrabna kaseta i estetyczne prowadnice.",
-        image: "/images/rolety/dzien-noc-hero.jpg",
-        asideImage: "/images/rolety/dzien-noc-aside.jpg",
+        image: "/images/rolety/dzien-noc/g1.webp",
+        asideImage: "/images/rolety/dzien-noc/g5.webp",
         category: CATEGORY,
         galleryImages: [
             "/images/rolety/dzien-noc/g1.webp",
@@ -117,8 +117,8 @@ export const ROLETY: Record<string, RoletyVariant> = {
         short: "Komfort latem i zimą dla poddasza.",
         description:
             "Chronią przed nadmiernym słońcem i ułatwiają nocny wypoczynek. Tkaniny antyrefleksyjne ograniczają nagrzewanie.",
-        image: "/images/rolety/dachowe-wolnowiszace-hero.jpg",
-        asideImage: "/images/rolety/dachowe-wolnowiszace-aside.jpg",
+        image: "/images/rolety/dachowe-wolnowiszace/g1.webp",
+        asideImage: "/images/rolety/dachowe-wolnowiszace/g5.webp",
         category: CATEGORY,
         galleryImages: [
             "/images/rolety/dachowe-wolnowiszace/g1.webp",
@@ -134,8 +134,8 @@ export const ROLETY: Record<string, RoletyVariant> = {
         short: "Kaseta i prowadnice – maksymalna kontrola światła.",
         description:
             "Do okien dachowych drewnianych i PVC. Prowadnice utrzymują tkaninę przy szybie i minimalizują dopływ światła.",
-        image: "/images/rolety/dachowe-w-kasecie-hero.jpg",
-        asideImage: "/images/rolety/dachowe-w-kasecie-aside.jpg",
+        image: "/images/rolety/dachowe-w-kasecie/g1.webp",
+        asideImage: "/images/rolety/dachowe-w-kasecie/g5.webp",
         category: CATEGORY,
         galleryImages: [
             "/images/rolety/dachowe-w-kasecie/g1.webp",
