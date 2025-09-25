@@ -39,13 +39,13 @@ export const RA: Record<RzymskieAustriackieVariant["slug"], RzymskieAustriackieV
             "Miękkie marszczenia i romantyczny charakter. Klasyka, która wprowadza lekkość i wyjątkowy klimat do wnętrza.",
         description:
             "Rolety austriackie to dekoracja, która nie wychodzi z mody. Charakterystyczne, pionowe marszczenia nadają oknu miękkości i lekkości, świetnie podkreślając styl klasyczny, glamour lub modern classic. Dobierzemy gramaturę i przejrzystość tkaniny, by uzyskać efekt od subtelnej mgiełki po wyraźne przyciemnienie. Doskonałe do salonów, jadalni i pokoi dziennych, w których liczy się przyjemna, przytulna atmosfera.",
-        image: "/images/rolety/austriackie/hero.webp",
-        asideImage: "/images/rolety/austriackie/aside.webp",
+        image: "/images/rolety/austriackie/g1.webp",
+        asideImage: "/images/rolety/austriackie/g2.webp",
         category: CATEGORY,
         galleryImages: [
-            "/images/rolety/austriackie/g1.webp",
-            "/images/rolety/austriackie/g2.webp",
             "/images/rolety/austriackie/g3.webp",
+            "/images/rolety/austriackie/g1.webp",
+            "/images/rolety/austriackie/g5.webp",
             "/images/rolety/austriackie/g4.webp",
         ],
     },
