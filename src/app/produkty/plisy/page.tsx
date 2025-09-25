@@ -28,7 +28,7 @@ const ITEMS: Item[] = [
     description:
       "Uniwersalny system do okien standardowych. Precyzyjne zasłanianie wybranego fragmentu szyby i duży wybór tkanin. Idealne do mieszkań i domów w Słupsku, Ustce i Kobylnicy.",
     href: "/produkty/plisy/cosimo",
-    image: "/images/plisy.webp",
+    image: "/images/plisy/g16.webp",
     highlights: [
       "Sterowanie góra–dół",
       "Setki tkanin i kolorów",
@@ -42,7 +42,7 @@ const ITEMS: Item[] = [
     description:
       "Nowoczesny system w prowadnicach, stworzony do okien dachowych. Kolory profili: biały, srebrny, sosna. Sprawdza się w Słupsku, Redzikowie i Siemianicach.",
     href: "/produkty/plisy/cosimo-smartline",
-    image: "/images/plisy.webp",
+    image: "/images/plisy/g9.webp",
     highlights: [
       "Prowadnice boczne",
       "Dachowe i uchylne",
@@ -56,7 +56,7 @@ const ITEMS: Item[] = [
     description:
       "Rozwiązanie do okien o kształtach trójkątnych, trapezowych, półokrągłych i okrągłych. Równie dobrze działa w standardowych ramach – Słupsk, Rowy, Ustka i okolice.",
     href: "/produkty/plisy/ultima",
-    image: "/images/plisy.webp",
+    image: "/images/plisy/g13.webp",
     highlights: [
       "Trójkąty, trapezy, łuki",
       "Precyzyjne dopasowanie",
