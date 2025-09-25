@@ -55,7 +55,7 @@ export const ROLETY: Record<string, RoletyVariant> = {
     "vegas-mini": {
         slug: "vegas-mini",
         title: "Rolety Vegas Mini",
-        short: "Wolnowiszący, ekonomiczny system na wymiar.",
+        short: "Rolety Vegas Mini wolnowiszący, ekonomiczny system na wymiar.",
         description:
             "Najprostsze i najtańsze rolety materiałowe. Montaż na listwie przyszybowej lub bezinwazyjnie na ramie okna.",
         image: "/images/rolety/vegas-mini/g1.webp",
@@ -111,22 +111,22 @@ export const ROLETY: Record<string, RoletyVariant> = {
         ],
     },
 
-    "rolety-dachowe-wolnowiszace": {
-        slug: "rolety-dachowe-wolnowiszace",
-        title: "Rolety dachowe wolnowiszące",
-        short: "Komfort latem i zimą dla poddasza.",
-        description:
-            "Chronią przed nadmiernym słońcem i ułatwiają nocny wypoczynek. Tkaniny antyrefleksyjne ograniczają nagrzewanie.",
-        image: "/images/rolety/dachowe-wolnowiszace/g1.webp",
-        asideImage: "/images/rolety/dachowe-wolnowiszace/g5.webp",
-        category: CATEGORY,
-        galleryImages: [
-            "/images/rolety/dachowe-wolnowiszace/g1.webp",
-            "/images/rolety/dachowe-wolnowiszace/g2.webp",
-            "/images/rolety/dachowe-wolnowiszace/g3.webp",
-            "/images/rolety/dachowe-wolnowiszace/g4.webp",
-        ],
-    },
+    // "rolety-dachowe-wolnowiszace": {
+    //     slug: "rolety-dachowe-wolnowiszace",
+    //     title: "Rolety dachowe wolnowiszące",
+    //     short: "Komfort latem i zimą dla poddasza.",
+    //     description:
+    //         "Chronią przed nadmiernym słońcem i ułatwiają nocny wypoczynek. Tkaniny antyrefleksyjne ograniczają nagrzewanie.",
+    //     image: "/images/rolety/dachowe-wolnowiszace/g1.webp",
+    //     asideImage: "/images/rolety/dachowe-wolnowiszace/g5.webp",
+    //     category: CATEGORY,
+    //     galleryImages: [
+    //         "/images/rolety/dachowe-wolnowiszace/g1.webp",
+    //         "/images/rolety/dachowe-wolnowiszace/g2.webp",
+    //         "/images/rolety/dachowe-wolnowiszace/g3.webp",
+    //         "/images/rolety/dachowe-wolnowiszace/g4.webp",
+    //     ],
+    // },
 
     "rolety-dachowe-w-kasecie": {
         slug: "rolety-dachowe-w-kasecie",
