@@ -30,12 +30,12 @@ export const PLISY: Record<string, PlisyItem> = {
         title: "Plisy COSIMO SMARTLINE – do okien dachowych",
         short:
             "System w prowadnicach z blokadą Easy Click. Profile: biały, srebrny, sosna. Idealny do okien dachowych w Słupsku, Redzikowie, Siemianicach.",
-        image: "/images/plisy/g6.webp",
+        image: "/images/plisy/g9.webp",
         asideImage: "/images/plisy/g7.webp",
         galleryImages: ["/images/plisy/g6.webp",
             "/images/plisy/g8.webp",
-            "/images/plisy/g6.webp",
-            "/images/plisy/g6.webp"
+            "/images/plisy/g9.webp",
+            "/images/plisy/g10.webp"
         ],
     },
     "ultima": {
@@ -44,12 +44,12 @@ export const PLISY: Record<string, PlisyItem> = {
         title: "Plisy ULTIMA – do kształtów nietypowych",
         short:
             "Rozwiązanie do trójkątów, trapezów i łuków, a także do okien standardowych. Realizacje: Słupsk, Rowy, Ustka i okolice.",
-        image: "/images/soon.webp",
-        asideImage: "/images/soon.webp",
-        galleryImages: ["/images/soon.webp",
-            "/images/soon.webp",
-            "/images/soon.webp",
-            "/images/soon.webp"
+        image: "/images/plisy/g11.webp",
+        asideImage: "/images/plisy/g13.webp",
+        galleryImages: ["/images/plisy/g11.webp",
+            "/images/plisy/g12.webp",
+            "/images/plisy/g14.webp",
+            "/images/plisy/g15.webp"
         ],
     },
 };
