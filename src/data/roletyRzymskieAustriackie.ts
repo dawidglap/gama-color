@@ -21,8 +21,8 @@ export const RA: Record<RzymskieAustriackieVariant["slug"], RzymskieAustriackieV
             "Elegancja i porządek w jednym – miękkie fałdy, idealne do salonu, sypialni i kuchni. Szyte na wymiar, z setek tkanin.",
         description:
             "Rolety rzymskie łączą dekoracyjność zasłon z wygodą rolet. Szyte na wymiar dokładnie pod Twoje okno, tworzą równe, miękkie fałdy i pozwalają precyzyjnie dozować światło. Wybierzesz spośród tkanin transparentnych, przyciemniających i zaciemniających, w gładkich i strukturalnych fakturach. Idealne do wnętrz nowoczesnych i klasycznych – od kuchni, przez salon, aż po sypialnię. Dodatkowe wykończenia (lamówki, taśmy, podszewki blackout) pozwalają dopracować detal pod styl wnętrza.",
-        image: "/images/rolety/rzymskie/g1.webp",
-        asideImage: "/images/rolety/rzymskie/g2.webp",
+        image: "/images/rolety/rzymskie/g4.webp",
+        asideImage: "/images/rolety/rzymskie/g5.webp",
         category: CATEGORY,
         galleryImages: [
             "/images/rolety/rzymskie/g1.webp",
