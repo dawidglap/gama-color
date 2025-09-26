@@ -10,13 +10,13 @@ const MARKIZY_DATA = {
   title: "Markizy tarasowe i balkonowe",
   short:
     "Skuteczna ochrona przed słońcem i nagrzewaniem + dopasowana estetyka. Na wymiar, z automatyką pogodową i bogatą paletą tkanin.",
-  image: "/images/markizy/hero.jpg",
-  asideImage: "/images/markizy/aside.jpg",
+  image: "/images/markizy/g1.webp",
+  asideImage: "/images/markizy/g5.webp",
   galleryImages: [
-    "/images/markizy/g1.jpg",
-    "/images/markizy/g2.jpg",
-    "/images/markizy/g3.jpg",
-    "/images/markizy/g4.jpg",
+    "/images/markizy/g1.webp",
+    "/images/markizy/g2.webp",
+    "/images/markizy/g3.webp",
+    "/images/markizy/g4.webp",
    
   ],
 };
