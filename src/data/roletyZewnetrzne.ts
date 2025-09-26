@@ -65,12 +65,13 @@ export const ROLETY_ZEWNETRZNE: Record<RoletyZewnetrzneVariant["slug"], RoletyZe
         description:
             "Rolety nadstawne (naokienne) montuje się razem z oknem we wnęce, co pozwala na pełną integrację z bryłą budynku. Skrzynka z PVC może być zabudowana częściowo lub całkowicie, pozostając niewidoczną we wnętrzu. To idealny system dla nowych inwestycji, gdzie decyzję o roletach podejmuje się już na etapie projektu. Dostępne w wielu wariantach pancerza, z opcją zastosowania moskitiery.",
         image: "/images/rolety-zewnetrzne/nadstawne/g1.webp",
-        asideImage: "/images/rolety-zewnetrzne/nadstawne/g5.webp",
+        asideImage: "/images/rolety-zewnetrzne/nadstawne/g4.webp",
         category: CATEGORY,
         galleryImages: [
             "/images/rolety-zewnetrzne/nadstawne/g1.webp",
             "/images/rolety-zewnetrzne/nadstawne/g2.webp",
             "/images/rolety-zewnetrzne/nadstawne/g3.webp",
+            "/images/rolety-zewnetrzne/nadstawne/g5.webp",
         ],
         notes: [
             "Montaż z oknem – idealne dla nowych budynków",
