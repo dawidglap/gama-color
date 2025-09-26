@@ -27,6 +27,7 @@ export const ROLETY_ZEWNETRZNE: Record<RoletyZewnetrzneVariant["slug"], RoletyZe
             "/images/rolety-zewnetrzne/standardowe/g1.webp",
             "/images/rolety-zewnetrzne/standardowe/g2.webp",
             "/images/rolety-zewnetrzne/standardowe/g3.webp",
+            "/images/rolety-zewnetrzne/standardowe/g4.webp"
         ],
         notes: [
             "Aluminiowy pancerz PA39/PA45/PA52",
@@ -48,6 +49,7 @@ export const ROLETY_ZEWNETRZNE: Record<RoletyZewnetrzneVariant["slug"], RoletyZe
             "/images/rolety-zewnetrzne/moskitiery/g1.webp",
             "/images/rolety-zewnetrzne/moskitiery/g2.webp",
             "/images/rolety-zewnetrzne/moskitiery/g3.webp",
+            "/images/rolety-zewnetrzne/moskitiery/g4.webp",
         ],
         notes: [
             "Roleta + moskitiera w jednym systemie",
