@@ -114,7 +114,7 @@ const Footer = () => {
             </div>
 
             {/* Social */}
-            <div className='mt-6'>
+            {/* <div className='mt-6'>
               <h5 className='mb-2 text-sm font-semibold'>Znajdź nas</h5>
               <div className='flex justify-center gap-4 md:justify-start lg:justify-end'>
                 <a
@@ -136,7 +136,7 @@ const Footer = () => {
                   <FaInstagram className='text-xl hover:text-accent' />
                 </a>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
