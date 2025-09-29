@@ -31,6 +31,7 @@ export const NAV_ITEMS: { name: string; link: string }[] = [
   { name: "Realizacje",  link: "/#realizacje" },
   { name: "Opinie",      link: "/#reviews" },
   { name: "O nas",       link: "/o-nas" },
+  { name: "Jak mierzyć", link: "/jak-mierzyc" },
 ];
 
 export const Navbar = ({ children, className }: NavbarProps) => {

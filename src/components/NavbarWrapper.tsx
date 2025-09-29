@@ -23,6 +23,7 @@ export default function NavbarWrapper() {
     { name: "Realizacje", link: "/#realizacje" },
     { name: "Opinie",     link: "/#reviews" },
     { name: "O nas",      link: "/o-nas" },
+     { name: "Jak mierzyć", link: "/jak-mierzyc" },
   ];
 
   return (

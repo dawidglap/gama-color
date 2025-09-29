@@ -62,6 +62,7 @@ const Footer = () => {
               <li><Link href='/#advantages' className='hover:underline hover:text-accent'>Dlaczego my</Link></li>
               <li><Link href='/#reviews' className='hover:underline hover:text-accent'>Opinie klientów</Link></li>
               <li><Link href='/#faq' className='hover:underline hover:text-accent'>FAQ</Link></li>
+                 <li><Link href='/jak-mierzyc' className='hover:underline hover:text-accent'>Jak mierzyć</Link></li>
               <li className='pt-2 text-sm text-secondary'><Link href='/polityka-prywatnosci' className='hover:underline'>Polityka prywatności</Link></li>
               <li className='text-sm text-secondary'><Link href='/mapa-strony' className='hover:underline'>Mapa strony</Link></li>
             </ul>
