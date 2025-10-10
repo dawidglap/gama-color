@@ -10,22 +10,29 @@ export const metadata: Metadata = {
   alternates: { canonical: "/jak-mierzyc" },
 };
 
-/** ── Dati: placeholder immagini/download (sostituisci i path quando pronti) ─ */
-type Guide = { name: string; slug: string; image: string; download: string };
-
-const GUIDES: Guide[] = [
-  { name: "Żaluzje pionowe",        slug: "zaluzje-pionowe",        image: "/measure/zaluzje-pionowe.webp",        download: "/measure/zaluzje-pionowe.webp" },
-  { name: "Żaluzje poziome",        slug: "zaluzje-poziome",        image: "/measure/zaluzje-poziome.webp",        download: "/measure/zaluzje-poziome.webp" },
-  { name: "Żaluzje drewniane 25mm", slug: "zaluzje-drewniane-25",   image: "/measure/zaluzje-drewniane-25.webp",   download: "/measure/zaluzje-drewniane-25.webp" },
-  { name: "Żaluzje drewniane 50mm", slug: "zaluzje-drewniane-50",   image: "/measure/zaluzje-drewniane-50.webp",   download: "/measure/zaluzje-drewniane-50.webp" },
-  { name: "Żaluzje bambusowe 25mm", slug: "zaluzje-bambusowe-25",   image: "/measure/zaluzje-bambusowe-25.webp",   download: "/measure/zaluzje-bambusowe-25.webp" },
-  { name: "Żaluzje bambusowe 50mm", slug: "zaluzje-bambusowe-50",   image: "/measure/zaluzje-bambusowe-50.webp",   download: "/measure/zaluzje-bambusowe-50.webp" },
-  { name: "Plisy",                  slug: "plisy",                  image: "/measure/plisy.webp",                  download: "/measure/plisy.webp" },
-  { name: "Rolety Vegas Classic",   slug: "rolety-vegas-classic",   image: "/measure/rolety-vegas-classic.webp",   download: "/measure/rolety-vegas-classic.webp" },
-  { name: "Rolety Vegas Profil",    slug: "rolety-vegas-profil",    image: "/measure/rolety-vegas-profil.webp",    download: "/measure/rolety-vegas-profil.webp" },
-  { name: "Rolety wolno-wiszące",   slug: "rolety-wolno-wiszace",   image: "/measure/rolety-wolno-wiszace.webp",   download: "/measure/rolety-wolno-wiszace.webp" },
-  { name: "Rolety dzień i noc",     slug: "rolety-dzien-i-noc",     image: "/measure/rolety-dzien-i-noc.webp",     download: "/measure/rolety-dzien-i-noc.webp" },
+/** ── Elenco prodotti (senza immagini) ─ */
+type BaseGuide = { name: string; slug: string };
+const BASE_GUIDES: BaseGuide[] = [
+  { name: "Żaluzje pionowe",        slug: "zaluzje-pionowe" },
+  { name: "Żaluzje poziome",        slug: "zaluzje-poziome" },
+  { name: "Żaluzje drewniane 25mm", slug: "zaluzje-drewniane-25" },
+  { name: "Żaluzje drewniane 50mm", slug: "żaluzje-drewniane-50" }, // <-- se wolisz bez ogonka: zaluzje-drewniane-50
+  { name: "Żaluzje bambusowe 25mm", slug: "zaluzje-bambusowe-25" },
+  { name: "Żaluzje bambusowe 50mm", slug: "zaluzje-bambusowe-50" },
+  { name: "Plisy",                  slug: "plisy" },
+  { name: "Rolety Vegas Classic",   slug: "rolety-vegas-classic" },
+  { name: "Rolety Vegas Profil",    slug: "rolety-vegas-profil" },
+  { name: "Rolety wolno-wiszące",   slug: "rolety-wolno-wiszace" },
+  { name: "Rolety dzień i noc",     slug: "rolety-dzien-i-noc" },
 ];
+
+/** ── Costruiamo i path immagine/download in base all’ordine ─ */
+type Guide = BaseGuide & { image: string; download: string };
+const GUIDES: Guide[] = BASE_GUIDES.map((g, idx) => {
+  const n = idx + 1; // g1, g2, ...
+  const path = `/images/pomiar/g${n}.webp`;
+  return { ...g, image: path, download: path };
+});
 
 export default function Page() {
   return (
@@ -102,7 +109,7 @@ export default function Page() {
                     » zobacz jak wymierzyć
                   </a>
 
-                  {/* Download diretto */}
+                  {/* Download diretto (stessa immagine) */}
                   <a
                     href={g.download}
                     download
@@ -158,7 +165,6 @@ export default function Page() {
           <div className="gc-modal__card">
             <div className="gc-modal__header flex items-center justify-between">
               <h2 className="text-lg font-semibold text-neutral-900">{g.name} — jak wymierzyć</h2>
-              {/* Chiudi (torna al top con #_) */}
               <a href="#_" className="gc-close">
                 Zamknij
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">
@@ -168,7 +174,6 @@ export default function Page() {
             </div>
 
             <div className="gc-modal__body">
-              {/* usa <img> semplice per lasciare a te la sostituzione dei path */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={g.image}
@@ -180,7 +185,11 @@ export default function Page() {
             </div>
 
             <div className="gc-modal__footer flex items-center justify-between">
-              <a href={g.download} download className="inline-flex items-center gap-2 rounded-md bg-neutral-900 px-4 py-2 text-sm font-semibold text-white hover:bg-neutral-800">
+              <a
+                href={g.download}
+                download
+                className="inline-flex items-center gap-2 rounded-md bg-neutral-900 px-4 py-2 text-sm font-semibold text-white hover:bg-neutral-800"
+              >
                 Pobierz grafikę
               </a>
               <a href="#_" className="gc-close">Zamknij</a>
