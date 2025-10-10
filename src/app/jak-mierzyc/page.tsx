@@ -164,10 +164,10 @@ export default function Page() {
         <div key={g.slug} id={`guide-${g.slug}`} className="gc-modal">
           <div className="gc-modal__card">
             <div className="gc-modal__header flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-neutral-900">{g.name} — jak wymierzyć</h2>
-              <a href="#_" className="gc-close">
-                Zamknij
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">
+              <h2 className="text-lg font-semibold text-neutral-900">{g.name} </h2>
+              <a href="#_" className="gc-close  bg-red-500 hover:bg-red-600 py-2 px-4 rounded-lg shadow-md">
+                <span className="text-neutral-200">Zamknij</span>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" strokeWidth="2">
                   <path d="M18 6L6 18M6 6l12 12" />
                 </svg>
               </a>
@@ -192,7 +192,7 @@ export default function Page() {
               >
                 Pobierz grafikę
               </a>
-              <a href="#_" className="gc-close">Zamknij</a>
+              {/* <a href="#_" className="gc-close">Zamknij</a> */}
             </div>
           </div>
         </div>
