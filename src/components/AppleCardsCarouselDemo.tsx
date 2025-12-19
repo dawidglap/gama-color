@@ -55,6 +55,13 @@ export function AppleCardsCarouselDemo() {
 }
 
 const data = [
+  {
+    category: "Rolety",
+    title: "Rolety materiałowe",
+    src: Roleta,
+    href: "/produkty/rolety-materialowe",
+    content: null as unknown as React.ReactNode,
+  },
 
   {
     category: "Żaluzje",
@@ -70,20 +77,14 @@ const data = [
     href: "/produkty/plisy",
     content: null as unknown as React.ReactNode,
   },
-    {
+  {
     category: "Nowość",
     title: "Fotorolety",
     src: Fotorolety,
     href: "/produkty/fotorolety",
     content: null as unknown as React.ReactNode,
   },
-  {
-    category: "Rolety",
-    title: "Rolety materiałowe",
-    src: Roleta,
-    href: "/produkty/rolety-materialowe",
-    content: null as unknown as React.ReactNode,
-  },
+
   {
     category: "Rolety",
     title: "Rolety Rzymskie i Austriackie",

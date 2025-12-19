@@ -22,6 +22,16 @@ type Item = {
 
 // NOTE: usa immagini esistenti in /public/images/...
 const ITEMS: Item[] = [
+  {
+    slug: "fotorolety",
+    title: "Fotorolety – rolety z nadrukiem",
+    category: "Rolety",
+    description:
+      "Personalizowane rolety z nadrukiem Twojego zdjęcia lub grafiki. Na wymiar z montażem w Słupsku i okolicach.",
+    href: "/produkty/fotorolety",
+    image: "/images/fotorolety-hero.webp",
+    highlights: ["Personalizacja 1:1", "Na wymiar", "Do domu i firm"],
+  },
 
   {
     slug: "zaluzje",
@@ -43,16 +53,7 @@ const ITEMS: Item[] = [
     image: "/images/plisy.webp",
     highlights: ["Sterowanie góra/dół", "Cosimo / Smartline", "Wiele tkanin"],
   },
-    {
-    slug: "fotorolety",
-    title: "Fotorolety – rolety z nadrukiem",
-    category: "Rolety",
-    description:
-      "Personalizowane rolety z nadrukiem Twojego zdjęcia lub grafiki. Na wymiar z montażem w Słupsku i okolicach.",
-    href: "/produkty/fotorolety",
-    image: "/images/fotorolety-hero.webp",
-    highlights: ["Personalizacja 1:1", "Na wymiar", "Do domu i firm"],
-  },
+
   {
     slug: "rolety-materialowe",
     title: "Rolety materiałowe",
@@ -71,9 +72,13 @@ const ITEMS: Item[] = [
       "Eleganckie tkaniny i efektowne fałdy do salonu i sypialni. Szycie na miarę, montaż w Słupsku i okolicach.",
     href: "/produkty/rolety-rzymskie-austriackie",
     image: "/images/rzymskie.webp",
-    highlights: ["Tkaniny premium", "Szycie na miarę", "Estetyczne wykończenie"],
+    highlights: [
+      "Tkaniny premium",
+      "Szycie na miarę",
+      "Estetyczne wykończenie",
+    ],
   },
-   {
+  {
     slug: "rolety-zewnetrzne",
     title: "Rolety zewnętrzne",
     category: "Rolety zewnętrzne",
@@ -103,7 +108,6 @@ const ITEMS: Item[] = [
     image: "/images/markizy.webp",
     highlights: ["Konstrukcja alu", "Tkaniny UV", "Do tarasu/balkonu"],
   },
- 
 ];
 
 export default function Page() {
@@ -169,7 +173,7 @@ export default function Page() {
                     imageFirstOnDesktop ? "" : "",
                   ].join(" ")}
                 >
-                    {/* md:[&>*:first-child]:order-2 */}
+                  {/* md:[&>*:first-child]:order-2 */}
                   {/* Colonna testo */}
                   <div className="p-6 md:p-8">
                     <div className="mb-3 inline-flex items-center gap-2">
@@ -185,7 +189,10 @@ export default function Page() {
                     {item.highlights && item.highlights.length > 0 && (
                       <ul className="mt-4 grid gap-2 sm:grid-cols-2">
                         {item.highlights.map((h) => (
-                          <li key={h} className="flex items-start gap-2 text-sm text-neutral-700">
+                          <li
+                            key={h}
+                            className="flex items-start gap-2 text-sm text-neutral-700"
+                          >
                             <span className="mt-1 inline-block h-2 w-2 rounded-full bg-yellow-400" />
                             {h}
                           </li>
@@ -193,49 +200,48 @@ export default function Page() {
                       </ul>
                     )}
 
-                   <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-  {/* Primary: kontakt (più evidente) */}
-  <a
-    href="tel:+48598423534"
-    className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-neutral-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-neutral-800 active:bg-neutral-900 sm:w-auto"
-    aria-describedby="pomiar-footnote"
-  >
-    Skontaktuj się z doradcą
-    <svg
-      aria-hidden
-      viewBox="0 0 24 24"
-      className="h-4 w-4"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.33 1.7.63 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.15a2 2 0 0 1 2.11-.45c.8.3 1.64.51 2.5.63A2 2 0 0 1 22 16.92z" />
-    </svg>
-  </a>
+                    <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                      {/* Primary: kontakt (più evidente) */}
+                      <a
+                        href="tel:+48598423534"
+                        className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-neutral-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-neutral-800 active:bg-neutral-900 sm:w-auto"
+                        aria-describedby="pomiar-footnote"
+                      >
+                        Skontaktuj się z doradcą
+                        <svg
+                          aria-hidden
+                          viewBox="0 0 24 24"
+                          className="h-4 w-4"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.33 1.7.63 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.15a2 2 0 0 1 2.11-.45c.8.3 1.64.51 2.5.63A2 2 0 0 1 22 16.92z" />
+                        </svg>
+                      </a>
 
-  {/* Secondary: szczegóły (meno evidente) */}
-  <Link
-    href={item.href}
-    className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-neutral-300 px-5 py-3 text-sm font-medium text-neutral-900 transition hover:bg-neutral-50 active:bg-neutral-100 sm:w-auto"
-  >
-    Zobacz szczegóły
-    <svg
-      aria-hidden
-      viewBox="0 0 24 24"
-      className="h-4 w-4"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M5 12h14M13 5l7 7-7 7" />
-    </svg>
-  </Link>
-</div>
-
+                      {/* Secondary: szczegóły (meno evidente) */}
+                      <Link
+                        href={item.href}
+                        className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-neutral-300 px-5 py-3 text-sm font-medium text-neutral-900 transition hover:bg-neutral-50 active:bg-neutral-100 sm:w-auto"
+                      >
+                        Zobacz szczegóły
+                        <svg
+                          aria-hidden
+                          viewBox="0 0 24 24"
+                          className="h-4 w-4"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="M5 12h14M13 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                    </div>
                   </div>
 
                   {/* Colonna immagine */}
@@ -255,11 +261,12 @@ export default function Page() {
           })}
         </div>
 
-         <div className="mx-auto mt-12 max-w-xl rounded-xl border border-neutral-200 bg-white p-5 text-sm text-neutral-600 shadow-sm">
-            <p>
-              Nie widzisz produktu, którego szukasz? Zadzwoń do nas – doradzimy najlepsze rozwiązanie i umówimy <strong>bezpłatny pomiar</strong>.
-            </p>
-          </div>
+        <div className="mx-auto mt-12 max-w-xl rounded-xl border border-neutral-200 bg-white p-5 text-sm text-neutral-600 shadow-sm">
+          <p>
+            Nie widzisz produktu, którego szukasz? Zadzwoń do nas – doradzimy
+            najlepsze rozwiązanie i umówimy <strong>bezpłatny pomiar</strong>.
+          </p>
+        </div>
         <div className="h-8" />
       </div>
     </main>
