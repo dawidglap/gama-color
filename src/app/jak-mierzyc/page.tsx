@@ -6,38 +6,62 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Jak mierzyć – instrukcje pomiaru | Gama Color Słupsk",
   description:
-    "Proste instrukcje pomiaru dla: żaluzji, plis, rolet (Classic, Profil, dzień i noc) i innych. Jedna grafika na produkt + szybki download.",
+    "Instrukcje pomiaru dla żaluzji, plis i rolet. Proste schematy PDF do otwarcia lub pobrania.",
   alternates: { canonical: "/jak-mierzyc" },
 };
 
-/** ── Elenco prodotti (senza immagini) ─ */
-type BaseGuide = { name: string; slug: string };
-const BASE_GUIDES: BaseGuide[] = [
-  { name: "Żaluzje pionowe",        slug: "zaluzje-pionowe" },
-  { name: "Żaluzje poziome",        slug: "zaluzje-poziome" },
-  { name: "Żaluzje drewniane 25mm", slug: "zaluzje-drewniane-25" },
-  { name: "Żaluzje drewniane 50mm", slug: "żaluzje-drewniane-50" }, // <-- se wolisz bez ogonka: zaluzje-drewniane-50
-  { name: "Żaluzje bambusowe 25mm", slug: "zaluzje-bambusowe-25" },
-  { name: "Żaluzje bambusowe 50mm", slug: "zaluzje-bambusowe-50" },
-  { name: "Plisy",                  slug: "plisy" },
-  { name: "Rolety Vegas Classic",   slug: "rolety-vegas-classic" },
-  { name: "Rolety Vegas Profil",    slug: "rolety-vegas-profil" },
-  { name: "Rolety wolno-wiszące",   slug: "rolety-wolno-wiszace" },
-  { name: "Rolety dzień i noc",     slug: "rolety-dzien-i-noc" },
+/** ── Lista produktów (każdy z WŁASNYM linkiem – teraz identycznym) ─ */
+const GUIDES = [
+  {
+    name: "Żaluzje pionowe",
+    link: "https://tapparella.pl/wp-content/uploads/2020/11/TAPPA-Pomiar-V.pdf",
+  },
+  {
+    name: "Żaluzje poziome",
+    link: "https://tapparella.pl/wp-content/uploads/2020/11/TAPPA-Pomiar-ZD-25.pdf",
+  },
+  {
+    name: "Żaluzje drewniane 25mm",
+    link: "https://tapparella.pl/wp-content/uploads/2020/11/TAPPA-Pomiar-ZD-25.pdf",
+  },
+  {
+    name: "Żaluzje drewniane 50mm",
+    link: "https://tapparella.pl/wp-content/uploads/2020/11/TAPPA-Pomiar-ZD-50.pdf",
+  },
+  {
+    name: "Żaluzje bambusowe 25mm",
+    link: "https://tapparella.pl/wp-content/uploads/2020/11/TAPPA-Pomiar-ZD-25.pdf",
+  },
+  {
+    name: "Żaluzje bambusowe 50mm",
+    link: "https://tapparella.pl/wp-content/uploads/2020/11/TAPPA-Pomiar-ZD-50.pdf",
+  },
+  {
+    name: "Plisy",
+    link: "https://tapparella.pl/wp-content/uploads/2021/10/TAPPA-Pomiar-PL-1-Montaz-standardowy-1.pdf",
+  },
+  {
+    name: "Rolety Vegas Classic",
+    link: "https://tapparella.pl/wp-content/uploads/2021/10/TAPPA-Pomiar-RM-RVClassic-DN.pdf",
+  },
+  {
+    name: "Rolety Vegas Profil",
+    link: "https://tapparella.pl/wp-content/uploads/2022/04/TAPPA-Pomiar-RM-RVProfil.pdf",
+  },
+  {
+    name: "Rolety wolno-wiszące",
+    link: "https://tapparella.pl/wp-content/uploads/2021/10/TAPPA-Pomiar-RM-Standard.pdf",
+  },
+  {
+    name: "Rolety dzień i noc",
+    link: "https://tapparella.pl/wp-content/uploads/2021/10/TAPPA-Pomiar-RM-RVClassic-DN.pdf",
+  },
 ];
-
-/** ── Costruiamo i path immagine/download in base all’ordine ─ */
-type Guide = BaseGuide & { image: string; download: string };
-const GUIDES: Guide[] = BASE_GUIDES.map((g, idx) => {
-  const n = idx + 1; // g1, g2, ...
-  const path = `/images/pomiar/g${n}.webp`;
-  return { ...g, image: path, download: path };
-});
 
 export default function Page() {
   return (
     <main className="relative md:px-0 px-2">
-      {/* Strisce brand fisse (destra) */}
+      {/* Brand stripes (prawa strona) */}
       <div
         aria-hidden
         className="pointer-events-none fixed inset-y-0 right-[-12px] z-0 hidden translate-x-4 sm:block"
@@ -51,11 +75,13 @@ export default function Page() {
 
       {/* Container */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-12">
-        {/* breadcrumb */}
+        {/* Breadcrumb */}
         <nav aria-label="Breadcrumb" className="mb-6 text-sm text-neutral-500">
-          <Link href="/" className="hover:underline">Strona główna</Link>
+          <Link href="/" className="hover:underline">
+            Strona główna
+          </Link>
           <span className="mx-2">/</span>
-          <span aria-current="page" className="text-neutral-700">Jak mierzyć</span>
+          <span className="text-neutral-700">Jak mierzyć</span>
         </nav>
 
         {/* Header */}
@@ -65,138 +91,67 @@ export default function Page() {
             Jak prawidłowo wykonać pomiar?
           </h1>
           <p className="mt-4 max-w-3xl text-neutral-600">
-            Aby precyzyjnie dopasować produkt do okna, wykonaj prosty pomiar. Poniżej znajdziesz
-            krótkie instrukcje — każdy produkt ma jedną grafikę z opisem wymiarów oraz link do pobrania.
+            Wybierz produkt i otwórz instrukcję pomiaru w nowej karcie lub
+            pobierz plik PDF na komputer.
           </p>
 
-          {/* brand separator */}
-          <div className="mt-6 flex w-full gap-4">
+          {/* Brand separator */}
+          <div className="mt-6 flex gap-4">
             <span className="h-1 w-24 rounded-full bg-yellow-400" />
             <span className="h-1 w-24 rounded-full bg-red-500" />
             <span className="h-1 w-24 rounded-full bg-blue-400" />
           </div>
         </header>
 
-        {/* Lista stile “tabela” */}
-        <section
-          aria-label="Lista produktów z instrukcjami pomiaru"
-          className="overflow-hidden rounded-lg border border-neutral-200 bg-white"
-        >
+        {/* Lista instrukcji */}
+        <section className="overflow-hidden rounded-lg border border-neutral-200 bg-white">
           <ul className="divide-y divide-neutral-200">
             {GUIDES.map((g, idx) => (
               <li
-                key={g.slug}
+                key={g.name}
                 className={[
-                  "grid grid-cols-1 gap-3 px-4 py-4 sm:grid-cols-3 sm:items-center sm:px-6",
+                  "grid grid-cols-1 gap-4 px-4 py-4 sm:grid-cols-3 sm:items-center sm:px-6",
                   idx % 2 === 1 ? "bg-neutral-50" : "bg-white",
                 ].join(" ")}
               >
-                <span className="text-base font-semibold text-neutral-900">
-                  {g.name}
-                </span>
+                <span className="font-semibold text-neutral-900">{g.name}</span>
 
                 <span className="text-neutral-600">
-                  Krótka instrukcja pomiaru — zobacz grafikę.
+                  Instrukcja pomiaru (PDF)
                 </span>
 
-                <div className="flex items-center justify-start gap-4 sm:justify-end">
-                  {/* Apri popup immagine */}
+                <div className="flex gap-3 sm:justify-end">
+                  {/* OPEN */}
                   <a
-                    href={`#guide-${g.slug}`}
-                    className="inline-flex items-center gap-2 rounded-md border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-900 transition hover:bg-neutral-50 active:bg-neutral-100"
-                    aria-controls={`guide-${g.slug}`}
+                    href={g.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center rounded-md border border-neutral-300 px-4 py-2 text-sm font-medium text-neutral-900 hover:bg-neutral-50"
                   >
                     » zobacz jak wymierzyć
                   </a>
 
-                  {/* Download diretto (stessa immagine) */}
-                  <a
-                    href={g.download}
+                  {/* DOWNLOAD */}
+                  {/* <a
+                    href={g.link}
                     download
-                    className="inline-flex items-center gap-2 rounded-md bg-neutral-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-neutral-800 active:bg-neutral-900"
+                    className="inline-flex items-center rounded-md bg-neutral-900 px-4 py-2 text-sm font-semibold text-white hover:bg-neutral-800"
                   >
                     Pobierz grafikę
-                  </a>
+                  </a> */}
                 </div>
               </li>
             ))}
           </ul>
         </section>
 
-        {/* Nota: bezpłatny pomiar — warunek */}
+        {/* Nota */}
         <div className="mx-auto mt-12 max-w-xl rounded-xl border border-neutral-200 bg-white p-5 text-sm text-neutral-600 shadow-sm">
-          <p id="pomiar-footnote">
-            <strong>Uwaga:</strong> bezpłatny pomiar dotyczy realizacji zakończonych zamówieniem.
-            W przypadku rezygnacji z zamówienia może obowiązywać opłata za serwis.
-          </p>
+          <strong>Uwaga:</strong> bezpłatny pomiar dotyczy realizacji
+          zakończonych zamówieniem. W przypadku rezygnacji może obowiązywać
+          opłata za serwis.
         </div>
-
-        <div className="h-8" />
       </div>
-
-      {/* ── Modali (no-JS): :target mostra/chiude ─────────────────────────── */}
-      <style>{`
-        .gc-modal {
-          position: fixed; inset: 0; display: grid; place-items: center;
-          background: rgba(0,0,0,.5); opacity: 0; pointer-events: none;
-          transition: opacity .2s ease;
-          z-index: 70;
-          padding: 1rem;
-        }
-        .gc-modal:target { opacity: 1; pointer-events: auto; }
-        .gc-modal__card {
-          width: 100%; max-width: 960px; background: #fff; border-radius: .75rem;
-          box-shadow: 0 10px 30px rgba(0,0,0,.15);
-          overflow: hidden;
-        }
-        .gc-modal__header, .gc-modal__footer {
-          padding: 0.75rem 1rem; border-bottom: 1px solid rgb(229,229,229);
-        }
-        .gc-modal__footer { border-top: 1px solid rgb(229,229,229); border-bottom: 0; }
-        .gc-modal__body { max-height: 75vh; overflow: auto; background: #f9fafb; }
-        .gc-close {
-          display: inline-flex; align-items: center; gap:.5rem;
-          color: #111827; font-weight: 600; font-size: .875rem;
-        }
-      `}</style>
-
-      {GUIDES.map((g) => (
-        <div key={g.slug} id={`guide-${g.slug}`} className="gc-modal">
-          <div className="gc-modal__card">
-            <div className="gc-modal__header flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-neutral-900">{g.name} </h2>
-              <a href="#_" className="gc-close  bg-red-500 hover:bg-red-600 py-2 px-4 rounded-lg shadow-md">
-                <span className="text-neutral-200">Zamknij</span>
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" strokeWidth="2">
-                  <path d="M18 6L6 18M6 6l12 12" />
-                </svg>
-              </a>
-            </div>
-
-            <div className="gc-modal__body">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={g.image}
-                alt={`${g.name} — instrukcja pomiaru`}
-                className="mx-auto block h-auto w-full max-w-[960px]"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-
-            <div className="gc-modal__footer flex items-center justify-between">
-              <a
-                href={g.download}
-                download
-                className="inline-flex items-center gap-2 rounded-md bg-neutral-900 px-4 py-2 text-sm font-semibold text-white hover:bg-neutral-800"
-              >
-                Pobierz grafikę
-              </a>
-              {/* <a href="#_" className="gc-close">Zamknij</a> */}
-            </div>
-          </div>
-        </div>
-      ))}
     </main>
   );
 }
