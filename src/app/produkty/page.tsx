@@ -23,14 +23,14 @@ type Item = {
 // NOTE: usa immagini esistenti in /public/images/...
 const ITEMS: Item[] = [
   {
-    slug: "fotorolety",
-    title: "Fotorolety – rolety z nadrukiem",
+    slug: "rolety-materialowe",
+    title: "Rolety materiałowe",
     category: "Rolety",
     description:
-      "Personalizowane rolety z nadrukiem Twojego zdjęcia lub grafiki. Na wymiar z montażem w Słupsku i okolicach.",
-    href: "/produkty/fotorolety",
-    image: "/images/fotorolety-hero.webp",
-    highlights: ["Personalizacja 1:1", "Na wymiar", "Do domu i firm"],
+      "Rolety wolnowiszące, kasetowe i dzień–noc. Szeroki wybór tkanin, pomiar i montaż w Słupsku i na Pomorzu.",
+    href: "/produkty/rolety-materialowe",
+    image: "/images/roleta.webp",
+    highlights: ["Prowadnice/kasety", "Setki tkanin", "Pomiar i montaż"],
   },
 
   {
@@ -53,17 +53,17 @@ const ITEMS: Item[] = [
     image: "/images/plisy.webp",
     highlights: ["Sterowanie góra/dół", "Cosimo / Smartline", "Wiele tkanin"],
   },
-
   {
-    slug: "rolety-materialowe",
-    title: "Rolety materiałowe",
+    slug: "fotorolety",
+    title: "Fotorolety – rolety z nadrukiem",
     category: "Rolety",
     description:
-      "Rolety wolnowiszące, kasetowe i dzień–noc. Szeroki wybór tkanin, pomiar i montaż w Słupsku i na Pomorzu.",
-    href: "/produkty/rolety-materialowe",
-    image: "/images/roleta.webp",
-    highlights: ["Prowadnice/kasety", "Setki tkanin", "Pomiar i montaż"],
+      "Personalizowane rolety z nadrukiem Twojego zdjęcia lub grafiki. Na wymiar z montażem w Słupsku i okolicach.",
+    href: "/produkty/fotorolety",
+    image: "/images/fotorolety-hero.webp",
+    highlights: ["Personalizacja 1:1", "Na wymiar", "Do domu i firm"],
   },
+
   {
     slug: "rolety-rzymskie-austriackie",
     title: "Rolety rzymskie i austriackie",
