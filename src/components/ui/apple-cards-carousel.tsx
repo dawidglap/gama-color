@@ -33,7 +33,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
     if (!el) return;
     const { scrollLeft, scrollWidth, clientWidth } = el;
     setCanScrollLeft(scrollLeft > 0);
-    setCanScrollRight(scrollLeft < scrollWidth - clientWidth);
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 1);
   };
 
   const scrollLeft = () => {
@@ -46,15 +46,21 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
   return (
     <div className="relative w-full">
+      {/* (opzionale) fade ai lati per look premium */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-30 w-10 bg-gradient-to-r from-white to-transparent md:w-16" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-30 w-10 bg-gradient-to-l from-white to-transparent md:w-16" />
+
+      {/* area scrollabile */}
       <div
         ref={carouselRef}
         onScroll={checkScrollability}
-        className="flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth pb-10 [scrollbar-width:none] md:py-20"
+        className="flex w-full overflow-x-scroll overscroll-x-auto scroll-smooth pb-10 [scrollbar-width:none] md:py-20
+                   px-12 md:px-16" // spazio per frecce
       >
         <div
           className={cn(
             "flex flex-row justify-start gap-4 pl-4",
-            "mx-auto max-w-7xl"
+            "mx-auto max-w-7xl",
           )}
         >
           {items.map((item, index) => (
@@ -64,7 +70,11 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
               animate={{
                 opacity: 1,
                 y: 0,
-                transition: { duration: 0.5, delay: 0.2 * index, ease: "easeOut" },
+                transition: {
+                  duration: 0.5,
+                  delay: 0.2 * index,
+                  ease: "easeOut",
+                },
               }}
               className="rounded-3xl last:pr-[5%] md:last:pr-[33%]"
             >
@@ -74,25 +84,29 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
         </div>
       </div>
 
-      {/* arrows */}
-      <div className="mr-10 flex justify-end gap-2">
-        <button
-          className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
-          onClick={scrollLeft}
-          disabled={!canScrollLeft}
-          aria-label="Scroll left"
-        >
-          <IconArrowNarrowLeft className="h-6 w-6 text-gray-500" />
-        </button>
-        <button
-          className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
-          onClick={scrollRight}
-          disabled={!canScrollRight}
-          aria-label="Scroll right"
-        >
-          <IconArrowNarrowRight className="h-6 w-6 text-gray-500" />
-        </button>
-      </div>
+      {/* freccia sinistra */}
+      <button
+        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-40
+                   flex h-10 w-10 items-center justify-center rounded-full bg-gray-100
+                   disabled:opacity-50 shadow-sm"
+        onClick={scrollLeft}
+        disabled={!canScrollLeft}
+        aria-label="Scroll left"
+      >
+        <IconArrowNarrowLeft className="h-6 w-6 text-gray-500" />
+      </button>
+
+      {/* freccia destra */}
+      <button
+        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-40
+                   flex h-10 w-10 items-center justify-center rounded-full bg-gray-100
+                   disabled:opacity-50 shadow-sm"
+        onClick={scrollRight}
+        disabled={!canScrollRight}
+        aria-label="Scroll right"
+      >
+        <IconArrowNarrowRight className="h-6 w-6 text-gray-500" />
+      </button>
     </div>
   );
 };
@@ -168,7 +182,7 @@ export const BlurImage = ({
       className={cn(
         "h-full w-full transition duration-300",
         isLoading ? "blur-sm" : "blur-0",
-        className
+        className,
       )}
       onLoad={() => setLoading(false)}
       src={src as string}
