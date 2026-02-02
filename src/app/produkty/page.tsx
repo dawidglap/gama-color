@@ -32,6 +32,16 @@ const ITEMS: Item[] = [
     image: "/images/roleta.webp",
     highlights: ["Prowadnice/kasety", "Setki tkanin", "Pomiar i montaż"],
   },
+  {
+    slug: "plisy",
+    title: "Plisy na wymiar",
+    category: "Plisy",
+    description:
+      "Nowoczesne plisy do każdego kształtu okna. Zasłonisz dowolny fragment szyby – montaż lokalny.",
+    href: "/produkty/plisy",
+    image: "/images/plisy.webp",
+    highlights: ["Sterowanie góra/dół", "Cosimo / Smartline", "Wiele tkanin"],
+  },
 
   {
     slug: "zaluzje",
@@ -44,24 +54,36 @@ const ITEMS: Item[] = [
     highlights: ["Drewno/bambus/alu", "Regulacja światła", "Na wymiar"],
   },
   {
-    slug: "plisy",
-    title: "Plisy na wymiar",
-    category: "Plisy",
+    slug: "moskitiery",
+    title: "Moskitiery okienne i drzwiowe",
+    category: "Moskitiery",
     description:
-      "Nowoczesne plisy do każdego kształtu okna. Zasłonisz dowolny fragment szyby – montaż lokalny.",
-    href: "/produkty/plisy",
-    image: "/images/plisy.webp",
-    highlights: ["Sterowanie góra/dół", "Cosimo / Smartline", "Wiele tkanin"],
+      "Ramkowe, rolowane i przesuwne – skuteczna ochrona przed owadami. Na wymiar z montażem w Słupsku i okolicach.",
+    href: "/produkty/moskitiery",
+    image: "/images/moskitiery.webp",
+    highlights: ["Ramkowe/rolo/przesuwne", "Na wymiar", "Wytrzymała siatka"],
   },
+
   {
-    slug: "fotorolety",
-    title: "Fotorolety – rolety z nadrukiem",
-    category: "Rolety",
+    slug: "rolety-zewnetrzne",
+    title: "Rolety zewnętrzne",
+    category: "Rolety zewnętrzne",
     description:
-      "Personalizowane rolety z nadrukiem Twojego zdjęcia lub grafiki. Na wymiar z montażem w Słupsku i okolicach.",
-    href: "/produkty/fotorolety",
-    image: "/images/fotorolety-hero.webp",
-    highlights: ["Personalizacja 1:1", "Na wymiar", "Do domu i firm"],
+      "Komfort termiczny i akustyczny, prywatność i bezpieczeństwo. Systemy podtynkowe i elewacyjne, montaż lokalny.",
+    href: "/produkty/rolety-zewnetrzne",
+    image: "/images/zew.webp",
+    highlights: ["Izolacja i cisza", "Prywatność", "Bezpieczeństwo"],
+  },
+
+  {
+    slug: "markizy",
+    title: "Markizy tarasowe i balkonowe",
+    category: "Markizy",
+    description:
+      "Konstrukcja aluminiowa i tkaniny odporne na UV. Pomiar i montaż w Słupsku oraz w regionie Pomorza.",
+    href: "/produkty/markizy",
+    image: "/images/markizy.webp",
+    highlights: ["Konstrukcja alu", "Tkaniny UV", "Do tarasu/balkonu"],
   },
 
   {
@@ -79,34 +101,14 @@ const ITEMS: Item[] = [
     ],
   },
   {
-    slug: "rolety-zewnetrzne",
-    title: "Rolety zewnętrzne",
-    category: "Rolety zewnętrzne",
+    slug: "fotorolety",
+    title: "Fotorolety – rolety z nadrukiem",
+    category: "Rolety",
     description:
-      "Komfort termiczny i akustyczny, prywatność i bezpieczeństwo. Systemy podtynkowe i elewacyjne, montaż lokalny.",
-    href: "/produkty/rolety-zewnetrzne",
-    image: "/images/zew.webp",
-    highlights: ["Izolacja i cisza", "Prywatność", "Bezpieczeństwo"],
-  },
-  {
-    slug: "moskitiery",
-    title: "Moskitiery okienne i drzwiowe",
-    category: "Moskitiery",
-    description:
-      "Ramkowe, rolowane i przesuwne – skuteczna ochrona przed owadami. Na wymiar z montażem w Słupsku i okolicach.",
-    href: "/produkty/moskitiery",
-    image: "/images/moskitiery.webp",
-    highlights: ["Ramkowe/rolo/przesuwne", "Na wymiar", "Wytrzymała siatka"],
-  },
-  {
-    slug: "markizy",
-    title: "Markizy tarasowe i balkonowe",
-    category: "Markizy",
-    description:
-      "Konstrukcja aluminiowa i tkaniny odporne na UV. Pomiar i montaż w Słupsku oraz w regionie Pomorza.",
-    href: "/produkty/markizy",
-    image: "/images/markizy.webp",
-    highlights: ["Konstrukcja alu", "Tkaniny UV", "Do tarasu/balkonu"],
+      "Personalizowane rolety z nadrukiem Twojego zdjęcia lub grafiki. Na wymiar z montażem w Słupsku i okolicach.",
+    href: "/produkty/fotorolety",
+    image: "/images/fotorolety-hero.webp",
+    highlights: ["Personalizacja 1:1", "Na wymiar", "Do domu i firm"],
   },
 ];
 
