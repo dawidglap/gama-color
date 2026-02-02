@@ -16,26 +16,26 @@ const GUIDES = [
     name: "Żaluzje pionowe",
     link: "https://tapparella.pl/wp-content/uploads/2020/11/TAPPA-Pomiar-V.pdf",
   },
+  // {
+  //   name: "Żaluzje poziome",
+  //   link: "https://tapparella.pl/wp-content/uploads/2020/11/TAPPA-Pomiar-ZD-25.pdf",
+  // },
   {
-    name: "Żaluzje poziome",
-    link: "https://tapparella.pl/wp-content/uploads/2020/11/TAPPA-Pomiar-ZD-25.pdf",
+    name: "Żaluzje drewniane i bambusowe 25mm",
+    link: "https://gama-color.pl/uploads/zaluzje-drewniane.pdf",
   },
   {
-    name: "Żaluzje drewniane 25mm",
-    link: "https://tapparella.pl/wp-content/uploads/2020/11/TAPPA-Pomiar-ZD-25.pdf",
-  },
-  {
-    name: "Żaluzje drewniane 50mm",
+    name: "Żaluzje drewniane i bambusowe 50mm",
     link: "https://tapparella.pl/wp-content/uploads/2020/11/TAPPA-Pomiar-ZD-50.pdf",
   },
-  {
-    name: "Żaluzje bambusowe 25mm",
-    link: "https://tapparella.pl/wp-content/uploads/2020/11/TAPPA-Pomiar-ZD-25.pdf",
-  },
-  {
-    name: "Żaluzje bambusowe 50mm",
-    link: "https://tapparella.pl/wp-content/uploads/2020/11/TAPPA-Pomiar-ZD-50.pdf",
-  },
+  // {
+  //   name: "Żaluzje bambusowe 25mm",
+  //   link: "https://tapparella.pl/wp-content/uploads/2020/11/TAPPA-Pomiar-ZD-25.pdf",
+  // },
+  // {
+  //   name: "Żaluzje bambusowe 50mm",
+  //   link: "https://tapparella.pl/wp-content/uploads/2020/11/TAPPA-Pomiar-ZD-50.pdf",
+  // },
   {
     name: "Plisy",
     link: "https://tapparella.pl/wp-content/uploads/2021/10/TAPPA-Pomiar-PL-1-Montaz-standardowy-1.pdf",
