@@ -22,7 +22,7 @@ const GUIDES = [
   // },
   {
     name: "Żaluzje drewniane i bambusowe 25mm",
-    link: "https://gama-color.pl/uploads/zaluzje-drewniane.pdf",
+    link: "https://gama-color.com.pl/uploads/zaluzje-drewniane.pdf",
   },
   {
     name: "Żaluzje drewniane i bambusowe 50mm",
