@@ -62,6 +62,13 @@ const data = [
     href: "/produkty/rolety-materialowe",
     content: null as unknown as React.ReactNode,
   },
+  {
+    category: "Plisy",
+    title: "Plisy na wymiar",
+    src: Plisy,
+    href: "/produkty/plisy",
+    content: null as unknown as React.ReactNode,
+  },
 
   {
     category: "Żaluzje",
@@ -71,17 +78,25 @@ const data = [
     content: null as unknown as React.ReactNode,
   },
   {
-    category: "Plisy",
-    title: "Plisy na wymiar",
-    src: Plisy,
-    href: "/produkty/plisy",
+    category: "Moskitiery",
+    title: "Moskitiery okienne i drzwiowe",
+    src: Moskitiery,
+    href: "/produkty/moskitiery",
+    content: null as unknown as React.ReactNode,
+  },
+
+  {
+    category: "Rolety zewnętrzne",
+    title: "Rolety zewnętrzne",
+    src: Zew,
+    href: "/produkty/rolety-zewnetrzne",
     content: null as unknown as React.ReactNode,
   },
   {
-    category: "Nowość",
-    title: "Fotorolety",
-    src: Fotorolety,
-    href: "/produkty/fotorolety",
+    category: "Markizy",
+    title: "Markizy tarasowe i balkonowe",
+    src: Markizy,
+    href: "/produkty/markizy",
     content: null as unknown as React.ReactNode,
   },
 
@@ -92,25 +107,12 @@ const data = [
     href: "/produkty/rolety-rzymskie-austriackie",
     content: null as unknown as React.ReactNode,
   },
+
   {
-    category: "Moskitiery",
-    title: "Moskitiery okienne i drzwiowe",
-    src: Moskitiery,
-    href: "/produkty/moskitiery",
-    content: null as unknown as React.ReactNode,
-  },
-  {
-    category: "Markizy",
-    title: "Markizy tarasowe i balkonowe",
-    src: Markizy,
-    href: "/produkty/markizy",
-    content: null as unknown as React.ReactNode,
-  },
-  {
-    category: "Rolety zewnętrzne",
-    title: "Rolety zewnętrzne",
-    src: Zew,
-    href: "/produkty/rolety-zewnetrzne",
+    category: "Rolety",
+    title: "Fotorolety",
+    src: Fotorolety,
+    href: "/produkty/fotorolety",
     content: null as unknown as React.ReactNode,
   },
 ];
