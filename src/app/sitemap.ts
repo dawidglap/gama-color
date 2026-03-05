@@ -6,7 +6,7 @@ import { PLISY } from "@/data/plisy";
 import { MOSKITIERY } from "@/data/moskitiery";
 import { ROLETY_ZEWNETRZNE } from "@/data/roletyZewnetrzne";
 import { RA } from "@/data/roletyRzymskieAustriackie";
-import { SITE_URLS } from "@/lib/site-urls";
+import { PRIMARY_SITE_URL } from "@/lib/site-urls";
 
 function withBase(base: string, path: string) {
   if (!path || path === "/") {
@@ -16,34 +16,48 @@ function withBase(base: string, path: string) {
   return `${base}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
-function entriesFor(path: string, lastModified: Date): MetadataRoute.Sitemap {
-  return SITE_URLS.map((base) => ({
-    url: withBase(base, path),
-    lastModified,
-  }));
+function entriesFor(
+  path: string,
+  lastModified: Date,
+  options?: Pick<MetadataRoute.Sitemap[number], "changeFrequency" | "priority">
+): MetadataRoute.Sitemap {
+  return [
+    {
+      url: withBase(PRIMARY_SITE_URL, path),
+      lastModified,
+      ...options,
+    },
+  ];
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
-  const staticPaths = [
-    "/",
-    "/produkty",
-    "/produkty/rolety-materialowe",
-    "/produkty/plisy",
-    "/produkty/zaluzje",
-    "/produkty/moskitiery",
-    "/produkty/rolety-zewnetrzne",
-    "/produkty/rolety-rzymskie-austriackie",
-    "/produkty/markizy",
-    "/o-nas",
-    "/jak-mierzyc",
-    "/polityka-prywatnosci",
-    "/mapa-strony",
+  const staticEntries: Array<{
+    path: string;
+    changeFrequency?: MetadataRoute.Sitemap[number]["changeFrequency"];
+    priority?: MetadataRoute.Sitemap[number]["priority"];
+  }> = [
+    { path: "/" },
+    { path: "/produkty" },
+    { path: "/produkty/rolety-materialowe" },
+    { path: "/produkty/plisy" },
+    { path: "/produkty/zaluzje" },
+    { path: "/produkty/moskitiery" },
+    { path: "/produkty/rolety-zewnetrzne" },
+    { path: "/produkty/rolety-rzymskie-austriackie" },
+    { path: "/produkty/markizy" },
+    { path: "/o-nas" },
+    { path: "/jak-mierzyc" },
+    { path: "/polityka-prywatnosci" },
+    { path: "/mapa-strony" },
+    { path: "/realizacja-strony", changeFrequency: "monthly", priority: 0.4 },
   ];
 
   const entries: MetadataRoute.Sitemap = [
-    ...staticPaths.flatMap((path) => entriesFor(path, lastModified)),
+    ...staticEntries.flatMap(({ path, changeFrequency, priority }) =>
+      entriesFor(path, lastModified, { changeFrequency, priority })
+    ),
     ...Object.keys(ROLETY).flatMap((slug) =>
       entriesFor(`/produkty/rolety-materialowe/${slug}`, lastModified)
     ),

@@ -145,6 +145,15 @@ const Footer = () => {
         {/* Bottom */}
         <div className='mt-10 text-center text-sm text-secondary'>
           <p>&copy; {new Date().getFullYear()} Gama Color. Wszelkie prawa zastrzeżone.</p>
+          <p className='mt-2 text-xs text-neutral-500'>
+            Projekt i wdrożenie strony:{' '}
+            <Link
+              href='/realizacja-strony'
+              className='underline decoration-transparent underline-offset-2 transition hover:decoration-neutral-300'
+            >
+              Zobacz realizację
+            </Link>
+          </p>
         </div>
       </footer>
 

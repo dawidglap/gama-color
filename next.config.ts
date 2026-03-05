@@ -14,6 +14,21 @@ const nextConfig: NextConfig = {
     // Non bloccare le build di produzione (Vercel) per warning/error ESLint
     ignoreDuringBuilds: true,
   },
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "gama-kolor.pl",
+          },
+        ],
+        destination: "https://gama-color.com.pl/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

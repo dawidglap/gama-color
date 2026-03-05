@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import NavbarWrapper from "@/components/NavbarWrapper";
 import Footer from "@/components/Footer";
+import { PRIMARY_SITE_URL } from "@/lib/site-urls";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -10,6 +11,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(PRIMARY_SITE_URL),
   title: "Gama Color",
   description: "Stylowe rolety i żaluzje dla Twojego domu",
 };
