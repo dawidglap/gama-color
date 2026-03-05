@@ -11,6 +11,7 @@ import {
   FaClock,
 } from 'react-icons/fa'
 import logoGama from '../../public/images/gama-color-logo.png';
+import { PRIMARY_SITE_URL, SITE_URLS } from '@/lib/site-urls';
 
 const Footer = () => {
   return (
@@ -164,7 +165,8 @@ const Footer = () => {
             },
             telephone: '+48 598423534',
             email: 'biuro@gamacolor.pl',
-            url: 'https://www.gamacolor.pl',
+            url: PRIMARY_SITE_URL,
+            sameAs: SITE_URLS.length > 1 ? SITE_URLS : undefined,
             openingHours: ['Mo-Th 08:00-16:00', 'Fr 08:00-15:00'],
             openingHoursSpecification: [
               {
