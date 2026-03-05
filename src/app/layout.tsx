@@ -4,6 +4,7 @@ import "./globals.css";
 import NavbarWrapper from "@/components/NavbarWrapper";
 import Footer from "@/components/Footer";
 import { PRIMARY_SITE_URL } from "@/lib/site-urls";
+import { Analytics } from "@vercel/analytics/next";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -24,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="pl" className={montserrat.className}>
       <body className="antialiased">
+        <Analytics />
         <NavbarWrapper />
         {children}
         <Footer />
